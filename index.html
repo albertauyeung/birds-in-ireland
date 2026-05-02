@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birds in Ireland — Fun bird learning for kids</title>
+  <meta name="description" content="A fun multilingual web app for kids (5-12) to discover the birds of Ireland." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://en.wikipedia.org" />
+  <link rel="preconnect" href="https://upload.wikimedia.org" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐦%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="site-header">
+    <button class="brand" data-nav="home" aria-label="Home">
+      <span class="brand-emoji" aria-hidden="true">🐦</span>
+      <span class="brand-text" data-i18n="appTitle">Birds in Ireland</span>
+    </button>
+    <nav class="main-nav" aria-label="Main">
+      <button data-nav="gallery" data-i18n="navExplore">Explore</button>
+      <button data-nav="quiz" data-i18n="navQuiz">Quiz</button>
+      <button data-nav="spots" data-i18n="navSpots">Where to spot</button>
+      <button data-nav="about" data-i18n="navAbout">About</button>
+    </nav>
+    <div class="lang-picker">
+      <label for="lang-select" class="visually-hidden" data-i18n="chooseLanguage">Choose language</label>
+      <select id="lang-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="zh-Hant">繁體中文</option>
+        <option value="zh-Hans">简体中文</option>
+        <option value="yue">廣東話</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- HOME -->
+    <section class="view view-home" data-view="home">
+      <div class="hero">
+        <div class="hero-text">
+          <h1 data-i18n="heroTitle">Discover the wonderful birds of Ireland!</h1>
+          <p class="hero-sub" data-i18n="heroSub">Big puffins, tiny wrens, swooping kingfishers and more. Tap a card to meet a bird!</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-nav="gallery" data-i18n="ctaExplore">Explore birds</button>
+            <button class="btn btn-secondary" data-nav="quiz" data-i18n="ctaQuiz">Play a quiz</button>
+          </div>
+        </div>
+        <div class="hero-feature" id="hero-feature" aria-live="polite"></div>
+      </div>
+
+      <h2 class="section-title" data-i18n="featuredTitle">Bird of the day</h2>
+      <div id="featured-card" class="featured-card"></div>
+
+      <h2 class="section-title" data-i18n="popularTitle">Popular favourites</h2>
+      <div id="popular-grid" class="bird-grid"></div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="view view-gallery" data-view="gallery" hidden>
+      <h1 class="section-title" data-i18n="galleryTitle">Meet the birds</h1>
+      <div class="filter-row">
+        <input type="search" id="bird-search" data-i18n-attr="placeholder:searchPlaceholder" placeholder="Search a bird..." />
+        <div class="chip-row" id="size-filter" role="group" aria-label="Filter by size">
+          <button class="chip active" data-size="all" data-i18n="sizeAll">All sizes</button>
+          <button class="chip" data-size="small" data-i18n="sizeSmall">Small</button>
+          <button class="chip" data-size="medium" data-i18n="sizeMedium">Medium</button>
+          <button class="chip" data-size="large" data-i18n="sizeLarge">Large</button>
+        </div>
+      </div>
+      <div id="gallery-grid" class="bird-grid"></div>
+    </section>
+
+    <!-- DETAIL -->
+    <section class="view view-detail" data-view="detail" hidden>
+      <button class="btn btn-back" data-nav="gallery">
+        <span aria-hidden="true">←</span> <span data-i18n="back">Back</span>
+      </button>
+      <article id="bird-detail" class="bird-detail"></article>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="view view-quiz" data-view="quiz" hidden>
+      <h1 class="section-title" data-i18n="quizTitle">Match the bird!</h1>
+      <p class="quiz-sub" data-i18n="quizSub">Look at the photo and tap the right name. Ready?</p>
+      <div id="quiz-area" class="quiz-area"></div>
+    </section>
+
+    <!-- SPOTS -->
+    <section class="view view-spots" data-view="spots" hidden>
+      <h1 class="section-title" data-i18n="spotsTitle">Where to spot birds in Ireland</h1>
+      <p class="lead" data-i18n="spotsLead">Bring binoculars, walk quietly, and look up! Here are great places around the island.</p>
+      <div id="spots-list" class="spots-list"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="view view-about" data-view="about" hidden>
+      <h1 class="section-title" data-i18n="aboutTitle">About this app</h1>
+      <div class="about-content">
+        <p data-i18n="aboutP1">This is a fun place for kids aged 5–12 to discover the birds you can see in Ireland — at the beach, the park, the garden, or up on cliffs by the sea.</p>
+        <p data-i18n="aboutP2">All photos shown are loaded from Wikimedia Commons, where photographers and volunteers share pictures with open licences. We always link back to the original page so you can see who took the photo.</p>
+        <h2 data-i18n="aboutSourcesTitle">Where the data comes from</h2>
+        <ul class="sources">
+          <li><a href="https://birdwatchireland.ie/" target="_blank" rel="noopener">BirdWatch Ireland</a> — bird identification & conservation</li>
+          <li><a href="https://ebird.org/region/IE" target="_blank" rel="noopener">eBird (Cornell Lab)</a> — sightings database</li>
+          <li><a href="https://records.biodiversityireland.ie/" target="_blank" rel="noopener">National Biodiversity Data Centre</a> — citizen science records</li>
+          <li><a href="https://www.macaulaylibrary.org/" target="_blank" rel="noopener">Macaulay Library</a> — bird photos & sounds</li>
+          <li><a href="https://www.bto.org/our-science/data/what-data-are-available" target="_blank" rel="noopener">BTO Bird Atlas</a> — distribution data</li>
+          <li><a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> — photos used in this app</li>
+          <li><a href="https://en.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a> — &ldquo;Learn more&rdquo; links</li>
+        </ul>
+        <p class="small" data-i18n="aboutCredit">Made with love for curious young birdwatchers. 🐦</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <span data-i18n="footerCredit">Photos via Wikimedia Commons. Bird info adapted from BirdWatch Ireland & Wikipedia.</span>
+    </p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/birds.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
