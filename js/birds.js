@@ -2727,5 +2727,19 @@ window.SPOTS = [
       "es": "El lago más grande de la isla de Irlanda. Cisnes, patos, charranes y limícolas viven aquí todo el año."
     },
     birds: ["muteswan", "whooperswan", "mallard", "tuftedduck", "coot", "swallow", "greylag", "commontern", "gcgrebe", "moorhen", "littlegrebe"]
+  },
+  {
+    id: "salteeislands",
+    name: "Saltee Islands",
+    region: "County Wexford",
+    description: {
+      "en": "Two small islands off the southeast coast — one of Ireland's biggest seabird colonies. In summer the cliffs are packed with gannets, puffins, razorbills and guillemots. Reach Great Saltee by day-boat from Kilmore Quay.",
+      "zh-Hant": "東南海岸外的兩座小島——是愛爾蘭最大的海鳥棲息地之一。夏天崖壁上滿是北鰹鳥、海鸚、刀嘴海雀和海鴉。可從基爾莫爾碼頭搭觀光船登上大薩爾蒂島。",
+      "zh-Hans": "东南海岸外的两座小岛——是爱尔兰最大的海鸟栖息地之一。夏天崖壁上满是北鲣鸟、海鹦、刀嘴海雀和海鸦。可从基尔莫尔码头搭观光船登上大萨尔蒂岛。",
+      "yue": "東南海岸外面嘅兩個細島——係愛爾蘭最大嘅海鳥棲息地之一。夏天崖壁上面滿哂北鰹鳥、海鸚、刀嘴海雀同海鴉。可以由基爾莫爾碼頭搭觀光船去大薩爾蒂島。",
+      "fr": "Deux petites îles au large de la côte sud-est — l'une des plus grandes colonies d'oiseaux marins d'Irlande. En été, les falaises grouillent de fous de Bassan, macareux, pingouins torda et guillemots. On rejoint Great Saltee en bateau depuis Kilmore Quay.",
+      "es": "Dos pequeñas islas frente a la costa sureste — una de las mayores colonias de aves marinas de Irlanda. En verano los acantilados se llenan de alcatraces, frailecillos, alcas y araos. Se llega a Great Saltee en barco desde Kilmore Quay."
+    },
+    birds: ["gannet", "puffin", "razorbill", "guillemot", "kittiwake", "manxshearwater", "cormorant"]
   }
 ];
