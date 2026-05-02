@@ -3,12 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Birds in Ireland — Fun bird learning for kids</title>
-  <meta name="description" content="A fun multilingual web app for kids (5-12) to discover the birds of Ireland." />
+
+  <!-- Primary SEO -->
+  <title>Birds in Ireland — A Multilingual Bird Guide for Kids</title>
+  <meta name="description" content="Discover 100 birds you can spot in Ireland — puffins, robins, kingfishers, eagles and more. Kid-friendly descriptions, photos, pronunciation guides and where-to-spot maps in 6 languages: English, 華文, 粵語, Français and Español." />
+  <meta name="keywords" content="birds of Ireland, Irish birds, bird identification, kids bird guide, multilingual bird app, puffin, robin, kingfisher, BirdWatch Ireland, bird photography, kids learning, ornithology for children" />
+  <meta name="author" content="Birds in Ireland" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://albertauyeung.github.io/birds-in-ireland/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://albertauyeung.github.io/birds-in-ireland/" />
+  <meta property="og:title" content="Birds in Ireland — A Multilingual Bird Guide for Kids" />
+  <meta property="og:description" content="Discover 100 birds of Ireland with photos, fun facts and pronunciation guides — in English, 華文, 粵語, Français and Español." />
+  <meta property="og:site_name" content="Birds in Ireland" />
+  <meta property="og:locale" content="en_IE" />
+  <meta property="og:locale:alternate" content="zh_TW" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+  <meta property="og:locale:alternate" content="yue_HK" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="es_ES" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Birds in Ireland — A Multilingual Bird Guide for Kids" />
+  <meta name="twitter:description" content="Discover 100 birds of Ireland with photos, fun facts and pronunciation guides — in 6 languages." />
+
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://en.wikipedia.org" />
   <link rel="preconnect" href="https://upload.wikimedia.org" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐦%3C/text%3E%3C/svg%3E" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Birds in Ireland",
+    "url": "https://albertauyeung.github.io/birds-in-ireland/",
+    "description": "A multilingual web app for kids aged 5–12 to discover 100 birds you can find in Ireland, with kid-friendly descriptions, photos, pronunciation guides and birdwatching hotspots.",
+    "inLanguage": ["en", "zh-Hant", "zh-Hans", "yue", "fr", "es"],
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "student",
+      "audienceType": "children aged 5–12"
+    },
+    "about": [
+      {"@type": "Thing", "name": "Birds of Ireland"},
+      {"@type": "Thing", "name": "Birdwatching"},
+      {"@type": "Thing", "name": "Children's education"}
+    ]
+  }
+  </script>
+
+  <!-- Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="0c30afdf-7301-47b0-8a70-24b0a10719ca"></script>
 </head>
 <body>
   <header class="site-header">
@@ -39,6 +89,11 @@
     <!-- GALLERY (landing page) -->
     <section class="view view-gallery" data-view="gallery">
       <h1 class="section-title" data-i18n="galleryTitle">Meet the birds</h1>
+      <div class="stats-bar">
+        <div class="stat"><span class="stat-num" id="stat-birds">0</span><span class="stat-label" data-i18n="statBirds">birds</span></div>
+        <div class="stat"><span class="stat-num" id="stat-langs">6</span><span class="stat-label" data-i18n="statLanguages">languages</span></div>
+        <div class="stat"><span class="stat-num" id="stat-spots">0</span><span class="stat-label" data-i18n="statSpots">hotspots</span></div>
+      </div>
       <div class="filter-row">
         <input type="search" id="bird-search" data-i18n-attr="placeholder:searchPlaceholder" placeholder="Search a bird..." />
         <div class="chip-row" id="size-filter" role="group" aria-label="Filter by size">
@@ -48,12 +103,13 @@
           <button class="chip" data-size="large" data-i18n="sizeLarge">Large</button>
         </div>
       </div>
+      <div class="filter-status" id="filter-status" aria-live="polite"></div>
       <div id="gallery-grid" class="bird-grid"></div>
     </section>
 
     <!-- DETAIL -->
     <section class="view view-detail" data-view="detail" hidden>
-      <button class="btn btn-back" data-nav="gallery">
+      <button class="btn btn-back" data-action="back">
         <span aria-hidden="true">←</span> <span data-i18n="back">Back</span>
       </button>
       <article id="bird-detail" class="bird-detail"></article>

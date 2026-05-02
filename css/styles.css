@@ -171,6 +171,44 @@ main {
   margin: 0 0.2rem 0.4rem;
 }
 
+/* ---------- Stats bar ---------- */
+.stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+}
+.stats-bar .stat {
+  background: #fff;
+  border-radius: 16px;
+  padding: 0.55rem 1rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-left: 5px solid #ff7a59;
+}
+.stats-bar .stat:nth-child(2) { border-left-color: #4a90e2; }
+.stats-bar .stat:nth-child(3) { border-left-color: #4ec3a6; }
+.stats-bar .stat-num {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #1d3a5f;
+  line-height: 1;
+}
+.stats-bar .stat-label {
+  font-size: 0.95rem;
+  color: #6c7a91;
+  font-weight: 600;
+}
+
+.filter-status {
+  font-size: 0.95rem;
+  color: #6c7a91;
+  margin: -0.3rem 0 0.8rem;
+  font-weight: 600;
+}
+
 /* ---------- Filter row ---------- */
 .filter-row {
   display: flex;
@@ -350,9 +388,12 @@ main {
 /* ---------- Spots ---------- */
 .spots-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 0.6rem;
+}
+@media (max-width: 720px) {
+  .spots-list { grid-template-columns: 1fr; }
 }
 .spot-card {
   background: #fff;
@@ -367,6 +408,21 @@ main {
   margin: 0 0 0.3rem;
   color: #1d3a5f;
   font-size: 1.15rem;
+}
+.spot-title-link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.spot-title-link:hover {
+  color: #ff7a59;
+  text-decoration: underline;
+}
+.spot-title-link .map-pin {
+  font-size: 0.85em;
+  opacity: 0.7;
 }
 .spot-card .region {
   font-size: 0.85rem;
