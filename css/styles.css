@@ -501,11 +501,27 @@ main {
   margin-top: 0.4rem;
 }
 .bird-detail .related-birds .birds-thumbs {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+.bird-detail .related-birds .bird-thumb .photo {
+  width: 112px;
+  height: 112px;
+  margin-bottom: 0.5rem;
+}
+.bird-detail .related-birds .bird-thumb .photo.photo-fallback .fallback-emoji {
+  font-size: 2.6rem;
+}
+.bird-detail .related-birds .bird-thumb .thumb-name {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+.bird-detail .related-birds .bird-thumb .thumb-pron {
+  font-size: 0.88rem;
 }
 @media (max-width: 720px) {
   .bird-detail .related-birds .birds-thumbs {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
