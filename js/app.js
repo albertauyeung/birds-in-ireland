@@ -1,0 +1,524 @@
+/* "Birds in Ireland" — main app logic.
+ * Handles language switching, navigation, gallery, detail, quiz and spots.
+ * Photos are fetched lazily from the Wikipedia REST API.
+ */
+(function () {
+  "use strict";
+
+  const SUPPORTED_LANGS = ["en", "zh-Hant", "zh-Hans", "yue", "fr", "es"];
+  const DEFAULT_LANG = "en";
+  const STORAGE_LANG = "birdsIE.lang";
+  const PHOTO_CACHE_KEY = "birdsIE.photoCache.v1";
+
+  // ---------- State ----------
+  const state = {
+    lang: loadLang(),
+    view: "home",
+    selectedBirdId: null,
+    sizeFilter: "all",
+    search: "",
+    photoCache: loadPhotoCache(),
+    quiz: null
+  };
+
+  // ---------- Language ----------
+  function loadLang() {
+    const saved = localStorage.getItem(STORAGE_LANG);
+    if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+    const nav = (navigator.language || "").toLowerCase();
+    if (nav.startsWith("zh")) {
+      if (nav.includes("hant") || nav.includes("tw") || nav.includes("hk")) return "zh-Hant";
+      return "zh-Hans";
+    }
+    if (nav.startsWith("yue")) return "yue";
+    if (nav.startsWith("fr")) return "fr";
+    if (nav.startsWith("es")) return "es";
+    return DEFAULT_LANG;
+  }
+
+  function setLang(lang) {
+    if (!SUPPORTED_LANGS.includes(lang)) lang = DEFAULT_LANG;
+    state.lang = lang;
+    localStorage.setItem(STORAGE_LANG, lang);
+    document.documentElement.lang = lang === "yue" ? "zh-HK" : lang;
+    applyTranslations();
+    rerenderCurrentView();
+  }
+
+  function t(key) {
+    const dict = window.I18N[state.lang] || window.I18N[DEFAULT_LANG];
+    return dict[key] || window.I18N[DEFAULT_LANG][key] || key;
+  }
+
+  function applyTranslations() {
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      el.textContent = t(el.dataset.i18n);
+    });
+    document.querySelectorAll("[data-i18n-attr]").forEach((el) => {
+      el.dataset.i18nAttr.split(";").forEach((pair) => {
+        const [attr, key] = pair.split(":").map((s) => s.trim());
+        if (attr && key) el.setAttribute(attr, t(key));
+      });
+    });
+    document.title = t("appTitle") + " — " + t("heroTitle");
+  }
+
+  // ---------- Photo cache ----------
+  function loadPhotoCache() {
+    try {
+      const raw = localStorage.getItem(PHOTO_CACHE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+  function savePhotoCache() {
+    try { localStorage.setItem(PHOTO_CACHE_KEY, JSON.stringify(state.photoCache)); } catch (e) {}
+  }
+
+  /**
+   * Fetch bird photo info from Wikipedia REST API.
+   * Returns { thumb, original, source, attribution } or null on failure.
+   */
+  async function fetchBirdPhoto(wikiSlug) {
+    if (state.photoCache[wikiSlug]) return state.photoCache[wikiSlug];
+    try {
+      const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiSlug)}`;
+      const res = await fetch(url, { headers: { Accept: "application/json" } });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      const photo = {
+        thumb: data.thumbnail && data.thumbnail.source,
+        original: data.originalimage && data.originalimage.source,
+        source: data.content_urls && data.content_urls.desktop && data.content_urls.desktop.page,
+      };
+      if (!photo.thumb && !photo.original) throw new Error("No image");
+      state.photoCache[wikiSlug] = photo;
+      savePhotoCache();
+      return photo;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function wikiArticleUrl(wikiSlug) {
+    const lang = window.WIKI_LANG[state.lang] || "en";
+    const variant = window.WIKI_VARIANT[state.lang];
+    let url = `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(wikiSlug)}`;
+    if (variant) url += `?variant=${variant}`;
+    return url;
+  }
+
+  // ---------- Navigation ----------
+  function navigate(view, opts = {}) {
+    state.view = view;
+    if (opts.birdId) state.selectedBirdId = opts.birdId;
+
+    document.querySelectorAll("[data-view]").forEach((el) => {
+      el.hidden = el.dataset.view !== view;
+    });
+    document.querySelectorAll(".main-nav button").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.nav === view);
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    rerenderCurrentView();
+  }
+
+  function rerenderCurrentView() {
+    switch (state.view) {
+      case "home": renderHome(); break;
+      case "gallery": renderGallery(); break;
+      case "detail": renderDetail(); break;
+      case "quiz": renderQuiz(); break;
+      case "spots": renderSpots(); break;
+      case "about": /* static */ break;
+    }
+  }
+
+  // ---------- Home ----------
+  function getFeaturedBird() {
+    const day = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+    return BIRDS[day % BIRDS.length];
+  }
+
+  function getPopularBirds() {
+    const ids = ["robin", "puffin", "bluetit", "kingfisher", "muteswan", "barnowl"];
+    return ids.map((id) => BIRDS.find((b) => b.id === id)).filter(Boolean);
+  }
+
+  function renderHome() {
+    // Hero feature (small, rotates daily)
+    const featured = getFeaturedBird();
+    const heroEl = document.getElementById("hero-feature");
+    heroEl.innerHTML = `
+      <div class="photo skeleton"><img alt="" loading="lazy"></div>
+      <button class="more-btn" data-bird="${featured.id}">${escapeHtml(featured.names[state.lang] || featured.names.en)} →</button>
+    `;
+    const heroImg = heroEl.querySelector("img");
+    fetchBirdPhoto(featured.wiki).then((p) => {
+      const wrap = heroEl.querySelector(".photo");
+      if (p && (p.thumb || p.original)) {
+        heroImg.src = p.thumb || p.original;
+        heroImg.alt = featured.names[state.lang] || featured.names.en;
+        wrap.classList.remove("skeleton");
+      } else {
+        showPhotoFallback(wrap, featured.color);
+      }
+    });
+    heroEl.querySelector(".more-btn").addEventListener("click", () => {
+      navigate("detail", { birdId: featured.id });
+    });
+
+    // Featured card (full)
+    const featuredCard = document.getElementById("featured-card");
+    featuredCard.innerHTML = `
+      <div class="photo skeleton"><img alt="" loading="lazy"></div>
+      <div class="info">
+        <h3>${escapeHtml(featured.names[state.lang] || featured.names.en)}</h3>
+        <p class="latin">${escapeHtml(featured.latin)}</p>
+        <p>${escapeHtml(featured.description[state.lang] || featured.description.en)}</p>
+        <button class="more-btn" data-bird="${featured.id}">${escapeHtml(t("learnMore"))} →</button>
+      </div>
+    `;
+    fetchBirdPhoto(featured.wiki).then((p) => {
+      const wrap = featuredCard.querySelector(".photo");
+      if (p && (p.thumb || p.original)) {
+        const img = featuredCard.querySelector("img");
+        img.src = p.original || p.thumb;
+        img.alt = featured.names[state.lang] || featured.names.en;
+        wrap.classList.remove("skeleton");
+      } else {
+        showPhotoFallback(wrap, featured.color);
+      }
+    });
+    featuredCard.querySelector(".more-btn").addEventListener("click", () => {
+      navigate("detail", { birdId: featured.id });
+    });
+
+    // Popular grid
+    const grid = document.getElementById("popular-grid");
+    renderBirdGrid(grid, getPopularBirds());
+  }
+
+  // ---------- Gallery ----------
+  function renderGallery() {
+    const grid = document.getElementById("gallery-grid");
+    const filtered = BIRDS.filter((b) => {
+      if (state.sizeFilter !== "all" && b.sizeCategory !== state.sizeFilter) return false;
+      if (state.search) {
+        const q = state.search.toLowerCase();
+        const names = Object.values(b.names).join(" ").toLowerCase();
+        if (!names.includes(q) && !b.latin.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    });
+    renderBirdGrid(grid, filtered);
+
+    // Update filter chips
+    document.querySelectorAll("#size-filter .chip").forEach((chip) => {
+      chip.classList.toggle("active", chip.dataset.size === state.sizeFilter);
+    });
+  }
+
+  function renderBirdGrid(container, birds) {
+    container.innerHTML = "";
+    birds.forEach((bird) => {
+      const card = document.createElement("button");
+      card.className = "bird-card";
+      card.setAttribute("aria-label", bird.names[state.lang] || bird.names.en);
+      card.innerHTML = `
+        <div class="photo skeleton"><img alt="" loading="lazy"></div>
+        <p class="name">${escapeHtml(bird.names[state.lang] || bird.names.en)}</p>
+        <p class="latin">${escapeHtml(bird.latin)}</p>
+      `;
+      card.addEventListener("click", () => navigate("detail", { birdId: bird.id }));
+      container.appendChild(card);
+
+      // Lazy-load photo
+      observePhoto(card.querySelector(".photo"), card.querySelector("img"), bird);
+    });
+  }
+
+  // IntersectionObserver to load photos only when visible
+  const photoObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const wrapper = entry.target;
+      const img = wrapper.querySelector("img");
+      const wiki = wrapper.dataset.wiki;
+      const altText = wrapper.dataset.alt;
+      const color = wrapper.dataset.color || "#ffd18a";
+      fetchBirdPhoto(wiki).then((p) => {
+        if (p && (p.thumb || p.original)) {
+          img.src = p.thumb || p.original;
+          img.alt = altText;
+          wrapper.classList.remove("skeleton");
+        } else {
+          showPhotoFallback(wrapper, color);
+        }
+      });
+      obs.unobserve(wrapper);
+    });
+  }, { rootMargin: "100px" });
+
+  function showPhotoFallback(wrapper, color) {
+    wrapper.classList.remove("skeleton");
+    wrapper.classList.add("photo-fallback");
+    wrapper.style.background = `linear-gradient(135deg, ${color}33, ${color}66)`;
+    if (!wrapper.querySelector(".fallback-emoji")) {
+      const span = document.createElement("span");
+      span.className = "fallback-emoji";
+      span.textContent = "🐦";
+      span.setAttribute("aria-hidden", "true");
+      wrapper.appendChild(span);
+    }
+  }
+
+  function observePhoto(wrapper, img, bird) {
+    wrapper.dataset.wiki = bird.wiki;
+    wrapper.dataset.alt = bird.names[state.lang] || bird.names.en;
+    wrapper.dataset.color = bird.color;
+    photoObserver.observe(wrapper);
+  }
+
+  // ---------- Detail ----------
+  function renderDetail() {
+    const bird = BIRDS.find((b) => b.id === state.selectedBirdId);
+    const detailEl = document.getElementById("bird-detail");
+    if (!bird) {
+      detailEl.innerHTML = "<p>Not found.</p>";
+      return;
+    }
+
+    const sizeLabel = {
+      "small": t("sizeSmallLabel"),
+      "medium": t("sizeMediumLabel"),
+      "large": t("sizeLargeLabel")
+    }[bird.sizeCategory];
+
+    detailEl.innerHTML = `
+      <div>
+        <div class="photo skeleton"><img alt="" loading="lazy"></div>
+        <p class="photo-credit">${escapeHtml(t("photoBy"))} <a href="#" target="_blank" rel="noopener" class="src-link">Wikipedia</a> · ${escapeHtml(t("photoSource"))}</p>
+      </div>
+      <div>
+        <h1 style="border-bottom: 4px solid ${bird.color}; padding-bottom: 0.3rem; display:inline-block;">
+          ${escapeHtml(bird.names[state.lang] || bird.names.en)}
+        </h1>
+        <p class="latin">${escapeHtml(bird.latin)}</p>
+        <p class="description">${escapeHtml(bird.description[state.lang] || bird.description.en)}</p>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-label">${escapeHtml(t("factSize"))}</div>
+            <div>${sizeLabel} · ${bird.sizeCm} cm</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">${escapeHtml(t("factLatin"))}</div>
+            <div><em>${escapeHtml(bird.latin)}</em></div>
+          </div>
+        </div>
+        <div class="where">
+          <div class="fact-label" style="color:#b35a00;font-weight:800;font-size:0.8rem;text-transform:uppercase;">${escapeHtml(t("factWhere"))}</div>
+          <ul>
+            ${bird.where.map((w) => `<li>${escapeHtml(w)}</li>`).join("")}
+          </ul>
+        </div>
+        <div class="actions">
+          <a class="learn-more" href="${wikiArticleUrl(bird.wiki)}" target="_blank" rel="noopener">${escapeHtml(t("learnMore"))} →</a>
+        </div>
+      </div>
+    `;
+
+    fetchBirdPhoto(bird.wiki).then((p) => {
+      const wrap = detailEl.querySelector(".photo");
+      if (p && (p.thumb || p.original)) {
+        const img = detailEl.querySelector("img");
+        img.src = p.original || p.thumb;
+        img.alt = bird.names[state.lang] || bird.names.en;
+        wrap.classList.remove("skeleton");
+        const link = detailEl.querySelector(".src-link");
+        if (p.source) link.href = p.source;
+      } else {
+        showPhotoFallback(wrap, bird.color);
+      }
+    });
+  }
+
+  // ---------- Quiz ----------
+  function startQuiz() {
+    const totalQuestions = 5;
+    const optionCount = 4;
+    const pool = shuffle(BIRDS.slice()).slice(0, totalQuestions);
+    state.quiz = {
+      questions: pool.map((bird) => {
+        const wrongs = shuffle(BIRDS.filter((b) => b.id !== bird.id))
+          .slice(0, optionCount - 1);
+        const options = shuffle([bird, ...wrongs]);
+        return { bird, options, answer: null };
+      }),
+      index: 0,
+      score: 0,
+      done: false
+    };
+  }
+
+  function renderQuiz() {
+    if (!state.quiz || state.quiz.done) {
+      if (!state.quiz) startQuiz();
+    }
+    const area = document.getElementById("quiz-area");
+
+    if (state.quiz.done) {
+      const score = state.quiz.score;
+      const total = state.quiz.questions.length;
+      let msg;
+      if (score === total) msg = t("quizGreat");
+      else if (score >= Math.ceil(total / 2)) msg = t("quizGood");
+      else msg = t("quizKeepGoing");
+      area.innerHTML = `
+        <div class="quiz-final">
+          <div>${escapeHtml(t("quizYourScore"))}</div>
+          <div class="score-badge">${score} / ${total}</div>
+          <div>${escapeHtml(msg)}</div>
+          <button class="btn btn-primary" id="quiz-replay">${escapeHtml(t("quizPlayAgain"))}</button>
+        </div>
+      `;
+      document.getElementById("quiz-replay").addEventListener("click", () => {
+        startQuiz();
+        renderQuiz();
+      });
+      return;
+    }
+
+    const q = state.quiz.questions[state.quiz.index];
+    const total = state.quiz.questions.length;
+    area.innerHTML = `
+      <div class="quiz-status">${escapeHtml(t("quizQuestionOf").replace("{n}", state.quiz.index + 1).replace("{total}", total))}</div>
+      <div class="quiz-photo skeleton"><img alt="" loading="lazy"></div>
+      <p class="lead" style="margin:0 0 0.6rem;">${escapeHtml(t("quizQuestion"))}</p>
+      <div class="quiz-feedback" aria-live="polite"></div>
+      <div class="quiz-options">
+        ${q.options.map((opt) => `
+          <button data-id="${opt.id}">${escapeHtml(opt.names[state.lang] || opt.names.en)}</button>
+        `).join("")}
+      </div>
+    `;
+
+    fetchBirdPhoto(q.bird.wiki).then((p) => {
+      const wrap = area.querySelector(".quiz-photo");
+      if (p && (p.thumb || p.original)) {
+        const img = wrap.querySelector("img");
+        img.src = p.original || p.thumb;
+        img.alt = "";
+        wrap.classList.remove("skeleton");
+      } else {
+        showPhotoFallback(wrap, q.bird.color);
+      }
+    });
+
+    const feedback = area.querySelector(".quiz-feedback");
+    const buttons = area.querySelectorAll(".quiz-options button");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (q.answer) return;
+        const isRight = btn.dataset.id === q.bird.id;
+        q.answer = btn.dataset.id;
+        if (isRight) state.quiz.score++;
+        buttons.forEach((b) => {
+          b.disabled = true;
+          if (b.dataset.id === q.bird.id) b.classList.add("right");
+          else if (b === btn) b.classList.add("wrong");
+        });
+        feedback.textContent = isRight ? t("quizCorrect") : t("quizWrong");
+        feedback.className = "quiz-feedback " + (isRight ? "correct" : "wrong");
+
+        const nextBtn = document.createElement("button");
+        nextBtn.className = "btn btn-primary";
+        nextBtn.style.marginTop = "1rem";
+        nextBtn.textContent = t("quizNext") + " →";
+        nextBtn.addEventListener("click", () => {
+          state.quiz.index++;
+          if (state.quiz.index >= state.quiz.questions.length) {
+            state.quiz.done = true;
+          }
+          renderQuiz();
+        });
+        area.appendChild(nextBtn);
+      });
+    });
+  }
+
+  // ---------- Spots ----------
+  function renderSpots() {
+    const list = document.getElementById("spots-list");
+    list.innerHTML = SPOTS.map((spot) => {
+      const birdNames = spot.birds
+        .map((id) => {
+          const b = BIRDS.find((x) => x.id === id);
+          return b ? (b.names[state.lang] || b.names.en) : null;
+        })
+        .filter(Boolean)
+        .join(" · ");
+      return `
+        <div class="spot-card">
+          <h3>${escapeHtml(spot.name)}</h3>
+          <div class="region">${escapeHtml(spot.region)}</div>
+          <p>${escapeHtml(spot.description[state.lang] || spot.description.en)}</p>
+          ${birdNames ? `<div class="birds-here"><strong>${escapeHtml(t("birdsHere"))}</strong> ${escapeHtml(birdNames)}</div>` : ""}
+        </div>
+      `;
+    }).join("");
+  }
+
+  // ---------- Helpers ----------
+  function escapeHtml(s) {
+    if (s == null) return "";
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // ---------- Init ----------
+  function init() {
+    // Language
+    const langSelect = document.getElementById("lang-select");
+    langSelect.value = state.lang;
+    langSelect.addEventListener("change", (e) => setLang(e.target.value));
+    document.documentElement.lang = state.lang === "yue" ? "zh-HK" : state.lang;
+
+    // Nav buttons
+    document.querySelectorAll("[data-nav]").forEach((btn) => {
+      btn.addEventListener("click", () => navigate(btn.dataset.nav));
+    });
+
+    // Filters
+    document.getElementById("size-filter").addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      state.sizeFilter = chip.dataset.size;
+      renderGallery();
+    });
+    document.getElementById("bird-search").addEventListener("input", (e) => {
+      state.search = e.target.value.trim();
+      renderGallery();
+    });
+
+    applyTranslations();
+    navigate("home");
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
