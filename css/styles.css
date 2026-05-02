@@ -350,7 +350,7 @@ main {
 /* ---------- Spots ---------- */
 .spots-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1rem;
   margin-top: 0.6rem;
 }
@@ -374,12 +374,70 @@ main {
   margin-bottom: 0.4rem;
 }
 .spot-card p { margin: 0; }
-.spot-card .birds-here {
-  margin-top: 0.6rem;
-  font-size: 0.9rem;
-  color: #2d3142;
+.spot-card .birds-here-label {
+  margin-top: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: #b35a00;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
-.spot-card .birds-here strong { color: #b35a00; }
+.spot-card .birds-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 0.5rem;
+}
+.spot-card .bird-thumb {
+  background: none;
+  border: 0;
+  padding: 0.2rem;
+  cursor: pointer;
+  text-align: center;
+  font: inherit;
+  color: inherit;
+  border-radius: 12px;
+  transition: transform 0.12s, background 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.spot-card .bird-thumb:hover {
+  transform: translateY(-2px);
+  background: #fff7e8;
+}
+.spot-card .bird-thumb .photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #eef6ff;
+  margin-bottom: 0.3rem;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.spot-card .bird-thumb .photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.spot-card .bird-thumb .thumb-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #1d3a5f;
+  line-height: 1.15;
+  display: block;
+}
+.spot-card .bird-thumb .thumb-pron {
+  font-size: 0.65rem;
+  font-style: italic;
+  color: #6c7a91;
+  line-height: 1.1;
+  display: block;
+  margin-top: 0.05rem;
+}
+.spot-card .bird-thumb .photo.photo-fallback .fallback-emoji {
+  font-size: 1.6rem;
+}
 
 /* ---------- About ---------- */
 .about-content {

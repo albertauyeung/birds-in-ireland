@@ -491,23 +491,42 @@
   // ---------- Spots ----------
   function renderSpots() {
     const list = document.getElementById("spots-list");
-    list.innerHTML = SPOTS.map((spot) => {
-      const birdNames = spot.birds
-        .map((id) => {
-          const b = BIRDS.find((x) => x.id === id);
-          return b ? localName(b) : null;
-        })
-        .filter(Boolean)
-        .join(" · ");
-      return `
-        <div class="spot-card">
-          <h3>${escapeHtml(spot.name)}</h3>
-          <div class="region">${escapeHtml(spot.region)}</div>
-          <p>${escapeHtml(spot.description[state.lang] || spot.description.en)}</p>
-          ${birdNames ? `<div class="birds-here"><strong>${escapeHtml(t("birdsHere"))}</strong> ${escapeHtml(birdNames)}</div>` : ""}
-        </div>
+    list.innerHTML = "";
+    SPOTS.forEach((spot) => {
+      const card = document.createElement("div");
+      card.className = "spot-card";
+      const birdsForSpot = spot.birds
+        .map((id) => BIRDS.find((b) => b.id === id))
+        .filter(Boolean);
+
+      card.innerHTML = `
+        <h3>${escapeHtml(spot.name)}</h3>
+        <div class="region">${escapeHtml(spot.region)}</div>
+        <p>${escapeHtml(spot.description[state.lang] || spot.description.en)}</p>
+        ${birdsForSpot.length ? `
+          <div class="birds-here-label">${escapeHtml(t("birdsHere"))}</div>
+          <div class="birds-thumbs"></div>
+        ` : ""}
       `;
-    }).join("");
+      list.appendChild(card);
+
+      const thumbsEl = card.querySelector(".birds-thumbs");
+      if (!thumbsEl) return;
+      birdsForSpot.forEach((bird) => {
+        const thumb = document.createElement("button");
+        thumb.className = "bird-thumb";
+        thumb.setAttribute("aria-label", localName(bird));
+        const pron = pronunciationFor(bird);
+        thumb.innerHTML = `
+          <div class="photo skeleton"><img alt="" loading="lazy"></div>
+          <span class="thumb-name">${escapeHtml(localName(bird))}</span>
+          ${pron ? `<span class="thumb-pron">${escapeHtml(pron)}</span>` : ""}
+        `;
+        thumb.addEventListener("click", () => navigate("detail", { birdId: bird.id }));
+        thumbsEl.appendChild(thumb);
+        observePhoto(thumb.querySelector(".photo"), thumb.querySelector("img"), bird);
+      });
+    });
   }
 
   // ---------- Helpers ----------
