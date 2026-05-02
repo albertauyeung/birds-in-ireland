@@ -1,6 +1,7 @@
 /* Bird data for "Birds in Ireland" kids app.
  * Photos load live from Wikipedia REST API (Wikimedia Commons, CC-licensed).
  * Descriptions are written for kids aged 5-12 in 6 languages.
+ * Pronunciations: pinyin (for Mandarin/Trad+Simp Chinese) and jyutping (for Cantonese).
  */
 window.BIRDS = [
   {
@@ -18,6 +19,7 @@ window.BIRDS = [
       "fr": "Macareux moine",
       "es": "Frailecillo atlántico"
     },
+    pronunciation: { pinyin: "dà xī yáng hǎi yīng", jyutping: "daai6 sai1 joeng4 hoi2 jing1" },
     latin: "Fratercula arctica",
     description: {
       "en": "With its bright, colourful beak in summer, the puffin looks like a sea parrot! It nests in burrows on grassy cliffs and eats little fish.",
@@ -37,12 +39,13 @@ window.BIRDS = [
     where: ["Any garden or park", "Hedgerows everywhere", "Woodland edges"],
     names: {
       "en": "European Robin",
-      "zh-Hant": "歐亞鴝（知更鳥）",
-      "zh-Hans": "欧亚鸲（知更鸟）",
+      "zh-Hant": "知更鳥",
+      "zh-Hans": "知更鸟",
       "yue": "知更鳥",
       "fr": "Rouge-gorge familier",
       "es": "Petirrojo europeo"
     },
+    pronunciation: { pinyin: "zhī gēng niǎo", jyutping: "zi1 gang1 niu5" },
     latin: "Erithacus rubecula",
     description: {
       "en": "The friendly robin has a bright orange-red chest and sings even on snowy days. You'll often see one hopping right next to a gardener.",
@@ -68,6 +71,7 @@ window.BIRDS = [
       "fr": "Mésange bleue",
       "es": "Herrerillo común"
     },
+    pronunciation: { pinyin: "lán guàn shān què", jyutping: "laam4 saan1 zoek3" },
     latin: "Cyanistes caeruleus",
     description: {
       "en": "This tiny acrobat has a sky-blue cap and a bright yellow tummy. Watch them swing upside-down on bird feeders!",
@@ -93,6 +97,7 @@ window.BIRDS = [
       "fr": "Mésange charbonnière",
       "es": "Carbonero común"
     },
+    pronunciation: { pinyin: "dà shān què", jyutping: "daai6 saan1 zoek3" },
     latin: "Parus major",
     description: {
       "en": "Bigger than its blue cousin, the great tit wears a black necktie. Listen for its \"tea-cher, tea-cher\" song in spring.",
@@ -118,6 +123,7 @@ window.BIRDS = [
       "fr": "Merle noir",
       "es": "Mirlo común"
     },
+    pronunciation: { pinyin: "wū dōng", jyutping: "wu1 dung1" },
     latin: "Turdus merula",
     description: {
       "en": "The male is jet black with a sunny orange beak. His sweet song is one of the most beautiful in any garden.",
@@ -143,6 +149,7 @@ window.BIRDS = [
       "fr": "Moineau domestique",
       "es": "Gorrión común"
     },
+    pronunciation: { pinyin: "jiā má què", jyutping: "gaa1 maa4 zoek3" },
     latin: "Passer domesticus",
     description: {
       "en": "A cheerful little brown bird that loves towns, parks and crumbs at picnics. Sparrows take dust baths to clean their feathers!",
@@ -168,6 +175,7 @@ window.BIRDS = [
       "fr": "Pie bavarde",
       "es": "Urraca común"
     },
+    pronunciation: { pinyin: "xǐ què", jyutping: "hei2 zoek3" },
     latin: "Pica pica",
     description: {
       "en": "Black and white with a flashy blue-green tail. Magpies are super clever — some can even recognise themselves in a mirror!",
@@ -193,6 +201,7 @@ window.BIRDS = [
       "fr": "Cygne tuberculé",
       "es": "Cisne vulgar"
     },
+    pronunciation: { pinyin: "yóu bí tiān é", jyutping: "aa2 tin1 ngo4" },
     latin: "Cygnus olor",
     description: {
       "en": "The big snow-white bird gliding on lakes and rivers. Swans pair up for life and protect their fluffy grey babies fiercely.",
@@ -218,6 +227,7 @@ window.BIRDS = [
       "fr": "Canard colvert",
       "es": "Ánade real"
     },
+    pronunciation: { pinyin: "lǜ tóu yā", jyutping: "luk6 tau4 aap3" },
     latin: "Anas platyrhynchos",
     description: {
       "en": "The most common duck — males have a shiny green head. They love splashing in ponds and saying \"quack, quack!\"",
@@ -243,6 +253,7 @@ window.BIRDS = [
       "fr": "Héron cendré",
       "es": "Garza real"
     },
+    pronunciation: { pinyin: "cāng lù", jyutping: "fui1 lou6" },
     latin: "Ardea cinerea",
     description: {
       "en": "A tall grey bird that stands as still as a statue, then SNAP! catches a fish with its lightning-fast beak.",
@@ -268,6 +279,7 @@ window.BIRDS = [
       "fr": "Martin-pêcheur d'Europe",
       "es": "Martín pescador común"
     },
+    pronunciation: { pinyin: "pǔ tōng cuì niǎo", jyutping: "ceoi3 niu5" },
     latin: "Alcedo atthis",
     description: {
       "en": "A flash of bright blue and orange by the river! The kingfisher dives like an arrow to catch tiny fish.",
@@ -293,6 +305,7 @@ window.BIRDS = [
       "fr": "Effraie des clochers",
       "es": "Lechuza común"
     },
+    pronunciation: { pinyin: "cāng xiāo", jyutping: "cong1 hiu1" },
     latin: "Tyto alba",
     description: {
       "en": "A ghostly white owl with a heart-shaped face. It flies silently at night to hunt mice in the fields.",
@@ -318,6 +331,7 @@ window.BIRDS = [
       "fr": "Fou de Bassan",
       "es": "Alcatraz atlántico"
     },
+    pronunciation: { pinyin: "běi jiān niǎo", jyutping: "bak1 gin1 niu5" },
     latin: "Morus bassanus",
     description: {
       "en": "Big white seabird that dives from 30 metres high — straight into the ocean to grab a fish! Splash!",
@@ -343,6 +357,7 @@ window.BIRDS = [
       "fr": "Chardonneret élégant",
       "es": "Jilguero europeo"
     },
+    pronunciation: { pinyin: "hóng é jīn chì què", jyutping: "hung4 ngaak6 gam1 ci3 zoek3" },
     latin: "Carduelis carduelis",
     description: {
       "en": "With a red mask and gold wings, this little bird is a real beauty. A group of them is called a \"charm\"!",
@@ -368,6 +383,7 @@ window.BIRDS = [
       "fr": "Troglodyte mignon",
       "es": "Chochín común"
     },
+    pronunciation: { pinyin: "jiāo liáo", jyutping: "ziu1 liu4" },
     latin: "Troglodytes troglodytes",
     description: {
       "en": "One of Ireland's tiniest birds — but its song is HUGE. In Irish folklore the wren is called \"the King of all Birds\".",
@@ -393,6 +409,7 @@ window.BIRDS = [
       "fr": "Pygargue à queue blanche",
       "es": "Pigargo europeo"
     },
+    pronunciation: { pinyin: "bái wěi hǎi diāo", jyutping: "baak6 mei5 hoi2 diu1" },
     latin: "Haliaeetus albicilla",
     description: {
       "en": "Ireland's biggest eagle, with wings up to 2.4 metres wide. Once gone from Ireland, eagles have been brought back since 2007.",
@@ -401,6 +418,217 @@ window.BIRDS = [
       "yue": "愛爾蘭最大隻嘅鷹，翼展可以闊到2.4米。以前喺愛爾蘭絕咗種，2007年起再引入返。",
       "fr": "Le plus grand aigle d'Irlande, avec des ailes pouvant atteindre 2,4 m. Disparu autrefois, il a été réintroduit depuis 2007.",
       "es": "El águila más grande de Irlanda, con alas de hasta 2,4 metros. Desapareció una vez y se reintrodujo desde 2007."
+    }
+  },
+
+  /* ===== Newly added birds ===== */
+
+  {
+    id: "hoodedcrow",
+    wiki: "Hooded_crow",
+    color: "#6e7e8c",
+    sizeCategory: "medium",
+    sizeCm: 50,
+    where: ["Towns and parks", "Farmland & coastlines", "All over Ireland"],
+    names: {
+      "en": "Hooded Crow",
+      "zh-Hant": "冠小嘴烏鴉",
+      "zh-Hans": "冠小嘴乌鸦",
+      "yue": "冠小嘴烏鴉",
+      "fr": "Corneille mantelée",
+      "es": "Corneja cenicienta"
+    },
+    pronunciation: { pinyin: "guān xiǎo zuǐ wū yā", jyutping: "gun1 siu2 zeoi2 wu1 aa1" },
+    latin: "Corvus cornix",
+    description: {
+      "en": "A clever grey-and-black crow seen everywhere in Ireland. Crows can solve puzzles to get food and even use sticks as tools.",
+      "zh-Hant": "一隻聰明的灰黑色烏鴉，在愛爾蘭隨處可見。烏鴉懂得解謎找食物，還會用樹枝當工具！",
+      "zh-Hans": "一只聪明的灰黑色乌鸦，在爱尔兰随处可见。乌鸦懂得解谜找食物，还会用树枝当工具！",
+      "yue": "一隻好醒目嘅灰黑色烏鴉，喺愛爾蘭周圍都見到。烏鴉識解謎搵食物，仲識用樹枝做工具！",
+      "fr": "Une corneille grise et noire très maligne qu'on voit partout en Irlande. Les corneilles savent résoudre des énigmes et utilisent même des bâtons comme outils !",
+      "es": "Una corneja gris y negra muy lista que se ve por toda Irlanda. ¡Las cornejas resuelven puzzles para conseguir comida e incluso usan palitos como herramientas!"
+    }
+  },
+  {
+    id: "woodpigeon",
+    wiki: "Common_wood_pigeon",
+    color: "#8a8071",
+    sizeCategory: "medium",
+    sizeCm: 41,
+    where: ["Parks and gardens", "Woodlands", "Farmland"],
+    names: {
+      "en": "Common Wood Pigeon",
+      "zh-Hant": "斑尾林鴿",
+      "zh-Hans": "斑尾林鸽",
+      "yue": "斑尾林鴿",
+      "fr": "Pigeon ramier",
+      "es": "Paloma torcaz"
+    },
+    pronunciation: { pinyin: "bān wěi lín gē", jyutping: "baan1 mei5 lam4 gap3" },
+    latin: "Columba palumbus",
+    description: {
+      "en": "A big plump pigeon with a white patch on its neck. You can hear it cooing \"coo-coo, coo, coo\" from tall trees.",
+      "zh-Hant": "一隻又胖又大的鴿子，頸上有白色斑塊。常常聽到牠在大樹上「咕咕、咕、咕」地叫。",
+      "zh-Hans": "一只又胖又大的鸽子，颈上有白色斑块。常常听到它在大树上「咕咕、咕、咕」地叫。",
+      "yue": "一隻肥肥大大嘅鴿子，頸上有塊白色斑紋。成日聽到佢喺大樹上面「咕咕、咕、咕」咁叫。",
+      "fr": "Un gros pigeon dodu avec une tache blanche sur le cou. On l'entend roucouler « cou-cou, cou, cou » dans les grands arbres.",
+      "es": "Una paloma grande y rolliza con una mancha blanca en el cuello. Se la oye arrullando «cu-cu, cu, cu» desde los árboles altos."
+    }
+  },
+  {
+    id: "longtailedtit",
+    wiki: "Long-tailed_tit",
+    color: "#e8b8c4",
+    sizeCategory: "small",
+    sizeCm: 14,
+    where: ["Woodlands", "Hedgerows", "Gardens"],
+    names: {
+      "en": "Long-tailed Tit",
+      "zh-Hant": "銀喉長尾山雀",
+      "zh-Hans": "银喉长尾山雀",
+      "yue": "銀喉長尾山雀",
+      "fr": "Mésange à longue queue",
+      "es": "Mito común"
+    },
+    pronunciation: { pinyin: "yín hóu cháng wěi shān què", jyutping: "ngan4 hau4 coeng4 mei5 saan1 zoek3" },
+    latin: "Aegithalos caudatus",
+    description: {
+      "en": "A tiny pink, white and black ball of fluff with a very long tail. They travel in chattering family groups through the trees.",
+      "zh-Hant": "一團粉紅、白色和黑色的小毛球，配上長長的尾巴。牠們會一家人一起在樹上嘰嘰喳喳地飛。",
+      "zh-Hans": "一团粉红、白色和黑色的小毛球，配上长长的尾巴。它们会一家人一起在树上叽叽喳喳地飞。",
+      "yue": "一團粉紅、白同黑色嘅小毛球，仲有條好長嘅尾。佢哋會成家人一齊喺樹上面嘰嘰喳喳咁飛。",
+      "fr": "Une petite boule de plumes roses, blanches et noires avec une très longue queue. Elles voyagent en familles qui pépient dans les arbres.",
+      "es": "Una bolita esponjosa rosa, blanca y negra con una cola larguísima. Viajan en grupos familiares parlanchines por los árboles."
+    }
+  },
+  {
+    id: "bullfinch",
+    wiki: "Eurasian_bullfinch",
+    color: "#d65a7a",
+    sizeCategory: "small",
+    sizeCm: 16,
+    where: ["Woodlands", "Hedgerows", "Quiet gardens"],
+    names: {
+      "en": "Eurasian Bullfinch",
+      "zh-Hant": "紅腹灰雀",
+      "zh-Hans": "红腹灰雀",
+      "yue": "紅腹灰雀",
+      "fr": "Bouvreuil pivoine",
+      "es": "Camachuelo común"
+    },
+    pronunciation: { pinyin: "hóng fù huī què", jyutping: "hung4 fuk1 fui1 zoek3" },
+    latin: "Pyrrhula pyrrhula",
+    description: {
+      "en": "The male has a brilliant pink-red chest and a black cap. He looks like he's wearing a smart little beret!",
+      "zh-Hant": "雄鳥胸口是亮粉紅色，頭頂戴著一頂黑色小帽，好像戴著貝雷帽一樣！",
+      "zh-Hans": "雄鸟胸口是亮粉红色，头顶戴着一顶黑色小帽，好像戴着贝雷帽一样！",
+      "yue": "雄鳥嘅胸口係鮮粉紅色，頭頂戴住頂黑色小帽，好似戴咗頂貝雷帽咁！",
+      "fr": "Le mâle a une poitrine rose vif et une calotte noire. On dirait qu'il porte un petit béret chic !",
+      "es": "El macho tiene el pecho rosa intenso y un gorrito negro. ¡Parece que lleva una boina elegante!"
+    }
+  },
+  {
+    id: "chaffinch",
+    wiki: "Common_chaffinch",
+    color: "#c97a5a",
+    sizeCategory: "small",
+    sizeCm: 14,
+    where: ["Gardens", "Woodlands", "Hedgerows"],
+    names: {
+      "en": "Common Chaffinch",
+      "zh-Hant": "蒼頭燕雀",
+      "zh-Hans": "苍头燕雀",
+      "yue": "蒼頭燕雀",
+      "fr": "Pinson des arbres",
+      "es": "Pinzón vulgar"
+    },
+    pronunciation: { pinyin: "cāng tóu yàn què", jyutping: "cong1 tau4 jin3 zoek3" },
+    latin: "Fringilla coelebs",
+    description: {
+      "en": "One of the most common songbirds in Ireland. Males have an orange chest and blue-grey head, and call out a cheerful \"pink, pink!\"",
+      "zh-Hant": "愛爾蘭最常見的鳴鳥之一。雄鳥有橙色的胸口和藍灰色的頭，會發出歡快的「pink, pink!」叫聲。",
+      "zh-Hans": "爱尔兰最常见的鸣鸟之一。雄鸟有橙色的胸口和蓝灰色的头，会发出欢快的「pink, pink!」叫声。",
+      "yue": "愛爾蘭最常見嘅歌鳥之一。雄鳥有橙色胸口同藍灰色頭，會發出開心嘅「pink, pink!」叫聲。",
+      "fr": "L'un des oiseaux chanteurs les plus communs d'Irlande. Les mâles ont la poitrine orange et la tête bleu-gris, et lancent un joyeux « pink, pink ! »",
+      "es": "Una de las aves canoras más comunes de Irlanda. Los machos tienen el pecho naranja y la cabeza azul-grisácea, y cantan un alegre «¡pink, pink!»"
+    }
+  },
+  {
+    id: "starling",
+    wiki: "Common_starling",
+    color: "#5a4980",
+    sizeCategory: "medium",
+    sizeCm: 22,
+    where: ["Towns and gardens", "Fields", "Reedbeds at sunset (autumn murmurations)"],
+    names: {
+      "en": "Common Starling",
+      "zh-Hant": "紫翅椋鳥",
+      "zh-Hans": "紫翅椋鸟",
+      "yue": "紫翅椋鳥",
+      "fr": "Étourneau sansonnet",
+      "es": "Estornino pinto"
+    },
+    pronunciation: { pinyin: "zǐ chì liáng niǎo", jyutping: "zi2 ci3 loeng4 niu5" },
+    latin: "Sturnus vulgaris",
+    description: {
+      "en": "From far they look black, but up close their feathers shine with purple and green. At sunset, thousands swirl together in beautiful clouds called murmurations.",
+      "zh-Hant": "遠看是黑色的，但走近就會看到牠們的羽毛閃著紫色和綠色光澤。日落時，成千上萬隻會一起在天空盤旋成美麗的雲團，叫做「鳥浪」。",
+      "zh-Hans": "远看是黑色的，但走近就会看到它们的羽毛闪着紫色和绿色光泽。日落时，成千上万只会一起在天空盘旋成美丽的云团，叫做「鸟浪」。",
+      "yue": "遠遠望好似黑色，但行近啲就見到佢哋啲羽毛閃住紫色同綠色嘅光。日落時，成千上萬隻會一齊喺天空打圈飛，形成靚到嘩嘩聲嘅「鳥浪」。",
+      "fr": "De loin, ils paraissent noirs, mais de près leurs plumes brillent de violet et de vert. Au coucher du soleil, des milliers tournoient en nuages magnifiques appelés « murmurations ».",
+      "es": "De lejos parecen negros, pero de cerca sus plumas brillan en morado y verde. ¡Al atardecer, miles giran juntos en preciosas nubes llamadas «murmuraciones»!"
+    }
+  },
+  {
+    id: "swallow",
+    wiki: "Barn_swallow",
+    color: "#3a5599",
+    sizeCategory: "small",
+    sizeCm: 17,
+    where: ["Farms with old barns", "Open countryside", "Near ponds and rivers"],
+    names: {
+      "en": "Barn Swallow",
+      "zh-Hant": "家燕",
+      "zh-Hans": "家燕",
+      "yue": "家燕",
+      "fr": "Hirondelle rustique",
+      "es": "Golondrina común"
+    },
+    pronunciation: { pinyin: "jiā yàn", jyutping: "gaa1 jin3" },
+    latin: "Hirundo rustica",
+    description: {
+      "en": "A summer visitor with a deep blue back and a forked tail. Swallows fly all the way from Africa each spring to nest in Irish barns and porches!",
+      "zh-Hant": "一隻夏天才會出現的訪客，背部深藍色、尾巴分叉。家燕每年春天從非洲飛到愛爾蘭，在穀倉和門廊裡築巢。",
+      "zh-Hans": "一只夏天才会出现的访客，背部深蓝色、尾巴分叉。家燕每年春天从非洲飞到爱尔兰，在谷仓和门廊里筑巢。",
+      "yue": "一隻夏天先會嚟嘅訪客，個背深藍色、尾巴分叉。家燕每年春天從非洲飛嚟愛爾蘭，喺穀倉同門廊度做窩。",
+      "fr": "Un visiteur d'été au dos bleu foncé et à la queue fourchue. Les hirondelles volent depuis l'Afrique chaque printemps pour nicher dans les granges irlandaises !",
+      "es": "Un visitante de verano con la espalda azul oscuro y la cola ahorquillada. ¡Las golondrinas vuelan desde África cada primavera para anidar en los graneros de Irlanda!"
+    }
+  },
+  {
+    id: "oystercatcher",
+    wiki: "Eurasian_oystercatcher",
+    color: "#e87a3a",
+    sizeCategory: "medium",
+    sizeCm: 43,
+    where: ["Beaches and rocky shores", "Estuaries", "All around the Irish coast"],
+    names: {
+      "en": "Eurasian Oystercatcher",
+      "zh-Hant": "蠣鷸",
+      "zh-Hans": "蛎鹬",
+      "yue": "蠣鷸",
+      "fr": "Huîtrier pie",
+      "es": "Ostrero euroasiático"
+    },
+    pronunciation: { pinyin: "lì yù", jyutping: "lai6 wat6" },
+    latin: "Haematopus ostralegus",
+    description: {
+      "en": "A striking black-and-white shorebird with a bright orange beak as long as its head. Its loud \"pic, pic!\" call is the soundtrack of Irish beaches.",
+      "zh-Hant": "一隻醒目的黑白色海岸鳥，配上一個跟頭一樣長的鮮橙色嘴巴。牠響亮的「pic, pic!」叫聲就是愛爾蘭海灘的聲音。",
+      "zh-Hans": "一只醒目的黑白色海岸鸟，配上一个跟头一样长的鲜橙色嘴巴。它响亮的「pic, pic!」叫声就是爱尔兰海滩的声音。",
+      "yue": "一隻好搶眼嘅黑白色海岸鳥，個橙色嘴同個頭一樣咁長。佢「pic, pic!」嘅響亮叫聲就係愛爾蘭海灘嘅標誌聲音。",
+      "fr": "Un limicole noir et blanc remarquable, avec un bec orange vif aussi long que sa tête. Son cri sonore « pic, pic ! » est la bande-son des plages d'Irlande.",
+      "es": "Un ave costera blanca y negra impresionante, con un pico naranja brillante tan largo como su cabeza. ¡Su sonoro «pic, pic!» es la banda sonora de las playas irlandesas!"
     }
   }
 ];
@@ -432,7 +660,7 @@ window.SPOTS = [
       "fr": "La première réserve ornithologique nationale d'Irlande. À deux pas du centre de Dublin — parfait pour observer limicoles et canards.",
       "es": "El primer santuario nacional de aves de Irlanda. A un corto trayecto en bus del centro de Dublín — ideal para ver limícolas y patos."
     },
-    birds: ["heron", "mallard", "muteswan"]
+    birds: ["heron", "mallard", "muteswan", "oystercatcher"]
   },
   {
     id: "wexfordreserve",
@@ -488,7 +716,7 @@ window.SPOTS = [
       "fr": "L'un des plus grands parcs urbains d'Europe. Des canards sur les étangs, des rouges-gorges dans les arbres et même un troupeau de daims !",
       "es": "Uno de los mayores parques urbanos de Europa. Patos en los estanques, petirrojos en los árboles y ¡hasta una manada de gamos!"
     },
-    birds: ["mallard", "robin", "magpie"]
+    birds: ["mallard", "robin", "magpie", "hoodedcrow", "woodpigeon"]
   },
   {
     id: "cliffsmoher",
@@ -516,6 +744,6 @@ window.SPOTS = [
       "fr": "Le plus grand lac de l'île d'Irlande. Cygnes, canards, sternes et limicoles y vivent toute l'année.",
       "es": "El lago más grande de la isla de Irlanda. Cisnes, patos, charranes y limícolas viven aquí todo el año."
     },
-    birds: ["muteswan", "mallard"]
+    birds: ["muteswan", "mallard", "swallow"]
   }
 ];

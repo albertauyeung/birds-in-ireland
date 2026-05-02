@@ -1,6 +1,7 @@
 /* "Birds in Ireland" — main app logic.
  * Handles language switching, navigation, gallery, detail, quiz and spots.
- * Photos are fetched lazily from the Wikipedia REST API.
+ * Photos and language-specific Wikipedia titles are fetched lazily from
+ * the Wikipedia REST/Action API (Wikimedia Commons, CC-licensed).
  */
 (function () {
   "use strict";
@@ -9,15 +10,17 @@
   const DEFAULT_LANG = "en";
   const STORAGE_LANG = "birdsIE.lang";
   const PHOTO_CACHE_KEY = "birdsIE.photoCache.v1";
+  const LANGTITLE_CACHE_KEY = "birdsIE.langTitleCache.v1";
 
   // ---------- State ----------
   const state = {
     lang: loadLang(),
-    view: "home",
+    view: "gallery",
     selectedBirdId: null,
     sizeFilter: "all",
     search: "",
-    photoCache: loadPhotoCache(),
+    photoCache: loadJsonCache(PHOTO_CACHE_KEY),
+    langTitleCache: loadJsonCache(LANGTITLE_CACHE_KEY),
     quiz: null
   };
 
@@ -60,25 +63,22 @@
         if (attr && key) el.setAttribute(attr, t(key));
       });
     });
-    document.title = t("appTitle") + " — " + t("heroTitle");
+    document.title = t("appTitle") + " — " + t("galleryTitle");
   }
 
-  // ---------- Photo cache ----------
-  function loadPhotoCache() {
-    try {
-      const raw = localStorage.getItem(PHOTO_CACHE_KEY);
-      return raw ? JSON.parse(raw) : {};
-    } catch (e) {
-      return {};
-    }
+  // ---------- Caches ----------
+  function loadJsonCache(key) {
+    try { return JSON.parse(localStorage.getItem(key) || "{}"); }
+    catch (e) { return {}; }
   }
-  function savePhotoCache() {
-    try { localStorage.setItem(PHOTO_CACHE_KEY, JSON.stringify(state.photoCache)); } catch (e) {}
+  function saveJsonCache(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
   }
 
+  // ---------- Wikipedia fetches ----------
   /**
-   * Fetch bird photo info from Wikipedia REST API.
-   * Returns { thumb, original, source, attribution } or null on failure.
+   * Returns photo info from Wikipedia REST API summary endpoint.
+   * Returns { thumb, original, source } or null on failure.
    */
   async function fetchBirdPhoto(wikiSlug) {
     if (state.photoCache[wikiSlug]) return state.photoCache[wikiSlug];
@@ -94,19 +94,74 @@
       };
       if (!photo.thumb && !photo.original) throw new Error("No image");
       state.photoCache[wikiSlug] = photo;
-      savePhotoCache();
+      saveJsonCache(PHOTO_CACHE_KEY, state.photoCache);
       return photo;
     } catch (e) {
       return null;
     }
   }
 
-  function wikiArticleUrl(wikiSlug) {
-    const lang = window.WIKI_LANG[state.lang] || "en";
-    const variant = window.WIKI_VARIANT[state.lang];
-    let url = `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(wikiSlug)}`;
-    if (variant) url += `?variant=${variant}`;
-    return url;
+  // Maps app language → Wikipedia language code(s) to try (in order)
+  const WIKI_LANG_PRIORITY = {
+    "en":      ["en"],
+    "zh-Hant": ["zh"],
+    "zh-Hans": ["zh"],
+    "yue":     ["yue", "zh"],
+    "fr":      ["fr"],
+    "es":      ["es"]
+  };
+
+  // Variant param to pass on zh.wikipedia for character set / dialect conversion
+  const WIKI_VARIANT = {
+    "zh-Hant": "zh-hant",
+    "zh-Hans": "zh-hans",
+    "yue":     "zh-yue"
+  };
+
+  /**
+   * Resolves the Wikipedia article URL for a given English wiki slug in
+   * the user's language. Uses the langlinks API. Caches results
+   * (including negatives) in localStorage. Returns the URL string, or
+   * null if no language-specific article exists.
+   */
+  async function fetchLangArticleUrl(wikiSlug, targetLang) {
+    if (targetLang === "en") return null;
+    const cacheKey = `${wikiSlug}::${targetLang}`;
+    if (cacheKey in state.langTitleCache) {
+      return state.langTitleCache[cacheKey];
+    }
+
+    const tries = WIKI_LANG_PRIORITY[targetLang] || ["en"];
+    for (const wpLang of tries) {
+      try {
+        const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=langlinks&lllang=${wpLang}&lllimit=1&titles=${encodeURIComponent(wikiSlug)}`;
+        const res = await fetch(apiUrl);
+        if (!res.ok) continue;
+        const data = await res.json();
+        const pages = data && data.query && data.query.pages;
+        if (!pages) continue;
+        const firstKey = Object.keys(pages)[0];
+        const links = pages[firstKey] && pages[firstKey].langlinks;
+        if (!links || links.length === 0) continue;
+        const title = links[0]["*"] || links[0].title;
+        if (!title) continue;
+        let url = `https://${wpLang}.wikipedia.org/wiki/${encodeURIComponent(title.replace(/ /g, "_"))}`;
+        const variant = WIKI_VARIANT[targetLang];
+        // Apply variant only when actually using zh.wikipedia
+        if (variant && wpLang === "zh") url += `?variant=${variant}`;
+        state.langTitleCache[cacheKey] = url;
+        saveJsonCache(LANGTITLE_CACHE_KEY, state.langTitleCache);
+        return url;
+      } catch (e) { /* try next */ }
+    }
+
+    state.langTitleCache[cacheKey] = null;
+    saveJsonCache(LANGTITLE_CACHE_KEY, state.langTitleCache);
+    return null;
+  }
+
+  function englishWikiUrl(wikiSlug) {
+    return `https://en.wikipedia.org/wiki/${encodeURIComponent(wikiSlug)}`;
   }
 
   // ---------- Navigation ----------
@@ -127,7 +182,6 @@
 
   function rerenderCurrentView() {
     switch (state.view) {
-      case "home": renderHome(); break;
       case "gallery": renderGallery(); break;
       case "detail": renderDetail(); break;
       case "quiz": renderQuiz(); break;
@@ -136,69 +190,20 @@
     }
   }
 
-  // ---------- Home ----------
-  function getFeaturedBird() {
-    const day = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
-    return BIRDS[day % BIRDS.length];
+  // ---------- Helpers for displaying names/pronunciations ----------
+  function pronunciationFor(bird) {
+    if (!bird.pronunciation) return null;
+    if (state.lang === "zh-Hant" || state.lang === "zh-Hans") {
+      return bird.pronunciation.pinyin || null;
+    }
+    if (state.lang === "yue") {
+      return bird.pronunciation.jyutping || null;
+    }
+    return null;
   }
 
-  function getPopularBirds() {
-    const ids = ["robin", "puffin", "bluetit", "kingfisher", "muteswan", "barnowl"];
-    return ids.map((id) => BIRDS.find((b) => b.id === id)).filter(Boolean);
-  }
-
-  function renderHome() {
-    // Hero feature (small, rotates daily)
-    const featured = getFeaturedBird();
-    const heroEl = document.getElementById("hero-feature");
-    heroEl.innerHTML = `
-      <div class="photo skeleton"><img alt="" loading="lazy"></div>
-      <button class="more-btn" data-bird="${featured.id}">${escapeHtml(featured.names[state.lang] || featured.names.en)} →</button>
-    `;
-    const heroImg = heroEl.querySelector("img");
-    fetchBirdPhoto(featured.wiki).then((p) => {
-      const wrap = heroEl.querySelector(".photo");
-      if (p && (p.thumb || p.original)) {
-        heroImg.src = p.thumb || p.original;
-        heroImg.alt = featured.names[state.lang] || featured.names.en;
-        wrap.classList.remove("skeleton");
-      } else {
-        showPhotoFallback(wrap, featured.color);
-      }
-    });
-    heroEl.querySelector(".more-btn").addEventListener("click", () => {
-      navigate("detail", { birdId: featured.id });
-    });
-
-    // Featured card (full)
-    const featuredCard = document.getElementById("featured-card");
-    featuredCard.innerHTML = `
-      <div class="photo skeleton"><img alt="" loading="lazy"></div>
-      <div class="info">
-        <h3>${escapeHtml(featured.names[state.lang] || featured.names.en)}</h3>
-        <p class="latin">${escapeHtml(featured.latin)}</p>
-        <p>${escapeHtml(featured.description[state.lang] || featured.description.en)}</p>
-        <button class="more-btn" data-bird="${featured.id}">${escapeHtml(t("learnMore"))} →</button>
-      </div>
-    `;
-    fetchBirdPhoto(featured.wiki).then((p) => {
-      const wrap = featuredCard.querySelector(".photo");
-      if (p && (p.thumb || p.original)) {
-        const img = featuredCard.querySelector("img");
-        img.src = p.original || p.thumb;
-        img.alt = featured.names[state.lang] || featured.names.en;
-        wrap.classList.remove("skeleton");
-      } else {
-        showPhotoFallback(wrap, featured.color);
-      }
-    });
-    featuredCard.querySelector(".more-btn").addEventListener("click", () => {
-      navigate("detail", { birdId: featured.id });
-    });
-
-    // Popular grid
-    const grid = document.getElementById("popular-grid");
-    renderBirdGrid(grid, getPopularBirds());
+  function localName(bird) {
+    return bird.names[state.lang] || bird.names.en;
   }
 
   // ---------- Gallery ----------
@@ -215,7 +220,6 @@
     });
     renderBirdGrid(grid, filtered);
 
-    // Update filter chips
     document.querySelectorAll("#size-filter .chip").forEach((chip) => {
       chip.classList.toggle("active", chip.dataset.size === state.sizeFilter);
     });
@@ -224,20 +228,27 @@
   function renderBirdGrid(container, birds) {
     container.innerHTML = "";
     birds.forEach((bird) => {
+      const name = localName(bird);
+      const pron = pronunciationFor(bird);
+      const showEnglish = state.lang !== "en";
       const card = document.createElement("button");
       card.className = "bird-card";
-      card.setAttribute("aria-label", bird.names[state.lang] || bird.names.en);
+      card.setAttribute("aria-label", name);
       card.innerHTML = `
         <div class="photo skeleton"><img alt="" loading="lazy"></div>
-        <p class="name">${escapeHtml(bird.names[state.lang] || bird.names.en)}</p>
+        <p class="name">${escapeHtml(name)}</p>
+        ${pron ? `<p class="pronunciation">${escapeHtml(pron)}</p>` : ""}
+        ${showEnglish ? `<p class="english-name">${escapeHtml(bird.names.en)}</p>` : ""}
         <p class="latin">${escapeHtml(bird.latin)}</p>
       `;
       card.addEventListener("click", () => navigate("detail", { birdId: bird.id }));
       container.appendChild(card);
 
-      // Lazy-load photo
       observePhoto(card.querySelector(".photo"), card.querySelector("img"), bird);
     });
+    if (birds.length === 0) {
+      container.innerHTML = `<p class="lead" style="grid-column: 1/-1; text-align:center;">—</p>`;
+    }
   }
 
   // IntersectionObserver to load photos only when visible
@@ -277,7 +288,7 @@
 
   function observePhoto(wrapper, img, bird) {
     wrapper.dataset.wiki = bird.wiki;
-    wrapper.dataset.alt = bird.names[state.lang] || bird.names.en;
+    wrapper.dataset.alt = localName(bird);
     wrapper.dataset.color = bird.color;
     photoObserver.observe(wrapper);
   }
@@ -297,6 +308,10 @@
       "large": t("sizeLargeLabel")
     }[bird.sizeCategory];
 
+    const name = localName(bird);
+    const pron = pronunciationFor(bird);
+    const showEnglish = state.lang !== "en";
+
     detailEl.innerHTML = `
       <div>
         <div class="photo skeleton"><img alt="" loading="lazy"></div>
@@ -304,8 +319,10 @@
       </div>
       <div>
         <h1 style="border-bottom: 4px solid ${bird.color}; padding-bottom: 0.3rem; display:inline-block;">
-          ${escapeHtml(bird.names[state.lang] || bird.names.en)}
+          ${escapeHtml(name)}
         </h1>
+        ${pron ? `<p class="pronunciation big">${escapeHtml(pron)}</p>` : ""}
+        ${showEnglish ? `<p class="english-name big">${escapeHtml(bird.names.en)}</p>` : ""}
         <p class="latin">${escapeHtml(bird.latin)}</p>
         <p class="description">${escapeHtml(bird.description[state.lang] || bird.description.en)}</p>
         <div class="facts">
@@ -325,17 +342,18 @@
           </ul>
         </div>
         <div class="actions">
-          <a class="learn-more" href="${wikiArticleUrl(bird.wiki)}" target="_blank" rel="noopener">${escapeHtml(t("learnMore"))} →</a>
+          <a class="learn-more" href="${englishWikiUrl(bird.wiki)}" target="_blank" rel="noopener">${escapeHtml(state.lang === "en" ? t("learnMore") : t("learnMoreEnglish"))} →</a>
         </div>
       </div>
     `;
 
+    // Photo
     fetchBirdPhoto(bird.wiki).then((p) => {
       const wrap = detailEl.querySelector(".photo");
       if (p && (p.thumb || p.original)) {
         const img = detailEl.querySelector("img");
         img.src = p.original || p.thumb;
-        img.alt = bird.names[state.lang] || bird.names.en;
+        img.alt = name;
         wrap.classList.remove("skeleton");
         const link = detailEl.querySelector(".src-link");
         if (p.source) link.href = p.source;
@@ -343,6 +361,20 @@
         showPhotoFallback(wrap, bird.color);
       }
     });
+
+    // Localized "Learn more" link (resolves langlinks)
+    if (state.lang !== "en") {
+      const linkEl = detailEl.querySelector(".learn-more");
+      const requestLang = state.lang;
+      fetchLangArticleUrl(bird.wiki, state.lang).then((url) => {
+        // Only update if the user hasn't switched language since
+        if (state.lang !== requestLang) return;
+        if (url) {
+          linkEl.href = url;
+          linkEl.textContent = t("learnMore") + " →";
+        }
+      });
+    }
   }
 
   // ---------- Quiz ----------
@@ -399,9 +431,16 @@
       <p class="lead" style="margin:0 0 0.6rem;">${escapeHtml(t("quizQuestion"))}</p>
       <div class="quiz-feedback" aria-live="polite"></div>
       <div class="quiz-options">
-        ${q.options.map((opt) => `
-          <button data-id="${opt.id}">${escapeHtml(opt.names[state.lang] || opt.names.en)}</button>
-        `).join("")}
+        ${q.options.map((opt) => {
+          const optName = localName(opt);
+          const optPron = pronunciationFor(opt);
+          const optEn = state.lang !== "en" ? `<small>${escapeHtml(opt.names.en)}</small>` : "";
+          return `<button data-id="${opt.id}">
+            <span class="opt-name">${escapeHtml(optName)}</span>
+            ${optPron ? `<small class="opt-pron">${escapeHtml(optPron)}</small>` : ""}
+            ${optEn}
+          </button>`;
+        }).join("")}
       </div>
     `;
 
@@ -456,7 +495,7 @@
       const birdNames = spot.birds
         .map((id) => {
           const b = BIRDS.find((x) => x.id === id);
-          return b ? (b.names[state.lang] || b.names.en) : null;
+          return b ? localName(b) : null;
         })
         .filter(Boolean)
         .join(" · ");
@@ -493,18 +532,15 @@
 
   // ---------- Init ----------
   function init() {
-    // Language
     const langSelect = document.getElementById("lang-select");
     langSelect.value = state.lang;
     langSelect.addEventListener("change", (e) => setLang(e.target.value));
     document.documentElement.lang = state.lang === "yue" ? "zh-HK" : state.lang;
 
-    // Nav buttons
     document.querySelectorAll("[data-nav]").forEach((btn) => {
       btn.addEventListener("click", () => navigate(btn.dataset.nav));
     });
 
-    // Filters
     document.getElementById("size-filter").addEventListener("click", (e) => {
       const chip = e.target.closest(".chip");
       if (!chip) return;
@@ -517,7 +553,7 @@
     });
 
     applyTranslations();
-    navigate("home");
+    navigate("gallery");
   }
 
   document.addEventListener("DOMContentLoaded", init);

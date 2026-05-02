@@ -12,12 +12,12 @@
 </head>
 <body>
   <header class="site-header">
-    <button class="brand" data-nav="home" aria-label="Home">
+    <button class="brand" data-nav="gallery" aria-label="Home">
       <span class="brand-emoji" aria-hidden="true">🐦</span>
       <span class="brand-text" data-i18n="appTitle">Birds in Ireland</span>
     </button>
     <nav class="main-nav" aria-label="Main">
-      <button data-nav="gallery" data-i18n="navExplore">Explore</button>
+      <button data-nav="gallery" data-i18n="navBirds">Birds</button>
       <button data-nav="quiz" data-i18n="navQuiz">Quiz</button>
       <button data-nav="spots" data-i18n="navSpots">Where to spot</button>
       <button data-nav="about" data-i18n="navAbout">About</button>
@@ -26,9 +26,9 @@
       <label for="lang-select" class="visually-hidden" data-i18n="chooseLanguage">Choose language</label>
       <select id="lang-select" aria-label="Language">
         <option value="en">English</option>
-        <option value="zh-Hant">繁體中文</option>
-        <option value="zh-Hans">简体中文</option>
-        <option value="yue">廣東話</option>
+        <option value="zh-Hant">華文（繁體）</option>
+        <option value="zh-Hans">华文 (简体)</option>
+        <option value="yue">粵語</option>
         <option value="fr">Français</option>
         <option value="es">Español</option>
       </select>
@@ -36,29 +36,8 @@
   </header>
 
   <main id="app">
-    <!-- HOME -->
-    <section class="view view-home" data-view="home">
-      <div class="hero">
-        <div class="hero-text">
-          <h1 data-i18n="heroTitle">Discover the wonderful birds of Ireland!</h1>
-          <p class="hero-sub" data-i18n="heroSub">Big puffins, tiny wrens, swooping kingfishers and more. Tap a card to meet a bird!</p>
-          <div class="hero-actions">
-            <button class="btn btn-primary" data-nav="gallery" data-i18n="ctaExplore">Explore birds</button>
-            <button class="btn btn-secondary" data-nav="quiz" data-i18n="ctaQuiz">Play a quiz</button>
-          </div>
-        </div>
-        <div class="hero-feature" id="hero-feature" aria-live="polite"></div>
-      </div>
-
-      <h2 class="section-title" data-i18n="featuredTitle">Bird of the day</h2>
-      <div id="featured-card" class="featured-card"></div>
-
-      <h2 class="section-title" data-i18n="popularTitle">Popular favourites</h2>
-      <div id="popular-grid" class="bird-grid"></div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="view view-gallery" data-view="gallery" hidden>
+    <!-- GALLERY (landing page) -->
+    <section class="view view-gallery" data-view="gallery">
       <h1 class="section-title" data-i18n="galleryTitle">Meet the birds</h1>
       <div class="filter-row">
         <input type="search" id="bird-search" data-i18n-attr="placeholder:searchPlaceholder" placeholder="Search a bird..." />

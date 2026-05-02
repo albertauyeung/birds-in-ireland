@@ -85,35 +85,7 @@ main {
 }
 .lead { font-size: 1.1rem; }
 
-/* ---------- Hero ---------- */
-.hero {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.5rem;
-  align-items: center;
-  background: linear-gradient(135deg, #ffe2c2 0%, #fff7e8 60%, #c8eeff 100%);
-  border-radius: 26px;
-  padding: 1.8rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: "☁️ ☁️";
-  position: absolute;
-  top: 8px; right: 12px;
-  font-size: 2rem;
-  opacity: 0.6;
-}
-.hero h1 {
-  font-size: 2rem;
-  line-height: 1.15;
-  margin: 0 0 0.6rem;
-  color: #2d3142;
-}
-.hero-sub { font-size: 1.05rem; margin: 0 0 1rem; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-
+/* ---------- Buttons ---------- */
 .btn {
   border: 0;
   padding: 0.7rem 1.2rem;
@@ -127,7 +99,6 @@ main {
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(1px); box-shadow: 0 2px 0 rgba(0,0,0,0.08); }
 .btn-primary { background: #ff7a59; color: #fff; }
-.btn-secondary { background: #4ec3a6; color: #fff; }
 .btn-back {
   background: #fff7e8;
   color: #1d3a5f;
@@ -135,28 +106,6 @@ main {
   padding: 0.5rem 1rem;
   font-size: 0.95rem;
   border: 2px solid transparent;
-}
-
-/* ---------- Hero feature ---------- */
-.hero-feature {
-  background: #fff;
-  border-radius: 22px;
-  padding: 0.8rem;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.hero-feature img {
-  border-radius: 16px;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  background: #eef6ff;
-}
-.hero-feature .name {
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: #1d3a5f;
 }
 
 /* ---------- Bird grid ---------- */
@@ -203,51 +152,23 @@ main {
   color: #1d3a5f;
   margin: 0 0.2rem 0.2rem;
 }
+.bird-card .pronunciation {
+  font-size: 0.85rem;
+  color: #6c7a91;
+  margin: 0 0.2rem 0.15rem;
+  font-style: italic;
+}
+.bird-card .english-name {
+  font-size: 0.85rem;
+  color: #4a90e2;
+  margin: 0 0.2rem 0.15rem;
+  font-weight: 700;
+}
 .bird-card .latin {
   font-size: 0.8rem;
   color: #6c7a91;
   font-style: italic;
   margin: 0 0.2rem 0.4rem;
-}
-
-/* ---------- Featured card (home) ---------- */
-.featured-card {
-  background: #fff;
-  border-radius: 26px;
-  padding: 1rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.07);
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 1.2rem;
-  align-items: center;
-}
-.featured-card .photo {
-  aspect-ratio: 4/3;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #eef6ff;
-}
-.featured-card .photo img { width: 100%; height: 100%; object-fit: cover; }
-.featured-card .info h3 {
-  margin: 0 0 0.2rem;
-  font-size: 1.4rem;
-  color: #1d3a5f;
-}
-.featured-card .info .latin {
-  font-style: italic;
-  color: #6c7a91;
-  margin: 0 0 0.6rem;
-}
-.featured-card .info p { margin: 0 0 0.6rem; }
-.featured-card .info .more-btn {
-  display: inline-block;
-  background: #ff7a59;
-  color: #fff;
-  padding: 0.4rem 1rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  border: 0;
 }
 
 /* ---------- Filter row ---------- */
@@ -300,6 +221,18 @@ main {
   margin: 0 0 0.2rem;
   font-size: 2rem;
   color: #1d3a5f;
+}
+.bird-detail .pronunciation.big {
+  font-style: italic;
+  color: #6c7a91;
+  font-size: 1.05rem;
+  margin: 0.2rem 0 0.1rem;
+}
+.bird-detail .english-name.big {
+  color: #4a90e2;
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin: 0.1rem 0 0.1rem;
 }
 .bird-detail .latin {
   font-style: italic;
@@ -370,10 +303,26 @@ main {
   background: #fff7e8;
   border: 3px solid transparent;
   border-radius: 16px;
-  padding: 0.8rem 1rem;
+  padding: 0.7rem 1rem;
   font-weight: 800;
   font-size: 1rem;
   color: #1d3a5f;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  align-items: center;
+  line-height: 1.2;
+}
+.quiz-options button .opt-pron {
+  font-weight: 500;
+  font-style: italic;
+  color: #6c7a91;
+  font-size: 0.85rem;
+}
+.quiz-options button small {
+  font-weight: 600;
+  color: #4a90e2;
+  font-size: 0.8rem;
 }
 .quiz-options button.right { background: #c7f0d8; border-color: #4ec3a6; }
 .quiz-options button.wrong { background: #ffd6d0; border-color: #ff7a59; }
@@ -479,9 +428,6 @@ main {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 1.5rem; }
-  .featured-card { grid-template-columns: 1fr; }
   .bird-detail { grid-template-columns: 1fr; }
   .bird-detail h1 { font-size: 1.5rem; }
   .quiz-options { grid-template-columns: 1fr; }
