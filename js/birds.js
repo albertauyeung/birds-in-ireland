@@ -71,7 +71,7 @@ window.BIRDS = [
       "fr": "Mésange bleue",
       "es": "Herrerillo común"
     },
-    pronunciation: { pinyin: "lán guàn shān què", jyutping: "laam4 saan1 zoek3" },
+    pronunciation: { pinyin: "lán guān shān què", jyutping: "laam4 saan1 zoek3" },
     latin: "Cyanistes caeruleus",
     description: {
       "en": "This tiny acrobat has a sky-blue cap and a bright yellow tummy. Watch them swing upside-down on bird feeders!",
@@ -197,11 +197,11 @@ window.BIRDS = [
       "en": "Mute Swan",
       "zh-Hant": "疣鼻天鵝",
       "zh-Hans": "疣鼻天鹅",
-      "yue": "啞天鵝",
+      "yue": "疣鼻天鵝",
       "fr": "Cygne tuberculé",
       "es": "Cisne vulgar"
     },
-    pronunciation: { pinyin: "yóu bí tiān é", jyutping: "aa2 tin1 ngo4" },
+    pronunciation: { pinyin: "yóu bí tiān é", jyutping: "jau4 bei6 tin1 ngo4" },
     latin: "Cygnus olor",
     description: {
       "en": "The big snow-white bird gliding on lakes and rivers. Swans pair up for life and protect their fluffy grey babies fiercely.",
@@ -231,7 +231,7 @@ window.BIRDS = [
     latin: "Anas platyrhynchos",
     description: {
       "en": "The most common duck — males have a shiny green head. They love splashing in ponds and saying \"quack, quack!\"",
-      "zh-Hant": "最常見的鴨，雄鴨頭部閃閃發光的綠色。牠們最喜歡在池塘裡撲水，「呷呷」地叫。",
+      "zh-Hant": "最常見的鴨，雄鴨頭部閃閃發光的綠色。牠們最喜歡在池塘裡撲水，「呱呱」地叫。",
       "zh-Hans": "最常见的鸭，雄鸭头部闪闪发光的绿色。它们最喜欢在池塘里扑水，「呱呱」地叫。",
       "yue": "最常見嘅鴨，公鴨個頭係閃閃綠色。佢哋最鍾意喺池塘度玩水，「呷呷」咁叫。",
       "fr": "Le canard le plus commun ; le mâle a la tête d'un vert brillant. Ils adorent barboter dans les étangs en faisant « coin coin ! »",
@@ -364,7 +364,7 @@ window.BIRDS = [
       "zh-Hant": "有著紅色面罩和金色翅膀的小小美鳥。一群金翅雀英文叫做「charm」，意思是「魅力」！",
       "zh-Hans": "有着红色面罩和金色翅膀的小小美鸟。一群金翅雀英文叫做「charm」，意思是「魅力」！",
       "yue": "有住紅色面罩同金色翼嘅小小美麗雀仔。一群金翅雀英文叫做「charm」，即係「魅力」嘅意思！",
-      "fr": "Avec son masque rouge et ses ailes dorées, le chardonneret est ravissant. Un groupe s'appelle une « volée magique » !",
+      "fr": "Avec son masque rouge et ses ailes dorées, le chardonneret est ravissant. En anglais, on appelle un groupe un « charme » — comme une volée magique !",
       "es": "Con su antifaz rojo y alas doradas, el jilguero es precioso. ¡A un grupo se le llama «un encanto»!"
     }
   },
@@ -399,7 +399,7 @@ window.BIRDS = [
     wiki: "White-tailed_eagle",
     color: "#7d5c34",
     sizeCategory: "large",
-    sizeCm: 240,
+    sizeCm: 90,
     where: ["Killarney National Park (Kerry)", "Lough Derg", "West coast lakes & cliffs"],
     names: {
       "en": "White-tailed Eagle",
@@ -705,8 +705,8 @@ window.BIRDS = [
       "zh-Hant": "一隻細小的橄欖綠色鶯，名字就是來自牠的歌聲：整個春天都「chiff-chaff、chiff-chaff」地叫！",
       "zh-Hans": "一只细小的橄榄绿色莺，名字就是来自它的歌声：整个春天都「chiff-chaff、chiff-chaff」地叫！",
       "yue": "一隻好細粒嘅橄欖綠鶯，個名就係嚟自佢嘅歌聲：成個春天都「chiff-chaff、chiff-chaff」咁叫！",
-      "fr": "Une minuscule fauvette vert olive dont le nom vient de son chant : « chiff-chaff, chiff-chaff » tout le printemps !",
-      "es": "Una diminuta curruca verde-oliva cuyo nombre viene de su canto: «¡chiff-chaff, chiff-chaff!» durante toda la primavera."
+      "fr": "Un minuscule pouillot vert olive dont le nom vient de son chant : « chiff-chaff, chiff-chaff » tout le printemps !",
+      "es": "Un diminuto mosquitero verde-oliva cuyo nombre viene de su canto: «¡chiff-chaff, chiff-chaff!» durante toda la primavera."
     }
   },
   {
@@ -731,8 +731,8 @@ window.BIRDS = [
       "zh-Hant": "一隻胖胖的雀，羽毛是亮橄欖綠和黃色。最愛吃花園餵鳥器裡的葵花籽。",
       "zh-Hans": "一只胖胖的雀，羽毛是亮橄榄绿和黄色。最爱吃花园喂鸟器里的葵花籽。",
       "yue": "一隻肥肥嘅雀仔，羽毛係鮮橄欖綠同黃色。最鍾意食花園餵鳥器入面嘅葵花籽。",
-      "fr": "Un pinson trapu aux plumes vert olive vif et jaunes. Il adore les graines de tournesol des mangeoires.",
-      "es": "Un pinzón rechoncho de plumas verde oliva y amarillas. Le encantan las pipas de girasol en los comederos."
+      "fr": "Un verdier trapu aux plumes vert olive vif et jaunes. Il adore les graines de tournesol des mangeoires.",
+      "es": "Un verderón rechoncho de plumas verde oliva y amarillas. Le encantan las pipas de girasol en los comederos."
     }
   },
   {
@@ -758,7 +758,7 @@ window.BIRDS = [
       "zh-Hans": "一只细小的山雀，头部黑色，颈后有白色斑块。最喜欢松树和云杉！",
       "yue": "一隻細粒山雀，個頭黑色，頸後面有塊白色斑紋。最鍾意松樹同雲杉！",
       "fr": "Une mésange minuscule à tête noire avec une tache blanche sur la nuque. Elle adore les pins et les épicéas !",
-      "es": "Una pequeña paro con la cabeza negra y una mancha blanca en la nuca. ¡Le encantan los pinos y los abetos!"
+      "es": "Un pequeño carbonero con la cabeza negra y una mancha blanca en la nuca. ¡Le encantan los pinos y los abetos!"
     }
   },
   {
@@ -835,8 +835,8 @@ window.BIRDS = [
       "zh-Hant": "比歐歌鶇大一些。會在很高的樹上唱歌，連暴風雨天都不停，所以也被稱為「暴風雨之鳥」！",
       "zh-Hans": "比欧歌鸫大一些。会在很高的树上唱歌，连暴风雨天都不停，所以也被称为「暴风雨之鸟」！",
       "yue": "比歐歌鶇大粒少少。會企喺好高嘅樹上面唱歌，連風暴天都唔停，所以叫做「風暴鳥」！",
-      "fr": "Plus grosse que sa cousine la grive musicienne. Elle chante du haut des grands arbres, même par temps d'orage — d'où son surnom de « fouineur de tempête » !",
-      "es": "Más grande que su prima la zorzal común. Canta desde árboles muy altos, incluso con tormenta — ¡por eso se le llama «el cantor de las tormentas»!"
+      "fr": "Plus grosse que sa cousine la grive musicienne. Elle chante du haut des grands arbres, même par temps d'orage — d'où son surnom de « chanteur des tempêtes » !",
+      "es": "Más grande que su primo el zorzal común. Canta desde árboles muy altos, incluso con tormenta — ¡por eso se le llama «el cantor de las tormentas»!"
     }
   },
   {
@@ -880,7 +880,7 @@ window.BIRDS = [
       "fr": "Buse variable",
       "es": "Busardo ratonero"
     },
-    pronunciation: { pinyin: "pǔ tōng kuáng", jyutping: "pou2 tung1 kong4" },
+    pronunciation: { pinyin: "pǔ tōng kuáng", jyutping: "pou2 tung1 kwong4" },
     latin: "Buteo buteo",
     description: {
       "en": "A large brown bird of prey that soars in wide circles, calling \"kee-yaw!\" Buzzards have made an amazing comeback in Ireland.",
@@ -1070,7 +1070,7 @@ window.BIRDS = [
       "zh-Hans": "一只圆滚滚的黑色水鸟，脸是亮白色——看起来好像刚刚撞上了白色油漆墙！",
       "yue": "一隻圓碌碌嘅黑色水鳥，個面係鮮白色——好似啱啱撞咗落白油漆牆度咁！",
       "fr": "Un oiseau d'eau noir et rond au visage blanc éclatant — on dirait qu'il vient de se cogner dans un mur de peinture blanche !",
-      "es": "Un ave acuática negra y rechoncha con la cara blanco brillante — ¡parece que acaba de chocar contra una pared de pintura blanca!"
+      "es": "Un ave acuática negra y rechoncha con la cara blanca brillante — ¡parece que acaba de chocar contra una pared de pintura blanca!"
     }
   },
   {
@@ -1088,7 +1088,7 @@ window.BIRDS = [
       "fr": "Courlis cendré",
       "es": "Zarapito real"
     },
-    pronunciation: { pinyin: "bái yāo sháo yù", jyutping: "baak6 jiu1 zoek3 wat6" },
+    pronunciation: { pinyin: "bái yāo sháo yù", jyutping: "baak6 jiu1 soek3 wat6" },
     latin: "Numenius arquata",
     description: {
       "en": "A big brown wader with a long downward-curving beak. Its haunting \"cur-lew!\" call is a magical sound — sadly very rare in Ireland today.",
@@ -1218,7 +1218,7 @@ window.BIRDS = [
       "fr": "Puffin des Anglais",
       "es": "Pardela pichoneta"
     },
-    pronunciation: { pinyin: "dà huò", jyutping: "daai6 fok6" },
+    pronunciation: { pinyin: "dà hù", jyutping: "daai6 wok6" },
     latin: "Puffinus puffinus",
     description: {
       "en": "A magical seabird that flies low over the waves on stiff wings. Visits its cliff burrow only at night to hide from predators!",
@@ -1774,8 +1774,8 @@ window.BIRDS = [
       "zh-Hant": "一隻細小的雀，雄鳥夏天胸口和額頭是草莓粉紅色。最愛多種子的田野和長草的山坡。",
       "zh-Hans": "一只细小的雀，雄鸟夏天胸口和额头是草莓粉红色。最爱多种子的田野和长草的山坡。",
       "yue": "一隻細隻嘅雀仔，雄鳥夏天胸口同額頭係士多啤梨粉紅色。最鍾意多種子嘅田野同長草嘅山坡。",
-      "fr": "Un petit pinson dont les mâles ont la poitrine et le front rose fraise en été. Il adore les champs à graines et les collines herbeuses.",
-      "es": "Un pequeño pinzón cuyos machos en verano tienen el pecho y la frente rosa fresa. Le encantan los campos con semillas y las laderas cubiertas de hierba."
+      "fr": "Une petite linotte dont les mâles ont la poitrine et le front rose fraise en été. Elle adore les champs à graines et les collines herbeuses.",
+      "es": "Un pequeño pardillo cuyos machos en verano tienen el pecho y la frente rosa fresa. Le encantan los campos con semillas y las laderas cubiertas de hierba."
     }
   },
   {
@@ -1819,7 +1819,7 @@ window.BIRDS = [
       "fr": "Roitelet à triple bandeau",
       "es": "Reyezuelo listado"
     },
-    pronunciation: { pinyin: "huǒ guàn dài jú", jyutping: "fo2 gun1 daai3 guk1" },
+    pronunciation: { pinyin: "huǒ guān dài jú", jyutping: "fo2 gun1 daai3 guk1" },
     latin: "Regulus ignicapilla",
     description: {
       "en": "Like the goldcrest's even more colourful cousin — orange crown, white eyebrow, bronze \"shoulders\". A jewel of a bird!",
@@ -1879,7 +1879,7 @@ window.BIRDS = [
       "zh-Hans": "著名会叫「咕咕！」的鸟儿。母杜鹃会偷偷把蛋下在其他鸟的巢里，让别家父母帮忙养大宝宝！",
       "yue": "著名會叫「咕咕！」嘅雀仔。母杜鵑會靜雞雞咁將自己嘅蛋落喺其他雀嘅窩裡面，等人哋幫佢養大BB！",
       "fr": "Le célèbre oiseau qui dit « cou-cou ! » Les femelles glissent leurs œufs dans les nids d'autres oiseaux pour qu'ils élèvent leurs petits à leur place !",
-      "es": "El famoso pájaro que canta «¡cu-cú!». Las cucos hembra meten a escondidas sus huevos en nidos de otras aves para que ¡otros padres críen a sus polluelos!"
+      "es": "El famoso pájaro que canta «¡cu-cú!». Las hembras del cuco meten a escondidas sus huevos en nidos de otras aves para que ¡otros padres críen a sus polluelos!"
     }
   },
   {
@@ -2089,6 +2089,529 @@ window.BIRDS = [
       "fr": "Le plus grand goéland du monde ! Dos noir et puissant, avec un gros bec jaune. Il peut avaler un lapin entier s'il en a envie !",
       "es": "¡La gaviota más grande del mundo! De dorso negro y poderosa, con un robusto pico amarillo. ¡Puede tragarse un conejo entero si quiere!"
     }
+  },
+
+  /* ===== Batch 4: 20 more birds (→ 100 total) ===== */
+
+  {
+    id: "stockdove",
+    wiki: "Stock_dove",
+    color: "#7a8090",
+    sizeCategory: "medium",
+    sizeCm: 33,
+    where: ["Old parkland with hollow trees", "Cliffs", "Farmland"],
+    names: {
+      "en": "Stock Dove",
+      "zh-Hant": "歐鴿",
+      "zh-Hans": "欧鸽",
+      "yue": "歐鴿",
+      "fr": "Pigeon colombin",
+      "es": "Paloma zurita"
+    },
+    pronunciation: { pinyin: "ōu gē", jyutping: "au1 gap3" },
+    latin: "Columba oenas",
+    description: {
+      "en": "A neat blue-grey pigeon with shiny green neck patches. Nests in tree holes — never on buildings, unlike its city cousins.",
+      "zh-Hant": "一隻整潔的藍灰色鴿子，頸上有閃綠色斑塊。會在樹洞裡做巢——不像城市親戚，從不在建築物上築巢。",
+      "zh-Hans": "一只整洁的蓝灰色鸽子，颈上有闪绿色斑块。会在树洞里做巢——不像城市亲戚，从不在建筑物上筑巢。",
+      "yue": "一隻整齊嘅藍灰色鴿子，頸上有閃綠色斑紋。會喺樹窿做窩——同城市嗰啲親戚唔同，從來唔會喺建築物上面做窩。",
+      "fr": "Un joli pigeon bleu-gris avec des taches vert brillant sur le cou. Niche dans les trous d'arbres — jamais sur les bâtiments, contrairement à ses cousins urbains.",
+      "es": "Una bonita paloma azul-gris con manchas verde brillante en el cuello. Anida en huecos de árboles — nunca en edificios, a diferencia de sus primas urbanas."
+    }
+  },
+  {
+    id: "collareddove",
+    wiki: "Eurasian_collared_dove",
+    color: "#cdb59a",
+    sizeCategory: "medium",
+    sizeCm: 32,
+    where: ["Gardens", "Towns and villages", "Farmyards"],
+    names: {
+      "en": "Eurasian Collared Dove",
+      "zh-Hant": "灰斑鳩",
+      "zh-Hans": "灰斑鸠",
+      "yue": "灰斑鳩",
+      "fr": "Tourterelle turque",
+      "es": "Tórtola turca"
+    },
+    pronunciation: { pinyin: "huī bān jiū", jyutping: "fui1 baan1 kau1" },
+    latin: "Streptopelia decaocto",
+    description: {
+      "en": "A pale dove with a thin black collar at the back of its neck. Sings a soft \"coo-coo-cuk\" all year round, even in winter!",
+      "zh-Hant": "一隻淺色的鴿子，頸後有一條細細的黑色項圈。一年四季都會輕輕唱「咕咕—咕」，連冬天都會！",
+      "zh-Hans": "一只浅色的鸽子，颈后有一条细细的黑色项圈。一年四季都会轻轻唱「咕咕—咕」，连冬天都会！",
+      "yue": "一隻淺色嘅鴿子，頸後面有條幼黑色頸圈。一年四季都會細細聲咁唱「咕咕—咕」，連冬天都唱！",
+      "fr": "Une tourterelle pâle avec un fin collier noir derrière le cou. Elle roucoule un doux « cou-cou-cou » toute l'année, même en hiver !",
+      "es": "Una tórtola pálida con un fino collar negro en la nuca. ¡Canta un suave «cu-cu-cú» todo el año, incluso en invierno!"
+    }
+  },
+  {
+    id: "sedgewarbler",
+    wiki: "Sedge_warbler",
+    color: "#9a8255",
+    sizeCategory: "small",
+    sizeCm: 13,
+    where: ["Reedbeds", "Wet bushes near water", "Marshes (summer)"],
+    names: {
+      "en": "Sedge Warbler",
+      "zh-Hant": "水蒲葦鶯",
+      "zh-Hans": "水蒲苇莺",
+      "yue": "水蒲葦鶯",
+      "fr": "Phragmite des joncs",
+      "es": "Carricerín común"
+    },
+    pronunciation: { pinyin: "shuǐ pú wěi yīng", jyutping: "seoi2 pou4 wai5 ang1" },
+    latin: "Acrocephalus schoenobaenus",
+    description: {
+      "en": "A streaky brown warbler with a creamy eyebrow. Males sing a wild, bubbly mix of squeaks and whistles from reedbeds — and never repeat the same song twice!",
+      "zh-Hant": "一隻有條紋的棕色鶯，眉紋是奶油色。雄鳥會在蘆葦叢中發出狂野又活潑的吱吱聲和哨聲——而且從不重複同一首歌！",
+      "zh-Hans": "一只有条纹的棕色莺，眉纹是奶油色。雄鸟会在芦苇丛中发出狂野又活泼的吱吱声和哨声——而且从不重复同一首歌！",
+      "yue": "一隻有條紋嘅啡色鶯，眉紋係忌廉色。雄鳥會喺蘆葦叢度發出狂野又活潑嘅吱吱聲同口哨聲——而且從唔重複同一首歌！",
+      "fr": "Une fauvette brune rayée avec un sourcil crème. Les mâles chantent un mélange fou de couics et de sifflements depuis les roselières — et ne répètent jamais deux fois la même chanson !",
+      "es": "Una curruca marrón rayada con una ceja crema. ¡Los machos cantan una mezcla loca de chirridos y silbidos desde los cañaverales — y nunca repiten la misma canción dos veces!"
+    }
+  },
+  {
+    id: "reedwarbler",
+    wiki: "Eurasian_reed_warbler",
+    color: "#8a7a5a",
+    sizeCategory: "small",
+    sizeCm: 13,
+    where: ["Reedbeds (summer)", "Lake edges", "Wexford Wildfowl Reserve"],
+    names: {
+      "en": "Eurasian Reed Warbler",
+      "zh-Hant": "歐葦鶯",
+      "zh-Hans": "欧苇莺",
+      "yue": "歐葦鶯",
+      "fr": "Rousserolle effarvatte",
+      "es": "Carricero común"
+    },
+    pronunciation: { pinyin: "ōu wěi yīng", jyutping: "au1 wai5 ang1" },
+    latin: "Acrocephalus scirpaceus",
+    description: {
+      "en": "A plain brown warbler that hides in the reeds. Sometimes ends up raising a baby cuckoo that's twice its size — what a surprise!",
+      "zh-Hant": "一隻樸素的棕色鶯，會躲在蘆葦中。有時候會養大一隻比自己大兩倍的杜鵑寶寶——多大的驚喜！",
+      "zh-Hans": "一只朴素的棕色莺，会躲在芦苇中。有时候会养大一只比自己大两倍的杜鹃宝宝——多大的惊喜！",
+      "yue": "一隻樸素嘅啡色鶯，會匿喺蘆葦度。有時仲會養大一隻比自己大兩倍嘅杜鵑BB——真係嚇親！",
+      "fr": "Une fauvette brune toute simple qui se cache dans les roseaux. Elle finit parfois par élever un bébé coucou deux fois plus gros qu'elle — quelle surprise !",
+      "es": "Una curruca marrón sencilla que se esconde en los juncos. ¡A veces acaba criando a un bebé cuco el doble de grande que ella — vaya sorpresa!"
+    }
+  },
+  {
+    id: "spottedflycatcher",
+    wiki: "Spotted_flycatcher",
+    color: "#7d6a52",
+    sizeCategory: "small",
+    sizeCm: 14,
+    where: ["Old gardens with mature trees", "Woodland edges", "Parks (summer)"],
+    names: {
+      "en": "Spotted Flycatcher",
+      "zh-Hant": "斑鶲",
+      "zh-Hans": "斑鹟",
+      "yue": "斑鶲",
+      "fr": "Gobemouche gris",
+      "es": "Papamoscas gris"
+    },
+    pronunciation: { pinyin: "bān wēng", jyutping: "baan1 jung1" },
+    latin: "Muscicapa striata",
+    description: {
+      "en": "A grey-brown bird that sits very still on a perch, then SHOOTS out to grab a flying insect — and lands back on the same spot!",
+      "zh-Hant": "一隻灰啡色的鳥，會靜靜地停在樹枝上，然後咻一聲衝出去抓飛蟲——再回到同一個位置！",
+      "zh-Hans": "一只灰啡色的鸟，会静静地停在树枝上，然后咻一声冲出去抓飞虫——再回到同一个位置！",
+      "yue": "一隻灰啡色嘅雀，會靜靜地停喺樹枝上，跟住「咻」一聲衝出去捉飛蟲——再返到同一個位！",
+      "fr": "Un oiseau gris-brun qui reste immobile sur une branche, puis FILE attraper un insecte en plein vol — et revient se poser au même endroit !",
+      "es": "Un ave gris-marrón que se queda muy quieta en una percha, luego SALE DISPARADA a por un insecto en vuelo — ¡y vuelve al mismo sitio!"
+    }
+  },
+  {
+    id: "medgull",
+    wiki: "Mediterranean_gull",
+    color: "#1a1a2a",
+    sizeCategory: "medium",
+    sizeCm: 38,
+    where: ["Coasts and harbours", "Coastal lakes (winter visitor)"],
+    names: {
+      "en": "Mediterranean Gull",
+      "zh-Hant": "地中海鷗",
+      "zh-Hans": "地中海鸥",
+      "yue": "地中海鷗",
+      "fr": "Mouette mélanocéphale",
+      "es": "Gaviota cabecinegra"
+    },
+    pronunciation: { pinyin: "dì zhōng hǎi ōu", jyutping: "dei6 zung1 hoi2 au1" },
+    latin: "Ichthyaetus melanocephalus",
+    description: {
+      "en": "Looks like a black-headed gull but with a darker, fully black hood in summer. Called \"the laughing gull\" in many languages because of its yodelling call!",
+      "zh-Hant": "看起來像紅嘴鷗，但夏天頭部會變成全黑的更深「兜帽」。在許多語言中被稱為「笑鷗」，因為牠會發出像吆喝的叫聲！",
+      "zh-Hans": "看起来像红嘴鸥，但夏天头部会变成全黑的更深「兜帽」。在许多语言中被称为「笑鸥」，因为它会发出像吆喝的叫声！",
+      "yue": "似紅嘴鷗，但夏天個頭會變成全黑嘅深色「兜帽」。喺好多語言入面叫做「笑鷗」，因為佢嘅叫聲好似吆喝咁！",
+      "fr": "Ressemble à la mouette rieuse mais avec un capuchon entièrement noir en été. On l'appelle « la mouette qui rit » dans plusieurs langues à cause de son cri yodlé !",
+      "es": "Se parece a la gaviota reidora, pero con un capirote totalmente negro en verano. ¡Se le llama «gaviota que ríe» en muchos idiomas por su grito yodelado!"
+    }
+  },
+  {
+    id: "redkite",
+    wiki: "Red_kite",
+    color: "#a04030",
+    sizeCategory: "large",
+    sizeCm: 65,
+    where: ["Wicklow Mountains", "County Dublin uplands", "County Down (reintroduced from 2007)"],
+    names: {
+      "en": "Red Kite",
+      "zh-Hant": "赤鳶",
+      "zh-Hans": "赤鸢",
+      "yue": "赤鳶",
+      "fr": "Milan royal",
+      "es": "Milano real"
+    },
+    pronunciation: { pinyin: "chì yuān", jyutping: "cek3 jyun1" },
+    latin: "Milvus milvus",
+    description: {
+      "en": "A graceful rusty-red bird of prey with a deeply forked tail. Wiped out in Ireland for over 200 years — brought back from Wales in 2007!",
+      "zh-Hant": "一隻優雅的鏽紅色猛禽，尾巴深深分叉。曾在愛爾蘭絕跡超過200年——2007年從威爾斯重新引入！",
+      "zh-Hans": "一只优雅的锈红色猛禽，尾巴深深分叉。曾在爱尔兰绝迹超过200年——2007年从威尔士重新引入！",
+      "yue": "一隻優雅嘅鏽紅色猛禽，尾巴分叉得好深。喺愛爾蘭絕咗種超過200年——2007年從威爾斯重新引入返！",
+      "fr": "Un rapace gracieux roux à la queue profondément fourchue. Disparu d'Irlande pendant plus de 200 ans — réintroduit du pays de Galles en 2007 !",
+      "es": "Un grácil rapaz rojizo con la cola profundamente ahorquillada. ¡Desapareció de Irlanda durante más de 200 años — reintroducido desde Gales en 2007!"
+    }
+  },
+  {
+    id: "chough",
+    wiki: "Red-billed_chough",
+    color: "#1a1a1a",
+    sizeCategory: "medium",
+    sizeCm: 40,
+    where: ["Sea cliffs of Donegal, Mayo, Kerry, Cork", "Coastal cliffs in the west"],
+    names: {
+      "en": "Red-billed Chough",
+      "zh-Hant": "紅嘴山鴉",
+      "zh-Hans": "红嘴山鸦",
+      "yue": "紅嘴山鴉",
+      "fr": "Crave à bec rouge",
+      "es": "Chova piquirroja"
+    },
+    pronunciation: { pinyin: "hóng zuǐ shān yā", jyutping: "hung4 zeoi2 saan1 aa1" },
+    latin: "Pyrrhocorax pyrrhocorax",
+    description: {
+      "en": "A glossy black crow with a curved bright-red beak and red legs! Found mostly along Ireland's wild west and south coasts. They tumble and twirl in the sea wind for fun.",
+      "zh-Hant": "一隻黑亮的烏鴉，配上彎彎的鮮紅色嘴和紅色腳！主要在愛爾蘭野性的西岸和南岸找到。牠們會在海風中翻滾旋轉，純粹為了好玩。",
+      "zh-Hans": "一只黑亮的乌鸦，配上弯弯的鲜红色嘴和红色脚！主要在爱尔兰野性的西岸和南岸找到。它们会在海风中翻滚旋转，纯粹为了好玩。",
+      "yue": "一隻烏卒卒、發光嘅烏鴉，配住彎彎嘅鮮紅嘴同紅色腳！主要喺愛爾蘭嘅西岸同南岸見到。佢哋會喺海風中翻滾打轉，純粹為咗玩！",
+      "fr": "Un corvidé noir luisant avec un bec rouge vif courbé et des pattes rouges ! On le trouve surtout le long des côtes sauvages de l'ouest et du sud de l'Irlande. Ils font des cabrioles dans le vent marin, juste pour s'amuser.",
+      "es": "¡Un córvido negro brillante con un pico rojo brillante y curvado y patas rojas! Se encuentra sobre todo en las costas salvajes del oeste y sur de Irlanda. Hacen cabriolas en el viento marino solo por diversión."
+    }
+  },
+  {
+    id: "twite",
+    wiki: "Twite",
+    color: "#a07a4a",
+    sizeCategory: "small",
+    sizeCm: 14,
+    where: ["Mountains and uplands", "Coastal saltmarshes (winter)", "Mostly western Ireland"],
+    names: {
+      "en": "Twite",
+      "zh-Hant": "黃嘴朱頂雀",
+      "zh-Hans": "黄嘴朱顶雀",
+      "yue": "黃嘴朱頂雀",
+      "fr": "Linotte à bec jaune",
+      "es": "Pardillo piquigualdo"
+    },
+    pronunciation: { pinyin: "huáng zuǐ zhū dǐng què", jyutping: "wong4 zeoi2 zyu1 ding2 zoek3" },
+    latin: "Linaria flavirostris",
+    description: {
+      "en": "Like the linnet's mountain cousin — streaky brown with a tiny yellow beak in winter. Lives in some of Ireland's wildest places.",
+      "zh-Hant": "像紅腹朱頂雀的山區表親——身上有條紋的啡色，冬天會有小小的黃色嘴。住在愛爾蘭最荒野的地方。",
+      "zh-Hans": "像红腹朱顶雀的山区表亲——身上有条纹的啡色，冬天会有小小的黄色嘴。住在爱尔兰最荒野的地方。",
+      "yue": "好似赤胸朱頂雀嘅山區表親——身上有條紋嘅啡色，冬天會有細細嘅黃色嘴。住喺愛爾蘭最荒野嘅地方。",
+      "fr": "Comme la cousine montagnarde de la linotte — striée de brun avec un petit bec jaune en hiver. Elle vit dans les endroits les plus sauvages d'Irlande.",
+      "es": "Como la prima de montaña del pardillo — rayado de marrón con un piquito amarillo en invierno. Vive en los lugares más salvajes de Irlanda."
+    }
+  },
+  {
+    id: "crossbill",
+    wiki: "Common_crossbill",
+    color: "#c64a3a",
+    sizeCategory: "small",
+    sizeCm: 16,
+    where: ["Conifer forests (Wicklow, Killarney)", "Spruce and pine plantations"],
+    names: {
+      "en": "Common Crossbill",
+      "zh-Hant": "紅交嘴雀",
+      "zh-Hans": "红交嘴雀",
+      "yue": "紅交嘴雀",
+      "fr": "Bec-croisé des sapins",
+      "es": "Piquituerto común"
+    },
+    pronunciation: { pinyin: "hóng jiāo zuǐ què", jyutping: "hung4 gaau1 zeoi2 zoek3" },
+    latin: "Loxia curvirostra",
+    description: {
+      "en": "A finch with the strangest beak in the bird world — the top and bottom CROSS over each other! Perfect for prying seeds out of pine cones.",
+      "zh-Hant": "一隻擁有鳥類世界最奇特嘴巴的雀——上下嘴會交叉！正好用來撬出松果裡的種子。",
+      "zh-Hans": "一只拥有鸟类世界最奇特嘴巴的雀——上下嘴会交叉！正好用来撬出松果里的种子。",
+      "yue": "一隻擁有雀鳥世界最奇特嘴嘅雀——上下嘴會交叉！啱晒用嚟撬出松塔入面嘅種子。",
+      "fr": "Un pinson au bec le plus étrange du monde des oiseaux — le haut et le bas se CROISENT l'un sur l'autre ! Parfait pour extraire les graines des pommes de pin.",
+      "es": "Un pinzón con el pico más raro del mundo de las aves — ¡el de arriba y el de abajo se CRUZAN! Perfecto para extraer semillas de las piñas."
+    }
+  },
+  {
+    id: "greywagtail",
+    wiki: "Grey_wagtail",
+    color: "#e5c542",
+    sizeCategory: "small",
+    sizeCm: 19,
+    where: ["Fast-flowing rivers and streams", "Stony riverbanks", "Mountain streams"],
+    names: {
+      "en": "Grey Wagtail",
+      "zh-Hant": "灰鶺鴒",
+      "zh-Hans": "灰鹡鸰",
+      "yue": "灰鶺鴒",
+      "fr": "Bergeronnette des ruisseaux",
+      "es": "Lavandera cascadeña"
+    },
+    pronunciation: { pinyin: "huī jí líng", jyutping: "fui1 zik3 ling4" },
+    latin: "Motacilla cinerea",
+    description: {
+      "en": "Don't let the name fool you — this wagtail has a bright lemon-yellow belly and a very long tail that it bobs constantly by mountain streams!",
+      "zh-Hant": "別被名字騙了——這隻鶺鴒肚子是亮檸檬黃色，尾巴很長，在山間溪流邊不停地擺動！",
+      "zh-Hans": "别被名字骗了——这只鹡鸰肚子是亮柠檬黄色，尾巴很长，在山间溪流边不停地摆动！",
+      "yue": "唔好俾個名呃到——呢隻鶺鴒個肚係鮮檸黃色，尾巴又長，喺山溪邊不停咁擺！",
+      "fr": "Ne te laisse pas tromper par son nom — cette bergeronnette a un ventre jaune citron vif et une très longue queue qu'elle agite sans cesse au bord des ruisseaux de montagne !",
+      "es": "¡No te dejes engañar por el nombre — esta lavandera tiene la barriga amarillo limón y una cola larguísima que mueve sin parar junto a los arroyos de montaña!"
+    }
+  },
+  {
+    id: "yellowwagtail",
+    wiki: "Western_yellow_wagtail",
+    color: "#f0c63a",
+    sizeCategory: "small",
+    sizeCm: 17,
+    where: ["Wet meadows", "Cattle pastures (rare summer visitor in Ireland)"],
+    names: {
+      "en": "Western Yellow Wagtail",
+      "zh-Hant": "黃鶺鴒",
+      "zh-Hans": "黄鹡鸰",
+      "yue": "黃鶺鴒",
+      "fr": "Bergeronnette printanière",
+      "es": "Lavandera boyera"
+    },
+    pronunciation: { pinyin: "huáng jí líng", jyutping: "wong4 zik3 ling4" },
+    latin: "Motacilla flava",
+    description: {
+      "en": "A rare summer visitor — bright canary-yellow underneath, olive on top. Often follows cows around to catch the flies they stir up!",
+      "zh-Hant": "一隻稀有的夏候鳥——下面是鮮明的金絲雀黃色，上面是橄欖色。常常跟著牛走，捉牠們腳邊驚起的蒼蠅！",
+      "zh-Hans": "一只稀有的夏候鸟——下面是鲜明的金丝雀黄色，上面是橄榄色。常常跟着牛走，捉它们脚边惊起的苍蝇！",
+      "yue": "一隻稀有嘅夏候鳥——下面係鮮金絲雀黃色，上面橄欖色。成日跟住牛行，捉佢哋腳邊驚起嘅烏蠅！",
+      "fr": "Un rare visiteur d'été — jaune canari vif dessous, vert olive dessus. Elle suit souvent les vaches pour attraper les mouches qu'elles font lever !",
+      "es": "Un raro visitante de verano — amarillo canario brillante por debajo, verde oliva por encima. ¡A menudo sigue a las vacas para atrapar las moscas que levantan!"
+    }
+  },
+  {
+    id: "goosander",
+    wiki: "Common_merganser",
+    color: "#1a4a6a",
+    sizeCategory: "large",
+    sizeCm: 65,
+    where: ["Rivers and lakes (rare in Ireland)", "Northern lakes (winter)"],
+    names: {
+      "en": "Goosander",
+      "zh-Hant": "普通秋沙鴨",
+      "zh-Hans": "普通秋沙鸭",
+      "yue": "普通秋沙鴨",
+      "fr": "Harle bièvre",
+      "es": "Serreta grande"
+    },
+    pronunciation: { pinyin: "pǔ tōng qiū shā yā", jyutping: "pou2 tung1 cau1 saa1 aap3" },
+    latin: "Mergus merganser",
+    description: {
+      "en": "A long, sleek diving duck with a saw-toothed beak for gripping slippery fish. Males have a glossy dark-green head and pinkish-cream body.",
+      "zh-Hant": "一隻又長又流線型的潛水鴨，嘴像鋸子一樣有齒，方便抓住滑溜的魚。雄鳥頭部是閃亮的深綠色，身體是粉奶油色。",
+      "zh-Hans": "一只又长又流线型的潜水鸭，嘴像锯子一样有齿，方便抓住滑溜的鱼。雄鸟头部是闪亮的深绿色，身体是粉奶油色。",
+      "yue": "一隻又長又流線型嘅潛水鴨，個嘴好似鋸咁有齒，啱啱好用嚟捉滑溜溜嘅魚。雄鳥個頭係閃亮嘅深綠色，身體係粉忌廉色。",
+      "fr": "Un canard plongeur long et élancé avec un bec en dents de scie pour attraper les poissons glissants. Les mâles ont une tête vert foncé brillante et un corps rosé crème.",
+      "es": "Un pato buceador largo y esbelto con un pico dentado para agarrar peces resbaladizos. Los machos tienen la cabeza verde oscuro brillante y el cuerpo rosado-crema."
+    }
+  },
+  {
+    id: "gcgrebe",
+    wiki: "Great_crested_grebe",
+    color: "#7a4a30",
+    sizeCategory: "medium",
+    sizeCm: 50,
+    where: ["Lakes and reservoirs", "Slow rivers", "Coastal bays in winter"],
+    names: {
+      "en": "Great Crested Grebe",
+      "zh-Hant": "鳳頭鸊鷉",
+      "zh-Hans": "凤头䴙䴘",
+      "yue": "鳳頭鸊鷉",
+      "fr": "Grèbe huppé",
+      "es": "Somormujo lavanco"
+    },
+    pronunciation: { pinyin: "fèng tóu pì tī", jyutping: "fung6 tau4 pik1 tai1" },
+    latin: "Podiceps cristatus",
+    description: {
+      "en": "An elegant water bird with a punky black-and-orange head crest. Pairs do an amazing \"weed dance\" on water in spring — they bring waterweed to each other as a gift!",
+      "zh-Hant": "一隻優雅的水鳥，頭上有龐克風格的黑色和橙色冠羽。配對的鳳頭鸊鷉春天會在水面上跳令人驚嘆的「水草舞」——互相獻上水草作為禮物！",
+      "zh-Hans": "一只优雅的水鸟，头上有朋克风格的黑色和橙色冠羽。配对的凤头䴙䴘春天会在水面上跳令人惊叹的「水草舞」——互相献上水草作为礼物！",
+      "yue": "一隻優雅嘅水鳥，頭頂有龐克風嘅黑色同橙色冠羽。一對對鳳頭鸊鷉春天會喺水面上跳令人嘩然嘅「水草舞」——互相送水草做禮物！",
+      "fr": "Un oiseau d'eau élégant avec une crête punk noire et orange. Au printemps, les couples font une incroyable « danse de l'algue » sur l'eau — ils s'offrent des herbes aquatiques !",
+      "es": "Un elegante ave acuática con una cresta punk negra y naranja. ¡Las parejas hacen una asombrosa «danza del alga» sobre el agua en primavera — se regalan plantas acuáticas!"
+    }
+  },
+  {
+    id: "littlegrebe",
+    wiki: "Little_grebe",
+    color: "#7a3520",
+    sizeCategory: "small",
+    sizeCm: 26,
+    where: ["Park ponds", "Reedy lakes", "Slow rivers"],
+    names: {
+      "en": "Little Grebe",
+      "zh-Hant": "小鸊鷉",
+      "zh-Hans": "小䴙䴘",
+      "yue": "小鸊鷉",
+      "fr": "Grèbe castagneux",
+      "es": "Zampullín común"
+    },
+    pronunciation: { pinyin: "xiǎo pì tī", jyutping: "siu2 pik1 tai1" },
+    latin: "Tachybaptus ruficollis",
+    description: {
+      "en": "Sometimes called \"dabchick\" — a tiny round diving bird that pops up like a bath toy! Disappears under water for ages chasing fish.",
+      "zh-Hant": "有時被稱為「dabchick」——一隻圓圓的小潛水鳥，會像浴缸玩具一樣冒出水面！會在水下消失好久，追著魚跑。",
+      "zh-Hans": "有时被称为「dabchick」——一只圆圆的小潜水鸟，会像浴缸玩具一样冒出水面！会在水下消失好久，追着鱼跑。",
+      "yue": "有時被叫做「dabchick」——一隻圓碌碌嘅小潛水鳥，會好似浴缸玩具咁彈出水面！會喺水底消失好耐，追住魚仔捉。",
+      "fr": "Parfois appelé « plongeon » — un minuscule oiseau plongeur tout rond qui ressort comme un jouet de bain ! Disparaît longtemps sous l'eau pour chasser le poisson.",
+      "es": "A veces llamado «zampullín» — un diminuto ave buceadora redonda que sale a la superficie como un juguete de bañera. ¡Se sumerge un buen rato persiguiendo peces!"
+    }
+  },
+  {
+    id: "waterrail",
+    wiki: "Water_rail",
+    color: "#6a4a2a",
+    sizeCategory: "small",
+    sizeCm: 26,
+    where: ["Reedbeds", "Marshy edges of lakes and rivers", "Wet boglands"],
+    names: {
+      "en": "Water Rail",
+      "zh-Hant": "西方秧雞",
+      "zh-Hans": "西方秧鸡",
+      "yue": "西方秧雞",
+      "fr": "Râle d'eau",
+      "es": "Rascón europeo"
+    },
+    pronunciation: { pinyin: "xī fāng yāng jī", jyutping: "sai1 fong1 joeng1 gai1" },
+    latin: "Rallus aquaticus",
+    description: {
+      "en": "A super shy bird that makes spooky pig-like \"squealing\" sounds from deep in the reeds. Heard far more often than seen!",
+      "zh-Hant": "一隻超級害羞的鳥，會在蘆葦深處發出像小豬一樣詭異的「吱吱」叫聲。被聽見的次數比被看到的多得多！",
+      "zh-Hans": "一只超级害羞的鸟，会在芦苇深处发出像小猪一样诡异的「吱吱」叫声。被听见的次数比被看到的多得多！",
+      "yue": "一隻超級怕醜嘅雀，會喺蘆葦深處發出好似小豬咁嘅怪異「吱吱」聲。聽到嘅次數比見到嘅多好多！",
+      "fr": "Un oiseau hyper timide qui pousse des cris étranges de cochonnet depuis le fond des roseaux. Bien plus souvent entendu que vu !",
+      "es": "Un ave hiper-tímida que emite chillidos espeluznantes como un cerdito desde el fondo de los juncos. ¡Mucho más oído que visto!"
+    }
+  },
+  {
+    id: "moorhen",
+    wiki: "Common_moorhen",
+    color: "#1f1f1f",
+    sizeCategory: "medium",
+    sizeCm: 33,
+    where: ["Park ponds", "Slow rivers and canals", "Reedy lake edges"],
+    names: {
+      "en": "Common Moorhen",
+      "zh-Hant": "黑水雞",
+      "zh-Hans": "黑水鸡",
+      "yue": "黑水雞",
+      "fr": "Gallinule poule-d'eau",
+      "es": "Gallineta común"
+    },
+    pronunciation: { pinyin: "hēi shuǐ jī", jyutping: "hak1 seoi2 gai1" },
+    latin: "Gallinula chloropus",
+    description: {
+      "en": "A black water-chicken with a bright red-and-yellow beak and big green feet. Flicks its tail to show a flash of white as it walks.",
+      "zh-Hant": "一隻黑色的水雞，有鮮紅黃相間的嘴和大大的綠色腳。走路時會擺尾，露出白色閃光。",
+      "zh-Hans": "一只黑色的水鸡，有鲜红黄相间的嘴和大大的绿色脚。走路时会摆尾，露出白色闪光。",
+      "yue": "一隻黑色嘅水雞，個嘴鮮紅黃色，仲有對大大隻嘅綠色腳。行路嘅時候會搖尾巴，露出白色閃光。",
+      "fr": "Un poulet d'eau noir au bec rouge vif et jaune et aux grandes pattes vertes. Quand elle marche, elle agite la queue pour montrer un éclair blanc.",
+      "es": "Una gallina de agua negra con un pico rojo y amarillo brillante y unas grandes patas verdes. ¡Mueve la cola y muestra un destello blanco al andar!"
+    }
+  },
+  {
+    id: "whinchat",
+    wiki: "Whinchat",
+    color: "#c08a4a",
+    sizeCategory: "small",
+    sizeCm: 13,
+    where: ["Bogs and rough grassland (summer)", "Uplands", "Coastal heath"],
+    names: {
+      "en": "Whinchat",
+      "zh-Hant": "草原石䳭",
+      "zh-Hans": "草原石䳭",
+      "yue": "草原石䳭",
+      "fr": "Tarier des prés",
+      "es": "Tarabilla norteña"
+    },
+    pronunciation: { pinyin: "cǎo yuán shí jí", jyutping: "cou2 jyun4 sek6 zik1" },
+    latin: "Saxicola rubetra",
+    description: {
+      "en": "A summer cousin of the stonechat, with a pale eye-stripe and a peachy chest. Flies all the way from Africa to nest in Irish bogs!",
+      "zh-Hant": "黑喉鴝的夏天表親，有淺色的眉紋和桃色的胸口。每年從非洲飛到愛爾蘭，在沼澤地築巢！",
+      "zh-Hans": "黑喉鸲的夏天表亲，有浅色的眉纹和桃色的胸口。每年从非洲飞到爱尔兰，在沼泽地筑巢！",
+      "yue": "黑喉鴝嘅夏天表親，有淺色嘅眉紋同桃色嘅胸口。每年從非洲飛嚟愛爾蘭，喺沼澤地做窩！",
+      "fr": "Cousin estival du tarier pâtre, avec un sourcil pâle et une poitrine pêche. Il vole depuis l'Afrique pour nicher dans les tourbières irlandaises !",
+      "es": "Primo veraniego de la tarabilla común, con una ceja pálida y el pecho color melocotón. ¡Vuela desde África para anidar en las turberas irlandesas!"
+    }
+  },
+  {
+    id: "redstart",
+    wiki: "Common_redstart",
+    color: "#d04a30",
+    sizeCategory: "small",
+    sizeCm: 14,
+    where: ["Mature oak woodlands (summer)", "Mostly the west and south"],
+    names: {
+      "en": "Common Redstart",
+      "zh-Hant": "歐亞紅尾鴝",
+      "zh-Hans": "欧亚红尾鸲",
+      "yue": "歐亞紅尾鴝",
+      "fr": "Rougequeue à front blanc",
+      "es": "Colirrojo real"
+    },
+    pronunciation: { pinyin: "ōu yà hóng wěi qú", jyutping: "au1 aa3 hung4 mei5 keoi4" },
+    latin: "Phoenicurus phoenicurus",
+    description: {
+      "en": "A handsome summer visitor with a fiery orange-red tail it shivers like a flame! Males also have a black mask and a white forehead.",
+      "zh-Hant": "一隻俊俏的夏候鳥，尾巴是火焰般的橙紅色，會像火苗一樣顫動！雄鳥還有黑色面罩和白色額頭。",
+      "zh-Hans": "一只俊俏的夏候鸟，尾巴是火焰般的橙红色，会像火苗一样颤动！雄鸟还有黑色面罩和白色额头。",
+      "yue": "一隻靚仔嘅夏候鳥，條尾係火焰般嘅橙紅色，仲會好似火舌咁顫動！雄鳥仲有黑色面罩同白色額頭。",
+      "fr": "Un beau visiteur d'été à la queue rouge-orange flamboyante qu'il fait frémir comme une flamme ! Les mâles ont aussi un masque noir et un front blanc.",
+      "es": "Un guapo visitante de verano con una cola rojo-naranja que tiembla como una llama. ¡Los machos también tienen una máscara negra y la frente blanca!"
+    }
+  },
+  {
+    id: "redthroateddiver",
+    wiki: "Red-throated_loon",
+    color: "#7a3030",
+    sizeCategory: "large",
+    sizeCm: 60,
+    where: ["Coastal waters (winter)", "Sea bays around Ireland in winter"],
+    names: {
+      "en": "Red-throated Diver",
+      "zh-Hant": "紅喉潛鳥",
+      "zh-Hans": "红喉潜鸟",
+      "yue": "紅喉潛鳥",
+      "fr": "Plongeon catmarin",
+      "es": "Colimbo chico"
+    },
+    pronunciation: { pinyin: "hóng hóu qián niǎo", jyutping: "hung4 hau4 cim4 niu5" },
+    latin: "Gavia stellata",
+    description: {
+      "en": "A long, low-bodied diving bird that swims like a submarine. In summer they have a beautiful red throat patch — but most Irish ones are seen in winter at sea, in plain grey-and-white.",
+      "zh-Hant": "一隻又長又貼水的潛水鳥，游泳的樣子像潛艇。夏天牠們有漂亮的紅色喉部斑塊——但愛爾蘭大多在冬天看到，海上灰白相間。",
+      "zh-Hans": "一只又长又贴水的潜水鸟，游泳的样子像潜艇。夏天它们有漂亮的红色喉部斑块——但爱尔兰大多在冬天看到，海上灰白相间。",
+      "yue": "一隻又長又貼水嘅潛水鳥，游水似潛艇咁。夏天佢哋有靚靚嘅紅色喉嚨斑——但喺愛爾蘭多數冬天先見到，海上面係灰白色。",
+      "fr": "Un oiseau plongeur long et bas sur l'eau qui nage comme un sous-marin. En été, il a une jolie tache rouge à la gorge — mais en Irlande, on le voit surtout en hiver en mer, en gris et blanc.",
+      "es": "Un ave buceadora larga y baja en el agua que nada como un submarino. En verano tiene una bonita mancha roja en la garganta — ¡pero en Irlanda se ve sobre todo en invierno en el mar, gris y blanco!"
+    }
   }
 ];
 
@@ -2133,7 +2656,7 @@ window.SPOTS = [
       "fr": "Environ 250 espèces y sont recensées. En hiver, des milliers d'oies et de cygnes se rassemblent dans les prés humides.",
       "es": "Aquí se han registrado unas 250 especies. En invierno, miles de gansos y cisnes se reúnen en los prados húmedos."
     },
-    birds: ["whooperswan", "muteswan", "brentgoose", "mallard", "lapwing", "curlew", "snipe", "greenshank", "greylag"]
+    birds: ["whooperswan", "muteswan", "brentgoose", "mallard", "lapwing", "curlew", "snipe", "greenshank", "greylag", "reedwarbler", "moorhen"]
   },
   {
     id: "rathlin",
@@ -2161,7 +2684,7 @@ window.SPOTS = [
       "fr": "Forêts de chênes anciennes et grands lacs. Regarde le ciel : les pygargues à queue blanche y ont été réintroduits depuis 2007. Les chênaies fourmillent d'oiseaux chanteurs.",
       "es": "Antiguos bosques de robles y grandes lagos. Mira al cielo para ver pigargos, reintroducidos en Irlanda desde 2007. Los robledales bullen de aves cantoras."
     },
-    birds: ["wtailedeagle", "buzzard", "raven", "jay", "songthrush", "blackcap", "treecreeper", "robin", "wren", "heron"]
+    birds: ["wtailedeagle", "buzzard", "raven", "jay", "songthrush", "blackcap", "treecreeper", "robin", "wren", "heron", "crossbill", "redstart"]
   },
   {
     id: "phoenixpark",
@@ -2175,7 +2698,7 @@ window.SPOTS = [
       "fr": "L'un des plus grands parcs urbains d'Europe. Des canards sur les étangs, des rouges-gorges dans les arbres, des pies sur les pelouses — et même un troupeau de daims !",
       "es": "Uno de los mayores parques urbanos de Europa. Patos en los estanques, petirrojos en los árboles, urracas en el césped — ¡y hasta una manada de gamos!"
     },
-    birds: ["mallard", "robin", "magpie", "hoodedcrow", "jackdaw", "woodpigeon", "greattit", "bluetit", "sparrowhawk", "blackbird", "songthrush", "swift"]
+    birds: ["mallard", "robin", "magpie", "hoodedcrow", "jackdaw", "woodpigeon", "greattit", "bluetit", "sparrowhawk", "blackbird", "songthrush", "swift", "collareddove", "spottedflycatcher"]
   },
   {
     id: "cliffsmoher",
@@ -2183,13 +2706,13 @@ window.SPOTS = [
     region: "County Clare",
     description: {
       "en": "Towering sea cliffs along the wild Atlantic coast. Look for puffins on the grass at the cliff top in summer, with thousands of guillemots and razorbills below.",
-      "zh-Hant": "野生大西洋海岸邊高聳的海崖。夏天可以在崖頂草地上找到海鸚，下方還有成千上萬隻海鴉和刀嘴海雀。",
-      "zh-Hans": "野生大西洋海岸边高耸的海崖。夏天可以在崖顶草地上找到海鹦，下方还有成千上万只海鸦和刀嘴海雀。",
+      "zh-Hant": "野性大西洋海岸邊高聳的海崖。夏天可以在崖頂草地上找到海鸚，下方還有成千上萬隻海鴉和刀嘴海雀。",
+      "zh-Hans": "野性大西洋海岸边高耸的海崖。夏天可以在崖顶草地上找到海鹦，下方还有成千上万只海鸦和刀嘴海雀。",
       "yue": "野性大西洋海岸邊嘅高聳海崖。夏天可以喺崖頂草地度搵到海鸚，下面仲有成千上萬隻海鴉同刀嘴海雀。",
       "fr": "Falaises maritimes spectaculaires au bord de l'Atlantique sauvage. Cherche les macareux dans l'herbe en haut des falaises en été, avec des milliers de guillemots et pingouins en bas.",
       "es": "Imponentes acantilados frente al Atlántico salvaje. En verano busca frailecillos sobre la hierba en lo alto, con miles de araos y alcas debajo."
     },
-    birds: ["puffin", "gannet", "razorbill", "guillemot", "kittiwake", "cormorant", "peregrine", "raven"]
+    birds: ["puffin", "gannet", "razorbill", "guillemot", "kittiwake", "cormorant", "peregrine", "raven", "chough"]
   },
   {
     id: "loughneagh",
@@ -2203,6 +2726,6 @@ window.SPOTS = [
       "fr": "Le plus grand lac de l'île d'Irlande. Cygnes, canards, sternes et limicoles y vivent toute l'année.",
       "es": "El lago más grande de la isla de Irlanda. Cisnes, patos, charranes y limícolas viven aquí todo el año."
     },
-    birds: ["muteswan", "whooperswan", "mallard", "tuftedduck", "coot", "swallow", "greylag", "commontern"]
+    birds: ["muteswan", "whooperswan", "mallard", "tuftedduck", "coot", "swallow", "greylag", "commontern", "gcgrebe", "moorhen", "littlegrebe"]
   }
 ];

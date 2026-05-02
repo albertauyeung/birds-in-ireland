@@ -46,7 +46,11 @@ window.I18N = {
     loadingPhoto: "Loading photo...",
     sizeSmallLabel: "Small",
     sizeMediumLabel: "Medium",
-    sizeLargeLabel: "Large"
+    sizeLargeLabel: "Large",
+    statBirds: "birds",
+    statLanguages: "languages",
+    statSpots: "hotspots",
+    showingFiltered: "Showing {n} of {total} birds"
   },
 
   "zh-Hant": {
@@ -95,7 +99,11 @@ window.I18N = {
     loadingPhoto: "載入相片中…",
     sizeSmallLabel: "小型",
     sizeMediumLabel: "中型",
-    sizeLargeLabel: "大型"
+    sizeLargeLabel: "大型",
+    statBirds: "種鳥",
+    statLanguages: "種語言",
+    statSpots: "個觀鳥點",
+    showingFiltered: "顯示 {n} / {total} 種鳥"
   },
 
   "zh-Hans": {
@@ -144,7 +152,11 @@ window.I18N = {
     loadingPhoto: "加载照片中…",
     sizeSmallLabel: "小型",
     sizeMediumLabel: "中型",
-    sizeLargeLabel: "大型"
+    sizeLargeLabel: "大型",
+    statBirds: "种鸟",
+    statLanguages: "种语言",
+    statSpots: "个观鸟点",
+    showingFiltered: "显示 {n} / {total} 种鸟"
   },
 
   "yue": {
@@ -193,7 +205,11 @@ window.I18N = {
     loadingPhoto: "載緊相…",
     sizeSmallLabel: "細隻",
     sizeMediumLabel: "中等",
-    sizeLargeLabel: "大隻"
+    sizeLargeLabel: "大隻",
+    statBirds: "種雀仔",
+    statLanguages: "種語言",
+    statSpots: "個觀鳥地點",
+    showingFiltered: "顯示緊 {n} / {total} 種雀仔"
   },
 
   "fr": {
@@ -242,7 +258,11 @@ window.I18N = {
     loadingPhoto: "Chargement de la photo…",
     sizeSmallLabel: "Petit",
     sizeMediumLabel: "Moyen",
-    sizeLargeLabel: "Grand"
+    sizeLargeLabel: "Grand",
+    statBirds: "oiseaux",
+    statLanguages: "langues",
+    statSpots: "lieux d'observation",
+    showingFiltered: "Affichage de {n} sur {total} oiseaux"
   },
 
   "es": {
@@ -291,7 +311,11 @@ window.I18N = {
     loadingPhoto: "Cargando foto…",
     sizeSmallLabel: "Pequeña",
     sizeMediumLabel: "Mediana",
-    sizeLargeLabel: "Grande"
+    sizeLargeLabel: "Grande",
+    statBirds: "aves",
+    statLanguages: "idiomas",
+    statSpots: "lugares",
+    showingFiltered: "Mostrando {n} de {total} aves"
   }
 };
 

@@ -164,20 +164,59 @@
     return `https://en.wikipedia.org/wiki/${encodeURIComponent(wikiSlug)}`;
   }
 
-  // ---------- Navigation ----------
-  function navigate(view, opts = {}) {
-    state.view = view;
-    if (opts.birdId) state.selectedBirdId = opts.birdId;
+  // ---------- Navigation (hash-based routing) ----------
+  // Routes:
+  //   #/             gallery (home)
+  //   #/bird/<id>    bird detail
+  //   #/quiz #/spots #/about
+
+  function parseHash() {
+    const h = window.location.hash || "";
+    const m = h.match(/^#\/(.*)$/);
+    if (!m) return { view: "gallery" };
+    const path = decodeURIComponent(m[1]);
+    if (!path || path === "gallery") return { view: "gallery" };
+    if (path.startsWith("bird/")) {
+      const id = path.slice(5);
+      if (BIRDS.find((b) => b.id === id)) return { view: "detail", birdId: id };
+      return { view: "gallery" };
+    }
+    if (["quiz", "spots", "about"].includes(path)) return { view: path };
+    return { view: "gallery" };
+  }
+
+  function pathForRoute(view, birdId) {
+    if (view === "detail" && birdId) return `#/bird/${encodeURIComponent(birdId)}`;
+    if (view === "gallery" || !view) return "#/";
+    return `#/${view}`;
+  }
+
+  function applyRoute() {
+    const route = parseHash();
+    state.view = route.view;
+    if (route.birdId) state.selectedBirdId = route.birdId;
 
     document.querySelectorAll("[data-view]").forEach((el) => {
-      el.hidden = el.dataset.view !== view;
+      el.hidden = el.dataset.view !== state.view;
     });
     document.querySelectorAll(".main-nav button").forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.nav === view);
+      btn.classList.toggle("active", btn.dataset.nav === state.view);
     });
-    window.scrollTo({ top: 0, behavior: "smooth" });
 
     rerenderCurrentView();
+  }
+
+  // Public navigate: sets the hash, which fires hashchange → applyRoute.
+  // If we're already on this route, just re-render (e.g. after a filter change).
+  function navigate(view, opts = {}) {
+    const newHash = pathForRoute(view, opts.birdId);
+    const currentHash = window.location.hash || "#/";
+    if (currentHash === newHash) {
+      if (opts.birdId) state.selectedBirdId = opts.birdId;
+      rerenderCurrentView();
+      return;
+    }
+    window.location.hash = newHash;
   }
 
   function rerenderCurrentView() {
@@ -209,6 +248,7 @@
   // ---------- Gallery ----------
   function renderGallery() {
     const grid = document.getElementById("gallery-grid");
+    const total = BIRDS.length;
     const filtered = BIRDS.filter((b) => {
       if (state.sizeFilter !== "all" && b.sizeCategory !== state.sizeFilter) return false;
       if (state.search) {
@@ -223,6 +263,25 @@
     document.querySelectorAll("#size-filter .chip").forEach((chip) => {
       chip.classList.toggle("active", chip.dataset.size === state.sizeFilter);
     });
+
+    // Stats and filter status
+    const statBirds = document.getElementById("stat-birds");
+    const statSpots = document.getElementById("stat-spots");
+    if (statBirds) statBirds.textContent = total;
+    if (statSpots) statSpots.textContent = SPOTS.length;
+    const status = document.getElementById("filter-status");
+    if (status) {
+      const isFiltered = state.sizeFilter !== "all" || state.search;
+      if (isFiltered && filtered.length !== total) {
+        status.textContent = t("showingFiltered")
+          .replace("{n}", filtered.length)
+          .replace("{total}", total);
+        status.hidden = false;
+      } else {
+        status.textContent = "";
+        status.hidden = true;
+      }
+    }
   }
 
   function renderBirdGrid(container, birds) {
@@ -499,8 +558,14 @@
         .map((id) => BIRDS.find((b) => b.id === id))
         .filter(Boolean);
 
+      const mapsQuery = encodeURIComponent(`${spot.name}, ${spot.region}, Ireland`);
+      const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
       card.innerHTML = `
-        <h3>${escapeHtml(spot.name)}</h3>
+        <h3>
+          <a class="spot-title-link" href="${mapsUrl}" target="_blank" rel="noopener" aria-label="${escapeHtml(spot.name)} — open in Google Maps">
+            ${escapeHtml(spot.name)} <span class="map-pin" aria-hidden="true">📍</span>
+          </a>
+        </h3>
         <div class="region">${escapeHtml(spot.region)}</div>
         <p>${escapeHtml(spot.description[state.lang] || spot.description.en)}</p>
         ${birdsForSpot.length ? `
@@ -550,6 +615,8 @@
   }
 
   // ---------- Init ----------
+  let hadInAppNavigation = false;
+
   function init() {
     const langSelect = document.getElementById("lang-select");
     langSelect.value = state.lang;
@@ -558,6 +625,13 @@
 
     document.querySelectorAll("[data-nav]").forEach((btn) => {
       btn.addEventListener("click", () => navigate(btn.dataset.nav));
+    });
+
+    document.querySelectorAll('[data-action="back"]').forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (hadInAppNavigation) window.history.back();
+        else navigate("gallery");
+      });
     });
 
     document.getElementById("size-filter").addEventListener("click", (e) => {
@@ -571,8 +645,14 @@
       renderGallery();
     });
 
+    window.addEventListener("hashchange", () => {
+      hadInAppNavigation = true;
+      applyRoute();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
     applyTranslations();
-    navigate("gallery");
+    applyRoute();
   }
 
   document.addEventListener("DOMContentLoaded", init);
