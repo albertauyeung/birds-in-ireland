@@ -11,6 +11,40 @@
   const STORAGE_LANG = "birdsIE.lang";
   const PHOTO_CACHE_KEY = "birdsIE.photoCache.v1";
   const LANGTITLE_CACHE_KEY = "birdsIE.langTitleCache.v1";
+  const RELATED_LIMIT = 6;
+
+  // Latin genus → "related birds" group key. Birds in the same group are
+  // shown as related on the detail page. Genera not in this map have no
+  // related-birds list.
+  const GENUS_GROUP = {
+    Fratercula: "auks", Alca: "auks", Uria: "auks", Cepphus: "auks",
+    Morus: "seabirds", Phalacrocorax: "seabirds", Puffinus: "seabirds",
+    Larus: "gulls", Chroicocephalus: "gulls", Ichthyaetus: "gulls", Rissa: "gulls",
+    Sterna: "terns", Thalasseus: "terns",
+    Cyanistes: "tits", Parus: "tits", Periparus: "tits", Aegithalos: "tits",
+    Turdus: "thrushes", Erithacus: "thrushes", Saxicola: "thrushes",
+    Oenanthe: "thrushes", Phoenicurus: "thrushes",
+    Pica: "crows", Corvus: "crows", Garrulus: "crows", Coloeus: "crows",
+    Pyrrhocorax: "crows",
+    Carduelis: "finches", Fringilla: "finches", Pyrrhula: "finches",
+    Chloris: "finches", Linaria: "finches", Loxia: "finches",
+    Emberiza: "buntings",
+    Phylloscopus: "warblers", Sylvia: "warblers", Acrocephalus: "warblers",
+    Regulus: "crests",
+    Motacilla: "wagtails",
+    Hirundo: "swallows", Delichon: "swallows", Riparia: "swallows",
+    Tyto: "owls", Asio: "owls",
+    Buteo: "raptors", Accipiter: "raptors", Falco: "raptors",
+    Haliaeetus: "raptors", Circus: "raptors", Milvus: "raptors",
+    Cygnus: "swans-geese", Branta: "swans-geese", Anser: "swans-geese",
+    Anas: "ducks", Aythya: "ducks", Mergus: "ducks",
+    Ardea: "herons", Egretta: "herons",
+    Columba: "pigeons", Streptopelia: "pigeons",
+    Numenius: "waders", Vanellus: "waders", Haematopus: "waders",
+    Tringa: "waders", Actitis: "waders", Gallinago: "waders",
+    Fulica: "rails", Rallus: "rails", Gallinula: "rails",
+    Podiceps: "grebes", Tachybaptus: "grebes"
+  };
 
   // ---------- State ----------
   const state = {
@@ -353,6 +387,18 @@
   }
 
   // ---------- Detail ----------
+  function birdGroup(bird) {
+    const genus = (bird.latin || "").split(" ")[0];
+    return GENUS_GROUP[genus] || null;
+  }
+
+  function relatedBirdsFor(bird) {
+    const group = birdGroup(bird);
+    if (!group) return [];
+    return BIRDS.filter((b) => b.id !== bird.id && birdGroup(b) === group)
+      .slice(0, RELATED_LIMIT);
+  }
+
   function renderDetail() {
     const bird = BIRDS.find((b) => b.id === state.selectedBirdId);
     const detailEl = document.getElementById("bird-detail");
@@ -404,7 +450,31 @@
           <a class="learn-more" href="${englishWikiUrl(bird.wiki)}" target="_blank" rel="noopener">${escapeHtml(state.lang === "en" ? t("learnMore") : t("learnMoreEnglish"))} →</a>
         </div>
       </div>
+      ${relatedBirdsFor(bird).length ? `
+        <div class="related-birds">
+          <div class="birds-here-label">${escapeHtml(t("relatedBirds"))}</div>
+          <div class="birds-thumbs"></div>
+        </div>
+      ` : ""}
     `;
+
+    const relatedThumbsEl = detailEl.querySelector(".related-birds .birds-thumbs");
+    if (relatedThumbsEl) {
+      relatedBirdsFor(bird).forEach((rb) => {
+        const thumb = document.createElement("button");
+        thumb.className = "bird-thumb";
+        thumb.setAttribute("aria-label", localName(rb));
+        const rPron = pronunciationFor(rb);
+        thumb.innerHTML = `
+          <div class="photo skeleton"><img alt="" loading="lazy"></div>
+          <span class="thumb-name">${escapeHtml(localName(rb))}</span>
+          ${rPron ? `<span class="thumb-pron">${escapeHtml(rPron)}</span>` : ""}
+        `;
+        thumb.addEventListener("click", () => navigate("detail", { birdId: rb.id }));
+        relatedThumbsEl.appendChild(thumb);
+        observePhoto(thumb.querySelector(".photo"), thumb.querySelector("img"), rb);
+      });
+    }
 
     // Photo
     fetchBirdPhoto(bird.wiki).then((p) => {
