@@ -2,6 +2,6 @@
  * Worker (see /worker/README.md). Leaving workerUrl empty hides the form.
  */
 window.FEEDBACK_CONFIG = {
-  workerUrl: "",        // e.g. "https://birds-feedback.your-name.workers.dev"
-  turnstileSiteKey: ""  // optional; e.g. "0x4AAAAAAA..."
+  workerUrl: "https://birds-feedback.albertauyeung.workers.dev",
+  turnstileSiteKey: "0x4AAAAAADIVWblluDGWDi9-"
 };
