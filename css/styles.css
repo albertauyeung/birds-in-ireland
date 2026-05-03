@@ -543,6 +543,54 @@ main {
 .sources li { margin: 0.3rem 0; }
 .small { font-size: 0.9rem; color: #6c7a91; margin-top: 1rem; }
 
+/* ---------- Feedback ---------- */
+.feedback-section {
+  margin-top: 1.5rem;
+  background: #fff;
+  border-radius: 22px;
+  padding: 1.4rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  border-top: 8px solid #4ec3a6;
+}
+.feedback-section h2 { margin: 0 0 0.4rem; color: #1d3a5f; }
+.feedback-section .lead { margin-top: 0; }
+.feedback-form { margin-top: 0.8rem; }
+.feedback-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #e6e1d4;
+  border-radius: 16px;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  color: #1d3a5f;
+  background: #fffbf2;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.15s;
+}
+.feedback-form textarea:focus {
+  outline: none;
+  border-color: #4ec3a6;
+  background: #fff;
+}
+.feedback-form .hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.feedback-form .cf-turnstile-mount { margin: 0.7rem 0; }
+.feedback-form button[type="submit"] { margin-top: 0.5rem; }
+.feedback-status {
+  margin: 0.7rem 0 0;
+  font-weight: 700;
+  min-height: 1.2em;
+}
+.feedback-status.ok { color: #2c8a5d; }
+.feedback-status.err { color: #c2492f; }
+
 /* ---------- Footer ---------- */
 .site-footer {
   text-align: center;

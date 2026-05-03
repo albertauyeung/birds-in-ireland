@@ -16,6 +16,13 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
+## Feedback form (optional)
+
+A Cloudflare Worker turns user feedback (submitted on the About page) into
+GitHub issues — no account needed for users. Setup is one-time:
+see [`worker/README.md`](worker/README.md). Once deployed, paste the Worker
+URL into `js/config.js` and the form appears automatically.
+
 ## Build per-bird pages
 
 `birds/<id>.html` files are generated for SEO (one crawlable page per bird,
