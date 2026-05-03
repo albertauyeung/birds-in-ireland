@@ -9,12 +9,25 @@ A fun, multilingual web app for kids aged 5–12 to discover the birds of Irelan
 
 ## Run locally
 
-It's a static site — no build step. Open `index.html` directly, or:
+It's a static site. Open `index.html` directly, or:
 
 ```sh
 python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
+
+## Build per-bird pages
+
+`birds/<id>.html` files are generated for SEO (one crawlable page per bird,
+with full meta tags, JSON-LD schema and prerendered content). They are
+committed to the repo so GitHub Pages can serve them directly. Regenerate
+after changing `js/birds.js`:
+
+```sh
+node scripts/build-pages.js
+```
+
+This also rewrites `sitemap.xml` to include every bird URL.
 
 ## How photos work
 
