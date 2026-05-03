@@ -737,6 +737,93 @@
     return a;
   }
 
+  // ---------- Feedback form ----------
+  function initFeedback() {
+    const section = document.getElementById("feedback-section");
+    const form = document.getElementById("feedback-form");
+    if (!section || !form) return;
+    const cfg = (window.FEEDBACK_CONFIG || {});
+    if (!cfg.workerUrl) return; // not configured → keep section hidden
+
+    section.hidden = false;
+
+    if (cfg.turnstileSiteKey) {
+      const mount = document.getElementById("feedback-turnstile");
+      if (mount && !mount.classList.contains("cf-turnstile")) {
+        mount.classList.add("cf-turnstile");
+        mount.setAttribute("data-sitekey", cfg.turnstileSiteKey);
+      }
+      if (!document.querySelector("script[data-turnstile-loader]")) {
+        const s = document.createElement("script");
+        s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+        s.async = true;
+        s.defer = true;
+        s.setAttribute("data-turnstile-loader", "1");
+        document.head.appendChild(s);
+      }
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const status = document.getElementById("feedback-status");
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const data = new FormData(form);
+      const text = String(data.get("feedback") || "").trim();
+      if (text.length < 5) {
+        if (status) {
+          status.textContent = t("feedbackTooShort");
+          status.className = "feedback-status err";
+        }
+        return;
+      }
+      const payload = {
+        feedback: text,
+        website: String(data.get("website") || ""),
+        lang: state.lang,
+        page: window.location.href.slice(0, 200),
+      };
+      if (cfg.turnstileSiteKey) {
+        payload.turnstileToken = String(data.get("cf-turnstile-response") || "");
+      }
+
+      submitBtn.disabled = true;
+      if (status) {
+        status.textContent = t("feedbackSending");
+        status.className = "feedback-status";
+      }
+
+      try {
+        const resp = await fetch(cfg.workerUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (resp.ok) {
+          if (status) {
+            status.textContent = t("feedbackThanks");
+            status.className = "feedback-status ok";
+          }
+          form.reset();
+          if (window.turnstile && cfg.turnstileSiteKey) {
+            try { window.turnstile.reset(); } catch (e) { /* ignore */ }
+          }
+        } else {
+          if (status) {
+            status.textContent = t("feedbackError");
+            status.className = "feedback-status err";
+          }
+        }
+      } catch (err) {
+        if (status) {
+          status.textContent = t("feedbackError");
+          status.className = "feedback-status err";
+        }
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
   // ---------- Init ----------
   let hadInAppNavigation = false;
 
@@ -766,6 +853,8 @@
         if (el.tagName !== "A") navigate("gallery");
       });
     });
+
+    initFeedback();
 
     const sizeFilter = document.getElementById("size-filter");
     if (sizeFilter) {

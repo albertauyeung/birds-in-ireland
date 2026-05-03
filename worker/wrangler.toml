@@ -1,0 +1,23 @@
+name = "birds-feedback"
+main = "feedback.js"
+compatibility_date = "2024-12-01"
+
+# Optional: per-IP rate limit (5 submissions / 60s).
+# Uncomment to enable; the namespace_id can be any unique number you pick.
+#
+# [[unsafe.bindings]]
+# name = "RATELIMIT"
+# type = "ratelimit"
+# namespace_id = "1001"
+# simple = { limit = 5, period = 60 }
+
+# Non-secret env vars (you may also set these via `wrangler deploy --var KEY=VAL`):
+[vars]
+GITHUB_OWNER = "albertauyeung"
+GITHUB_REPO = "birds-in-ireland-feedback"
+ISSUE_LABELS = "feedback"
+ALLOWED_ORIGINS = "https://albertauyeung.github.io,http://localhost:8000,http://localhost:8765"
+
+# Secrets (set via `wrangler secret put NAME`, do NOT commit):
+#   GITHUB_TOKEN     — fine-grained PAT, Issues: Write on the feedback repo
+#   TURNSTILE_SECRET — optional, Cloudflare Turnstile secret key

@@ -1,0 +1,9 @@
+# Wrangler / Cloudflare Workers local state
+worker/.wrangler/
+worker/node_modules/
+worker/.dev.vars
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

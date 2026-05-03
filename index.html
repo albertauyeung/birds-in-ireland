@@ -149,6 +149,19 @@
         </ul>
         <p class="small" data-i18n="aboutCredit">Made with love for curious young birdwatchers. 🐦</p>
       </div>
+
+      <section class="feedback-section" id="feedback-section" hidden>
+        <h2 data-i18n="feedbackTitle">Got feedback?</h2>
+        <p class="lead" data-i18n="feedbackLead">Spotted a mistake or want to suggest a bird? Send us a note — no account needed.</p>
+        <form id="feedback-form" class="feedback-form" novalidate>
+          <label class="visually-hidden" for="feedback-text" data-i18n="feedbackLabel">Your feedback</label>
+          <textarea id="feedback-text" name="feedback" required minlength="5" maxlength="5000" rows="5" data-i18n-attr="placeholder:feedbackPlaceholder" placeholder="Tell us what you found, what's missing, or what you'd love to see…"></textarea>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp-field" aria-hidden="true" />
+          <div class="cf-turnstile-mount" id="feedback-turnstile"></div>
+          <button type="submit" class="btn btn-primary" data-i18n="feedbackSubmit">Send feedback</button>
+          <p class="feedback-status" id="feedback-status" aria-live="polite"></p>
+        </form>
+      </section>
     </section>
   </main>
 
@@ -158,6 +171,7 @@
     </p>
   </footer>
 
+  <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/birds.js"></script>
   <script src="js/app.js"></script>
