@@ -18,20 +18,25 @@ GitHub issue per submission.
 ## One-time setup
 
 ```sh
-# Install wrangler if you don't have it
-npm install -g wrangler
+# From this directory: install wrangler as a local dev dependency.
+# This avoids global-install / PATH issues on Homebrew Node.
+cd worker
+npm install
 
-# Login to Cloudflare
-wrangler login
+# Login to Cloudflare (opens a browser)
+npx wrangler login
 
-# From this directory, push the secrets (paste each when prompted)
-wrangler secret put GITHUB_TOKEN
-wrangler secret put TURNSTILE_SECRET   # optional
+# Push the secrets (paste each when prompted)
+npx wrangler secret put GITHUB_TOKEN
+npx wrangler secret put TURNSTILE_SECRET   # optional
 
 # Edit wrangler.toml and update GITHUB_OWNER / GITHUB_REPO if needed,
 # then deploy:
-wrangler deploy
+npx wrangler deploy
 ```
+
+`npm run dev`, `npm run deploy` and `npm run tail` are wired up as
+shortcuts in `package.json`.
 
 `wrangler deploy` prints the Worker URL, e.g.
 `https://birds-feedback.your-subdomain.workers.dev`. Copy that into
@@ -73,8 +78,8 @@ In order, with increasing strength:
 ## Updating
 
 ```sh
-wrangler deploy   # redeploys the latest code
+npx wrangler deploy   # redeploys the latest code
 ```
 
-To rotate the GitHub token: `wrangler secret put GITHUB_TOKEN` and paste the
-new value.
+To rotate the GitHub token: `npx wrangler secret put GITHUB_TOKEN` and paste
+the new value.

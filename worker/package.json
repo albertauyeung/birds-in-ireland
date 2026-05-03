@@ -1,0 +1,14 @@
+{
+  "name": "birds-in-ireland-feedback-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker that turns feedback submissions into GitHub issues.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}
