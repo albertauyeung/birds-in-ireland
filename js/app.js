@@ -97,6 +97,17 @@
         if (attr && key) el.setAttribute(attr, t(key));
       });
     });
+    updateTitle();
+  }
+
+  function updateTitle() {
+    if (state.view === "detail" && state.selectedBirdId) {
+      const bird = BIRDS.find((b) => b.id === state.selectedBirdId);
+      if (bird) {
+        document.title = localName(bird) + " — " + t("appTitle");
+        return;
+      }
+    }
     document.title = t("appTitle") + " — " + t("galleryTitle");
   }
 
@@ -198,17 +209,32 @@
     return `https://en.wikipedia.org/wiki/${encodeURIComponent(wikiSlug)}`;
   }
 
-  // ---------- Navigation (hash-based routing) ----------
+  // ---------- Navigation ----------
   // Routes:
-  //   #/             gallery (home)
-  //   #/bird/<id>    bird detail
+  //   path /birds/<id>.html    bird detail (static crawlable page)
+  //   #/                       gallery (home)
+  //   #/bird/<id>              bird detail (legacy hash route, still supported)
   //   #/quiz #/spots #/about
 
-  function parseHash() {
+  function isStaticBirdPage() {
+    return /\/birds\/[^/]+\.html$/.test(window.location.pathname);
+  }
+
+  function birdHref(birdId) {
+    const enc = encodeURIComponent(birdId);
+    return isStaticBirdPage() ? enc + ".html" : "birds/" + enc + ".html";
+  }
+
+  function parseRoute() {
+    const m = window.location.pathname.match(/\/birds\/([^/]+)\.html$/);
+    if (m) {
+      const id = decodeURIComponent(m[1]);
+      if (BIRDS.find((b) => b.id === id)) return { view: "detail", birdId: id };
+    }
     const h = window.location.hash || "";
-    const m = h.match(/^#\/(.*)$/);
-    if (!m) return { view: "gallery" };
-    const path = decodeURIComponent(m[1]);
+    const hm = h.match(/^#\/(.*)$/);
+    if (!hm) return { view: "gallery" };
+    const path = decodeURIComponent(hm[1]);
     if (!path || path === "gallery") return { view: "gallery" };
     if (path.startsWith("bird/")) {
       const id = path.slice(5);
@@ -226,15 +252,15 @@
   }
 
   function applyRoute() {
-    const route = parseHash();
+    const route = parseRoute();
     state.view = route.view;
     if (route.birdId) state.selectedBirdId = route.birdId;
 
     document.querySelectorAll("[data-view]").forEach((el) => {
       el.hidden = el.dataset.view !== state.view;
     });
-    document.querySelectorAll(".main-nav button").forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.nav === state.view);
+    document.querySelectorAll(".main-nav [data-nav]").forEach((el) => {
+      el.classList.toggle("active", el.dataset.nav === state.view);
     });
 
     rerenderCurrentView();
@@ -242,7 +268,19 @@
 
   // Public navigate: sets the hash, which fires hashchange → applyRoute.
   // If we're already on this route, just re-render (e.g. after a filter change).
+  // On a static bird page, navigation always does a full page load so the
+  // URL bar / canonical / OG tags reflect the current bird.
   function navigate(view, opts = {}) {
+    if (isStaticBirdPage()) {
+      if (view === "detail" && opts.birdId) {
+        window.location.href = birdHref(opts.birdId);
+      } else if (view === "gallery") {
+        window.location.href = "../";
+      } else {
+        window.location.href = "../#/" + view;
+      }
+      return;
+    }
     const newHash = pathForRoute(view, opts.birdId);
     const currentHash = window.location.hash || "#/";
     if (currentHash === newHash) {
@@ -324,8 +362,9 @@
       const name = localName(bird);
       const pron = pronunciationFor(bird);
       const showEnglish = state.lang !== "en";
-      const card = document.createElement("button");
+      const card = document.createElement("a");
       card.className = "bird-card";
+      card.href = birdHref(bird.id);
       card.setAttribute("aria-label", name);
       card.innerHTML = `
         <div class="photo skeleton"><img alt="" loading="lazy"></div>
@@ -334,7 +373,11 @@
         ${showEnglish ? `<p class="english-name">${escapeHtml(bird.names.en)}</p>` : ""}
         <p class="latin">${escapeHtml(bird.latin)}</p>
       `;
-      card.addEventListener("click", () => navigate("detail", { birdId: bird.id }));
+      card.addEventListener("click", (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        navigate("detail", { birdId: bird.id });
+      });
       container.appendChild(card);
 
       observePhoto(card.querySelector(".photo"), card.querySelector("img"), bird);
@@ -461,8 +504,9 @@
     const relatedThumbsEl = detailEl.querySelector(".related-birds .birds-thumbs");
     if (relatedThumbsEl) {
       relatedBirdsFor(bird).forEach((rb) => {
-        const thumb = document.createElement("button");
+        const thumb = document.createElement("a");
         thumb.className = "bird-thumb";
+        thumb.href = birdHref(rb.id);
         thumb.setAttribute("aria-label", localName(rb));
         const rPron = pronunciationFor(rb);
         thumb.innerHTML = `
@@ -470,7 +514,11 @@
           <span class="thumb-name">${escapeHtml(localName(rb))}</span>
           ${rPron ? `<span class="thumb-pron">${escapeHtml(rPron)}</span>` : ""}
         `;
-        thumb.addEventListener("click", () => navigate("detail", { birdId: rb.id }));
+        thumb.addEventListener("click", (e) => {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+          e.preventDefault();
+          navigate("detail", { birdId: rb.id });
+        });
         relatedThumbsEl.appendChild(thumb);
         observePhoto(thumb.querySelector(".photo"), thumb.querySelector("img"), rb);
       });
@@ -648,8 +696,9 @@
       const thumbsEl = card.querySelector(".birds-thumbs");
       if (!thumbsEl) return;
       birdsForSpot.forEach((bird) => {
-        const thumb = document.createElement("button");
+        const thumb = document.createElement("a");
         thumb.className = "bird-thumb";
+        thumb.href = birdHref(bird.id);
         thumb.setAttribute("aria-label", localName(bird));
         const pron = pronunciationFor(bird);
         thumb.innerHTML = `
@@ -657,7 +706,11 @@
           <span class="thumb-name">${escapeHtml(localName(bird))}</span>
           ${pron ? `<span class="thumb-pron">${escapeHtml(pron)}</span>` : ""}
         `;
-        thumb.addEventListener("click", () => navigate("detail", { birdId: bird.id }));
+        thumb.addEventListener("click", (e) => {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+          e.preventDefault();
+          navigate("detail", { birdId: bird.id });
+        });
         thumbsEl.appendChild(thumb);
         observePhoto(thumb.querySelector(".photo"), thumb.querySelector("img"), bird);
       });
@@ -689,31 +742,47 @@
 
   function init() {
     const langSelect = document.getElementById("lang-select");
-    langSelect.value = state.lang;
-    langSelect.addEventListener("change", (e) => setLang(e.target.value));
+    if (langSelect) {
+      langSelect.value = state.lang;
+      langSelect.addEventListener("change", (e) => setLang(e.target.value));
+    }
     document.documentElement.lang = state.lang === "yue" ? "zh-HK" : state.lang;
 
-    document.querySelectorAll("[data-nav]").forEach((btn) => {
-      btn.addEventListener("click", () => navigate(btn.dataset.nav));
+    // Buttons trigger SPA hash routing; anchors with href navigate naturally
+    // (used on static bird pages so the URL bar reflects the current bird).
+    document.querySelectorAll("[data-nav]").forEach((el) => {
+      if (el.tagName === "A") return;
+      el.addEventListener("click", () => navigate(el.dataset.nav));
     });
 
-    document.querySelectorAll('[data-action="back"]').forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (hadInAppNavigation) window.history.back();
-        else navigate("gallery");
+    document.querySelectorAll('[data-action="back"]').forEach((el) => {
+      el.addEventListener("click", (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        if (hadInAppNavigation) {
+          e.preventDefault();
+          window.history.back();
+          return;
+        }
+        if (el.tagName !== "A") navigate("gallery");
       });
     });
 
-    document.getElementById("size-filter").addEventListener("click", (e) => {
-      const chip = e.target.closest(".chip");
-      if (!chip) return;
-      state.sizeFilter = chip.dataset.size;
-      renderGallery();
-    });
-    document.getElementById("bird-search").addEventListener("input", (e) => {
-      state.search = e.target.value.trim();
-      renderGallery();
-    });
+    const sizeFilter = document.getElementById("size-filter");
+    if (sizeFilter) {
+      sizeFilter.addEventListener("click", (e) => {
+        const chip = e.target.closest(".chip");
+        if (!chip) return;
+        state.sizeFilter = chip.dataset.size;
+        renderGallery();
+      });
+    }
+    const searchEl = document.getElementById("bird-search");
+    if (searchEl) {
+      searchEl.addEventListener("input", (e) => {
+        state.search = e.target.value.trim();
+        renderGallery();
+      });
+    }
 
     window.addEventListener("hashchange", () => {
       hadInAppNavigation = true;
@@ -721,8 +790,8 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    applyTranslations();
     applyRoute();
+    applyTranslations();
   }
 
   document.addEventListener("DOMContentLoaded", init);
