@@ -150,16 +150,25 @@ function hreflangBlock(canonical) {
     .join("\n");
 }
 
-function commonHeadAssets({ stylesheetHref, manifestHref, iconHref }) {
+function commonHeadAssets({ stylesheetHref, manifestHref, iconHref, jsPrefix }) {
+  // Scripts are <head>-deferred so they download in parallel with CSS
+  // without blocking parsing, then execute in document order after the
+  // DOM is ready. config/i18n/birds set window globals; app.js wires up.
   return `  <link rel="stylesheet" href="${escapeAttr(stylesheetHref)}" />
   <link rel="preconnect" href="https://en.wikipedia.org" crossorigin />
   <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin />
   <link rel="dns-prefetch" href="https://en.wikipedia.org" />
   <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
+  <link rel="dns-prefetch" href="https://cloud.umami.is" />
   <link rel="manifest" href="${escapeAttr(manifestHref)}" />
   <link rel="icon" href="${escapeAttr(iconHref)}" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="${escapeAttr(iconHref)}" />
-  <link rel="sitemap" type="application/xml" href="${SITE_URL}sitemap.xml" />`;
+  <link rel="sitemap" type="application/xml" href="${SITE_URL}sitemap.xml" />
+
+  <script defer src="${escapeAttr(jsPrefix)}js/config.js"></script>
+  <script defer src="${escapeAttr(jsPrefix)}js/i18n.js"></script>
+  <script defer src="${escapeAttr(jsPrefix)}js/birds.js"></script>
+  <script defer src="${escapeAttr(jsPrefix)}js/app.js"></script>`;
 }
 
 function commonHeader() {
@@ -357,12 +366,11 @@ ${ogLocaleBlock("en")}
 ${commonHeadAssets({
   stylesheetHref: "../css/styles.css",
   manifestHref: "../manifest.webmanifest",
-  iconHref: "../icon.svg"
+  iconHref: "../icon.svg",
+  jsPrefix: "../"
 })}
 
-  <script type="application/ld+json">
-${JSON.stringify({ "@context": "https://schema.org", "@graph": jsonLdGraph }, null, 2)}
-  </script>
+  <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": jsonLdGraph })}</script>
 
 ${ANALYTICS}
 </head>
@@ -408,7 +416,7 @@ ${ANALYTICS}
       </a>
       <article id="bird-detail" class="bird-detail">
         <div>
-          <div class="photo skeleton"><img alt="${escapeAttr(name + " (" + bird.latin + ") — bird species found in Ireland")}" loading="lazy" /></div>
+          <div class="photo skeleton"><img alt="${escapeAttr(name + " (" + bird.latin + ") — bird species found in Ireland")}" decoding="async" fetchpriority="high" /></div>
           <p class="photo-credit">Photo by <a href="https://en.wikipedia.org/wiki/${escapeAttr(bird.wiki)}" target="_blank" rel="noopener" class="src-link">Wikipedia</a> · sourced from Wikimedia Commons</p>
         </div>
         <div>
@@ -443,10 +451,6 @@ ${spotsBlock}
   </main>
 
 ${commonFooter()}
-
-  <script src="../js/i18n.js"></script>
-  <script src="../js/birds.js"></script>
-  <script src="../js/app.js"></script>
 </body>
 </html>
 `;
@@ -511,12 +515,11 @@ ${hreflangBlock(canonical)}
 ${commonHeadAssets({
   stylesheetHref: "css/styles.css",
   manifestHref: "manifest.webmanifest",
-  iconHref: "icon.svg"
+  iconHref: "icon.svg",
+  jsPrefix: ""
 })}
 
-  <script type="application/ld+json">
-${JSON.stringify(jsonLd, null, 2)}
-  </script>
+  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 ${ANALYTICS}
 </head>
 <body>
@@ -563,9 +566,6 @@ ${commonHeader()}
   </main>
 
 ${commonFooter()}
-
-  <script src="js/config.js"></script>
-  <script src="js/i18n.js"></script>
 </body>
 </html>
 `;
@@ -667,12 +667,11 @@ ${hreflangBlock(canonical)}
 ${commonHeadAssets({
   stylesheetHref: "css/styles.css",
   manifestHref: "manifest.webmanifest",
-  iconHref: "icon.svg"
+  iconHref: "icon.svg",
+  jsPrefix: ""
 })}
 
-  <script type="application/ld+json">
-${JSON.stringify(jsonLd, null, 2)}
-  </script>
+  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 ${ANALYTICS}
 </head>
 <body>
@@ -697,9 +696,6 @@ ${spotsHtml}
   </main>
 
 ${commonFooter()}
-
-  <script src="js/config.js"></script>
-  <script src="js/i18n.js"></script>
 </body>
 </html>
 `;
@@ -721,7 +717,8 @@ function render404Page() {
 ${commonHeadAssets({
   stylesheetHref: "css/styles.css",
   manifestHref: "manifest.webmanifest",
-  iconHref: "icon.svg"
+  iconHref: "icon.svg",
+  jsPrefix: ""
 })}
 ${ANALYTICS}
 </head>
