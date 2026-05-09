@@ -3,15 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ff7a59" />
+  <meta name="color-scheme" content="light" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Birds in Ireland" />
+  <meta name="application-name" content="Birds in Ireland" />
 
   <!-- Primary SEO -->
-  <title>Birds in Ireland — A Multilingual Bird Guide for Kids</title>
-  <meta name="description" content="Discover 100 birds you can spot in Ireland — puffins, robins, kingfishers, eagles and more. Kid-friendly descriptions, photos, pronunciation guides and where-to-spot maps in 6 languages: English, 華文, 粵語, Français and Español." />
-  <meta name="keywords" content="birds of Ireland, Irish birds, bird identification, kids bird guide, multilingual bird app, puffin, robin, kingfisher, BirdWatch Ireland, bird photography, kids learning, ornithology for children" />
+  <title>Birds in Ireland: 100 Birds Multilingual Kids Guide</title>
+  <meta name="description" content="Spot 100 birds of Ireland — puffins, robins, kingfishers, eagles, swans and more. Kid-friendly photos, pronunciation guides and birdwatching hotspots in 6 languages." />
+  <meta name="keywords" content="birds of Ireland, Irish birds, bird identification, kids bird guide, multilingual bird app, bird watching Ireland, BirdWatch Ireland, puffin, robin, kingfisher, kids learning, ornithology for children, Ireland nature, RSPB, Irish wildlife" />
   <meta name="author" content="Birds in Ireland" />
-  <meta name="robots" content="index, follow" />
+  <meta name="publisher" content="Birds in Ireland" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="rating" content="general" />
+  <meta name="distribution" content="global" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <link rel="canonical" href="https://albertauyeung.github.io/birds-in-ireland/" />
   <link rel="alternate" hreflang="en" href="https://albertauyeung.github.io/birds-in-ireland/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://albertauyeung.github.io/birds-in-ireland/" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://albertauyeung.github.io/birds-in-ireland/" />
+  <link rel="alternate" hreflang="yue" href="https://albertauyeung.github.io/birds-in-ireland/" />
+  <link rel="alternate" hreflang="fr" href="https://albertauyeung.github.io/birds-in-ireland/" />
+  <link rel="alternate" hreflang="es" href="https://albertauyeung.github.io/birds-in-ireland/" />
   <link rel="alternate" hreflang="x-default" href="https://albertauyeung.github.io/birds-in-ireland/" />
 
   <!-- Open Graph / Facebook -->
@@ -20,7 +36,13 @@
   <meta property="og:title" content="Birds in Ireland — A Multilingual Bird Guide for Kids" />
   <meta property="og:description" content="Discover 100 birds of Ireland with photos, fun facts and pronunciation guides — in English, 華文, 粵語, Français and Español." />
   <meta property="og:site_name" content="Birds in Ireland" />
+  <meta property="og:image" content="https://albertauyeung.github.io/birds-in-ireland/og-image.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Birds in Ireland — a colourful kids' guide to 100 Irish birds in 6 languages" />
   <meta property="og:locale" content="en_IE" />
+  <meta property="og:locale:alternate" content="en_GB" />
   <meta property="og:locale:alternate" content="zh_TW" />
   <meta property="og:locale:alternate" content="zh_CN" />
   <meta property="og:locale:alternate" content="yue_HK" />
@@ -31,30 +53,72 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Birds in Ireland — A Multilingual Bird Guide for Kids" />
   <meta name="twitter:description" content="Discover 100 birds of Ireland with photos, fun facts and pronunciation guides — in 6 languages." />
+  <meta name="twitter:image" content="https://albertauyeung.github.io/birds-in-ireland/og-image.svg" />
+  <meta name="twitter:image:alt" content="Birds in Ireland — a colourful kids' guide to 100 Irish birds in 6 languages" />
 
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="preconnect" href="https://en.wikipedia.org" />
-  <link rel="preconnect" href="https://upload.wikimedia.org" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐦%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://en.wikipedia.org" crossorigin />
+  <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin />
+  <link rel="dns-prefetch" href="https://en.wikipedia.org" />
+  <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="sitemap" type="application/xml" href="sitemap.xml" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Birds in Ireland",
-    "url": "https://albertauyeung.github.io/birds-in-ireland/",
-    "description": "A multilingual web app for kids aged 5–12 to discover 100 birds you can find in Ireland, with kid-friendly descriptions, photos, pronunciation guides and birdwatching hotspots.",
-    "inLanguage": ["en", "zh-Hant", "zh-Hans", "yue", "fr", "es"],
-    "audience": {
-      "@type": "EducationalAudience",
-      "educationalRole": "student",
-      "audienceType": "children aged 5–12"
-    },
-    "about": [
-      {"@type": "Thing", "name": "Birds of Ireland"},
-      {"@type": "Thing", "name": "Birdwatching"},
-      {"@type": "Thing", "name": "Children's education"}
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://albertauyeung.github.io/birds-in-ireland/#website",
+        "name": "Birds in Ireland",
+        "alternateName": ["Irish Birds Kids Guide", "Aves de Irlanda", "愛爾蘭的鳥兒"],
+        "url": "https://albertauyeung.github.io/birds-in-ireland/",
+        "description": "A multilingual web app for kids aged 5–12 to discover 100 birds you can find in Ireland, with kid-friendly descriptions, photos, pronunciation guides and birdwatching hotspots.",
+        "inLanguage": ["en", "zh-Hant", "zh-Hans", "yue", "fr", "es"],
+        "audience": {
+          "@type": "EducationalAudience",
+          "educationalRole": "student",
+          "audienceType": "children aged 5-12"
+        },
+        "isFamilyFriendly": true,
+        "keywords": "birds of Ireland, Irish birds, kids bird guide, birdwatching, multilingual",
+        "about": [
+          {"@type": "Thing", "name": "Birds of Ireland"},
+          {"@type": "Thing", "name": "Birdwatching"},
+          {"@type": "Thing", "name": "Children's nature education"}
+        ],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://albertauyeung.github.io/birds-in-ireland/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        },
+        "publisher": {"@id": "https://albertauyeung.github.io/birds-in-ireland/#publisher"}
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://albertauyeung.github.io/birds-in-ireland/#publisher",
+        "name": "Birds in Ireland",
+        "url": "https://albertauyeung.github.io/birds-in-ireland/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://albertauyeung.github.io/birds-in-ireland/icon.svg",
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Birds in Ireland", "item": "https://albertauyeung.github.io/birds-in-ireland/"}
+        ]
+      }
     ]
   }
   </script>
@@ -63,6 +127,8 @@
   <script defer src="https://cloud.umami.is/script.js" data-website-id="0c30afdf-7301-47b0-8a70-24b0a10719ca"></script>
 </head>
 <body>
+  <a class="visually-hidden" href="#app">Skip to content</a>
+
   <header class="site-header">
     <button class="brand" data-nav="gallery" aria-label="Home">
       <span class="brand-emoji" aria-hidden="true">🐦</span>
@@ -90,7 +156,8 @@
   <main id="app">
     <!-- GALLERY (landing page) -->
     <section class="view view-gallery" data-view="gallery">
-      <h1 class="section-title" data-i18n="galleryTitle">Meet the birds</h1>
+      <h1 class="section-title" data-i18n="galleryTitle">Meet the birds of Ireland</h1>
+      <p class="lead intro-lead" data-i18n="introLead">A friendly guide to 100 birds you can spot around Ireland — from puffins on the cliffs of Kerry to robins in your garden. Kid-friendly photos, fun facts and pronunciation guides in 6 languages.</p>
       <div class="stats-bar">
         <div class="stat"><span class="stat-num" id="stat-birds">0</span><span class="stat-label" data-i18n="statBirds">birds</span></div>
         <div class="stat"><span class="stat-num" id="stat-langs">6</span><span class="stat-label" data-i18n="statLanguages">languages</span></div>
@@ -139,10 +206,10 @@
         <p data-i18n="aboutP2">All photos shown are loaded from Wikimedia Commons, where photographers and volunteers share pictures with open licences. We always link back to the original page so you can see who took the photo.</p>
         <h2 data-i18n="aboutSourcesTitle">Where the data comes from</h2>
         <ul class="sources">
-          <li><a href="https://birdwatchireland.ie/" target="_blank" rel="noopener">BirdWatch Ireland</a> — bird identification & conservation</li>
+          <li><a href="https://birdwatchireland.ie/" target="_blank" rel="noopener">BirdWatch Ireland</a> — bird identification &amp; conservation</li>
           <li><a href="https://ebird.org/region/IE" target="_blank" rel="noopener">eBird (Cornell Lab)</a> — sightings database</li>
           <li><a href="https://records.biodiversityireland.ie/" target="_blank" rel="noopener">National Biodiversity Data Centre</a> — citizen science records</li>
-          <li><a href="https://www.macaulaylibrary.org/" target="_blank" rel="noopener">Macaulay Library</a> — bird photos & sounds</li>
+          <li><a href="https://www.macaulaylibrary.org/" target="_blank" rel="noopener">Macaulay Library</a> — bird photos &amp; sounds</li>
           <li><a href="https://www.bto.org/our-science/data/what-data-are-available" target="_blank" rel="noopener">BTO Bird Atlas</a> — distribution data</li>
           <li><a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> — photos used in this app</li>
           <li><a href="https://en.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a> — &ldquo;Learn more&rdquo; links</li>
@@ -163,11 +230,131 @@
         </form>
       </section>
     </section>
+
+    <!-- Crawler-friendly fallback content. Visible only when JS is disabled,
+         but the links inside are followed by all crawlers regardless. The
+         bird list is regenerated by scripts/build-pages.js. -->
+    <noscript>
+      <section class="noscript-fallback">
+        <h2>Browse all 100 birds of Ireland</h2>
+        <p>This app uses JavaScript to show photos and live data, but every bird also has its own page you can visit directly:</p>
+        <ul id="noscript-bird-list">
+<!-- BUILD:BIRD_LIST_START -->
+          <li><a href="birds/arctictern.html"><strong>Arctic Tern</strong> <em>(Sterna paradisaea)</em></a></li>
+          <li><a href="birds/puffin.html"><strong>Atlantic Puffin</strong> <em>(Fratercula arctica)</em></a></li>
+          <li><a href="birds/barnowl.html"><strong>Barn Owl</strong> <em>(Tyto alba)</em></a></li>
+          <li><a href="birds/swallow.html"><strong>Barn Swallow</strong> <em>(Hirundo rustica)</em></a></li>
+          <li><a href="birds/blackguillemot.html"><strong>Black Guillemot</strong> <em>(Cepphus grylle)</em></a></li>
+          <li><a href="birds/blackheadedgull.html"><strong>Black-headed Gull</strong> <em>(Chroicocephalus ridibundus)</em></a></li>
+          <li><a href="birds/kittiwake.html"><strong>Black-legged Kittiwake</strong> <em>(Rissa tridactyla)</em></a></li>
+          <li><a href="birds/bluetit.html"><strong>Blue Tit</strong> <em>(Cyanistes caeruleus)</em></a></li>
+          <li><a href="birds/brentgoose.html"><strong>Brent Goose</strong> <em>(Branta bernicla)</em></a></li>
+          <li><a href="birds/coaltit.html"><strong>Coal Tit</strong> <em>(Periparus ater)</em></a></li>
+          <li><a href="birds/blackbird.html"><strong>Common Blackbird</strong> <em>(Turdus merula)</em></a></li>
+          <li><a href="birds/buzzard.html"><strong>Common Buzzard</strong> <em>(Buteo buteo)</em></a></li>
+          <li><a href="birds/chaffinch.html"><strong>Common Chaffinch</strong> <em>(Fringilla coelebs)</em></a></li>
+          <li><a href="birds/chiffchaff.html"><strong>Common Chiffchaff</strong> <em>(Phylloscopus collybita)</em></a></li>
+          <li><a href="birds/crossbill.html"><strong>Common Crossbill</strong> <em>(Loxia curvirostra)</em></a></li>
+          <li><a href="birds/cuckoo.html"><strong>Common Cuckoo</strong> <em>(Cuculus canorus)</em></a></li>
+          <li><a href="birds/firecrest.html"><strong>Common Firecrest</strong> <em>(Regulus ignicapilla)</em></a></li>
+          <li><a href="birds/greenshank.html"><strong>Common Greenshank</strong> <em>(Tringa nebularia)</em></a></li>
+          <li><a href="birds/guillemot.html"><strong>Common Guillemot</strong> <em>(Uria aalge)</em></a></li>
+          <li><a href="birds/housemartin.html"><strong>Common House Martin</strong> <em>(Delichon urbicum)</em></a></li>
+          <li><a href="birds/kestrel.html"><strong>Common Kestrel</strong> <em>(Falco tinnunculus)</em></a></li>
+          <li><a href="birds/kingfisher.html"><strong>Common Kingfisher</strong> <em>(Alcedo atthis)</em></a></li>
+          <li><a href="birds/linnet.html"><strong>Common Linnet</strong> <em>(Linaria cannabina)</em></a></li>
+          <li><a href="birds/moorhen.html"><strong>Common Moorhen</strong> <em>(Gallinula chloropus)</em></a></li>
+          <li><a href="birds/pheasant.html"><strong>Common Pheasant</strong> <em>(Phasianus colchicus)</em></a></li>
+          <li><a href="birds/raven.html"><strong>Common Raven</strong> <em>(Corvus corax)</em></a></li>
+          <li><a href="birds/redshank.html"><strong>Common Redshank</strong> <em>(Tringa totanus)</em></a></li>
+          <li><a href="birds/redstart.html"><strong>Common Redstart</strong> <em>(Phoenicurus phoenicurus)</em></a></li>
+          <li><a href="birds/sandpiper.html"><strong>Common Sandpiper</strong> <em>(Actitis hypoleucos)</em></a></li>
+          <li><a href="birds/snipe.html"><strong>Common Snipe</strong> <em>(Gallinago gallinago)</em></a></li>
+          <li><a href="birds/starling.html"><strong>Common Starling</strong> <em>(Sturnus vulgaris)</em></a></li>
+          <li><a href="birds/swift.html"><strong>Common Swift</strong> <em>(Apus apus)</em></a></li>
+          <li><a href="birds/commontern.html"><strong>Common Tern</strong> <em>(Sterna hirundo)</em></a></li>
+          <li><a href="birds/woodpigeon.html"><strong>Common Wood Pigeon</strong> <em>(Columba palumbus)</em></a></li>
+          <li><a href="birds/dunnock.html"><strong>Dunnock</strong> <em>(Prunella modularis)</em></a></li>
+          <li><a href="birds/blackcap.html"><strong>Eurasian Blackcap</strong> <em>(Sylvia atricapilla)</em></a></li>
+          <li><a href="birds/bullfinch.html"><strong>Eurasian Bullfinch</strong> <em>(Pyrrhula pyrrhula)</em></a></li>
+          <li><a href="birds/collareddove.html"><strong>Eurasian Collared Dove</strong> <em>(Streptopelia decaocto)</em></a></li>
+          <li><a href="birds/coot.html"><strong>Eurasian Coot</strong> <em>(Fulica atra)</em></a></li>
+          <li><a href="birds/curlew.html"><strong>Eurasian Curlew</strong> <em>(Numenius arquata)</em></a></li>
+          <li><a href="birds/jay.html"><strong>Eurasian Jay</strong> <em>(Garrulus glandarius)</em></a></li>
+          <li><a href="birds/magpie.html"><strong>Eurasian Magpie</strong> <em>(Pica pica)</em></a></li>
+          <li><a href="birds/oystercatcher.html"><strong>Eurasian Oystercatcher</strong> <em>(Haematopus ostralegus)</em></a></li>
+          <li><a href="birds/reedwarbler.html"><strong>Eurasian Reed Warbler</strong> <em>(Acrocephalus scirpaceus)</em></a></li>
+          <li><a href="birds/skylark.html"><strong>Eurasian Skylark</strong> <em>(Alauda arvensis)</em></a></li>
+          <li><a href="birds/sparrowhawk.html"><strong>Eurasian Sparrowhawk</strong> <em>(Accipiter nisus)</em></a></li>
+          <li><a href="birds/treecreeper.html"><strong>Eurasian Treecreeper</strong> <em>(Certhia familiaris)</em></a></li>
+          <li><a href="birds/wren.html"><strong>Eurasian Wren</strong> <em>(Troglodytes troglodytes)</em></a></li>
+          <li><a href="birds/goldfinch.html"><strong>European Goldfinch</strong> <em>(Carduelis carduelis)</em></a></li>
+          <li><a href="birds/greenfinch.html"><strong>European Greenfinch</strong> <em>(Chloris chloris)</em></a></li>
+          <li><a href="birds/herringgull.html"><strong>European Herring Gull</strong> <em>(Larus argentatus)</em></a></li>
+          <li><a href="birds/robin.html"><strong>European Robin</strong> <em>(Erithacus rubecula)</em></a></li>
+          <li><a href="birds/stonechat.html"><strong>European Stonechat</strong> <em>(Saxicola rubicola)</em></a></li>
+          <li><a href="birds/goldcrest.html"><strong>Goldcrest</strong> <em>(Regulus regulus)</em></a></li>
+          <li><a href="birds/goosander.html"><strong>Goosander</strong> <em>(Mergus merganser)</em></a></li>
+          <li><a href="birds/gbbgull.html"><strong>Great Black-backed Gull</strong> <em>(Larus marinus)</em></a></li>
+          <li><a href="birds/cormorant.html"><strong>Great Cormorant</strong> <em>(Phalacrocorax carbo)</em></a></li>
+          <li><a href="birds/gcgrebe.html"><strong>Great Crested Grebe</strong> <em>(Podiceps cristatus)</em></a></li>
+          <li><a href="birds/greattit.html"><strong>Great Tit</strong> <em>(Parus major)</em></a></li>
+          <li><a href="birds/heron.html"><strong>Grey Heron</strong> <em>(Ardea cinerea)</em></a></li>
+          <li><a href="birds/greywagtail.html"><strong>Grey Wagtail</strong> <em>(Motacilla cinerea)</em></a></li>
+          <li><a href="birds/greylag.html"><strong>Greylag Goose</strong> <em>(Anser anser)</em></a></li>
+          <li><a href="birds/henharrier.html"><strong>Hen Harrier</strong> <em>(Circus cyaneus)</em></a></li>
+          <li><a href="birds/hoodedcrow.html"><strong>Hooded Crow</strong> <em>(Corvus cornix)</em></a></li>
+          <li><a href="birds/sparrow.html"><strong>House Sparrow</strong> <em>(Passer domesticus)</em></a></li>
+          <li><a href="birds/lbbgull.html"><strong>Lesser Black-backed Gull</strong> <em>(Larus fuscus)</em></a></li>
+          <li><a href="birds/littleegret.html"><strong>Little Egret</strong> <em>(Egretta garzetta)</em></a></li>
+          <li><a href="birds/littlegrebe.html"><strong>Little Grebe</strong> <em>(Tachybaptus ruficollis)</em></a></li>
+          <li><a href="birds/longearedowl.html"><strong>Long-eared Owl</strong> <em>(Asio otus)</em></a></li>
+          <li><a href="birds/longtailedtit.html"><strong>Long-tailed Tit</strong> <em>(Aegithalos caudatus)</em></a></li>
+          <li><a href="birds/mallard.html"><strong>Mallard</strong> <em>(Anas platyrhynchos)</em></a></li>
+          <li><a href="birds/manxshearwater.html"><strong>Manx Shearwater</strong> <em>(Puffinus puffinus)</em></a></li>
+          <li><a href="birds/medgull.html"><strong>Mediterranean Gull</strong> <em>(Ichthyaetus melanocephalus)</em></a></li>
+          <li><a href="birds/mistlethrush.html"><strong>Mistle Thrush</strong> <em>(Turdus viscivorus)</em></a></li>
+          <li><a href="birds/muteswan.html"><strong>Mute Swan</strong> <em>(Cygnus olor)</em></a></li>
+          <li><a href="birds/gannet.html"><strong>Northern Gannet</strong> <em>(Morus bassanus)</em></a></li>
+          <li><a href="birds/lapwing.html"><strong>Northern Lapwing</strong> <em>(Vanellus vanellus)</em></a></li>
+          <li><a href="birds/wheatear.html"><strong>Northern Wheatear</strong> <em>(Oenanthe oenanthe)</em></a></li>
+          <li><a href="birds/peregrine.html"><strong>Peregrine Falcon</strong> <em>(Falco peregrinus)</em></a></li>
+          <li><a href="birds/piedwagtail.html"><strong>Pied Wagtail</strong> <em>(Motacilla alba yarrellii)</em></a></li>
+          <li><a href="birds/razorbill.html"><strong>Razorbill</strong> <em>(Alca torda)</em></a></li>
+          <li><a href="birds/redkite.html"><strong>Red Kite</strong> <em>(Milvus milvus)</em></a></li>
+          <li><a href="birds/chough.html"><strong>Red-billed Chough</strong> <em>(Pyrrhocorax pyrrhocorax)</em></a></li>
+          <li><a href="birds/redthroateddiver.html"><strong>Red-throated Diver</strong> <em>(Gavia stellata)</em></a></li>
+          <li><a href="birds/reedbunting.html"><strong>Reed Bunting</strong> <em>(Emberiza schoeniclus)</em></a></li>
+          <li><a href="birds/sandmartin.html"><strong>Sand Martin</strong> <em>(Riparia riparia)</em></a></li>
+          <li><a href="birds/sandwichtern.html"><strong>Sandwich Tern</strong> <em>(Thalasseus sandvicensis)</em></a></li>
+          <li><a href="birds/sedgewarbler.html"><strong>Sedge Warbler</strong> <em>(Acrocephalus schoenobaenus)</em></a></li>
+          <li><a href="birds/songthrush.html"><strong>Song Thrush</strong> <em>(Turdus philomelos)</em></a></li>
+          <li><a href="birds/spottedflycatcher.html"><strong>Spotted Flycatcher</strong> <em>(Muscicapa striata)</em></a></li>
+          <li><a href="birds/stockdove.html"><strong>Stock Dove</strong> <em>(Columba oenas)</em></a></li>
+          <li><a href="birds/tuftedduck.html"><strong>Tufted Duck</strong> <em>(Aythya fuligula)</em></a></li>
+          <li><a href="birds/twite.html"><strong>Twite</strong> <em>(Linaria flavirostris)</em></a></li>
+          <li><a href="birds/waterrail.html"><strong>Water Rail</strong> <em>(Rallus aquaticus)</em></a></li>
+          <li><a href="birds/jackdaw.html"><strong>Western Jackdaw</strong> <em>(Coloeus monedula)</em></a></li>
+          <li><a href="birds/yellowwagtail.html"><strong>Western Yellow Wagtail</strong> <em>(Motacilla flava)</em></a></li>
+          <li><a href="birds/whinchat.html"><strong>Whinchat</strong> <em>(Saxicola rubetra)</em></a></li>
+          <li><a href="birds/wtailedeagle.html"><strong>White-tailed Eagle</strong> <em>(Haliaeetus albicilla)</em></a></li>
+          <li><a href="birds/whooperswan.html"><strong>Whooper Swan</strong> <em>(Cygnus cygnus)</em></a></li>
+          <li><a href="birds/yellowhammer.html"><strong>Yellowhammer</strong> <em>(Emberiza citrinella)</em></a></li>
+          <!-- BUILD:BIRD_LIST_END -->
+        </ul>
+        <p>Explore birding hotspots in Ireland: <a href="spots.html">Where to spot birds</a> · Read more on the <a href="about.html">About page</a>.</p>
+      </section>
+    </noscript>
   </main>
 
   <footer class="site-footer">
     <p>
-      <span data-i18n="footerCredit">Photos via Wikimedia Commons. Bird info adapted from BirdWatch Ireland & Wikipedia.</span>
+      <span data-i18n="footerCredit">Photos via Wikimedia Commons. Bird info adapted from BirdWatch Ireland &amp; Wikipedia.</span>
+    </p>
+    <p class="small">
+      <a href="spots.html" data-i18n="navSpots">Where to spot</a> ·
+      <a href="about.html" data-i18n="navAbout">About</a> ·
+      <a href="sitemap.xml">Sitemap</a>
     </p>
   </footer>
 

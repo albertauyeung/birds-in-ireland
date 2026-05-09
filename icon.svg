@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Birds in Ireland app icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cdf0ff"/>
+      <stop offset="100%" stop-color="#fffaea"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <g transform="translate(120 120)">
+    <ellipse cx="140" cy="140" rx="140" ry="120" fill="#2d3142"/>
+    <ellipse cx="140" cy="170" rx="92" ry="78" fill="#ffffff"/>
+    <circle cx="195" cy="100" r="11" fill="#ffffff"/>
+    <circle cx="195" cy="100" r="5" fill="#2d3142"/>
+    <path d="M260 110 q70 14 64 52 q-6 38 -72 30 q-38 -4 -38 -38 q0 -38 46 -44 z" fill="#ff7a59"/>
+    <path d="M268 132 l44 0 l-6 22 l-44 0 z" fill="#ffd866"/>
+    <path d="M118 250 l-18 42 l44 -10 z" fill="#ff7a59"/>
+    <path d="M160 250 l-4 46 l40 -18 z" fill="#ff7a59"/>
+  </g>
+</svg>
