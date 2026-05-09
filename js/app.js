@@ -366,8 +366,12 @@
       card.className = "bird-card";
       card.href = birdHref(bird.id);
       card.setAttribute("aria-label", name);
+      const introduced = bird.nativeStatus === "introduced";
+      const tag = introduced
+        ? `<span class="bird-tag bird-tag--introduced" title="${escapeHtml(t("statusIntroduced"))}">${escapeHtml(t("statusIntroducedShort"))}</span>`
+        : "";
       card.innerHTML = `
-        <div class="photo skeleton"><img alt="" loading="lazy" decoding="async"></div>
+        <div class="photo skeleton"><img alt="" loading="lazy" decoding="async">${tag}</div>
         <p class="name">${escapeHtml(name)}</p>
         ${pron ? `<p class="pronunciation">${escapeHtml(pron)}</p>` : ""}
         ${showEnglish ? `<p class="english-name">${escapeHtml(bird.names.en)}</p>` : ""}
@@ -481,6 +485,10 @@
           <div class="fact">
             <div class="fact-label">${escapeHtml(t("factLatin"))}</div>
             <div><em>${escapeHtml(bird.latin)}</em></div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">${escapeHtml(t("factStatus"))}</div>
+            <div>${escapeHtml(bird.nativeStatus === "introduced" ? t("statusIntroduced") : t("statusNative"))}</div>
           </div>
         </div>
         <div class="where">

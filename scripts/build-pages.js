@@ -277,6 +277,14 @@ function renderBirdPage(bird) {
       "description": descEn,
       "identifier": bird.latin,
       "additionalType": "https://schema.org/Animal",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "nativeStatus",
+          "name": "Status in Ireland",
+          "value": bird.nativeStatus === "introduced" ? "Introduced" : "Native"
+        }
+      ],
       "sameAs": [
         `https://en.wikipedia.org/wiki/${bird.wiki}`
       ]
@@ -416,7 +424,7 @@ ${ANALYTICS}
       </a>
       <article id="bird-detail" class="bird-detail">
         <div>
-          <div class="photo skeleton"><img alt="${escapeAttr(name + " (" + bird.latin + ") — bird species found in Ireland")}" decoding="async" fetchpriority="high" /></div>
+          <div class="photo skeleton"><img alt="${escapeAttr(name + " (" + bird.latin + ") — bird species found in Ireland")}" decoding="async" fetchpriority="high" />${bird.nativeStatus === "introduced" ? `<span class="bird-tag bird-tag--introduced" title="Introduced species">Introduced</span>` : ""}</div>
           <p class="photo-credit">Photo by <a href="https://en.wikipedia.org/wiki/${escapeAttr(bird.wiki)}" target="_blank" rel="noopener" class="src-link">Wikipedia</a> · sourced from Wikimedia Commons</p>
         </div>
         <div>
@@ -432,6 +440,10 @@ ${otherNamesBlock}
             <div class="fact">
               <div class="fact-label">Latin name</div>
               <div><em>${escapeHtml(bird.latin)}</em></div>
+            </div>
+            <div class="fact">
+              <div class="fact-label">Status</div>
+              <div>${bird.nativeStatus === "introduced" ? "Introduced" : "Native to Ireland"}</div>
             </div>
           </div>
           <div class="where">
@@ -460,7 +472,7 @@ ${commonFooter()}
 function renderAboutPage() {
   const title = "About — Birds in Ireland Kids Guide";
   const canonical = SITE_URL + "about.html";
-  const description = "About Birds in Ireland — a free, multilingual web app helping kids aged 5–12 discover the 100 birds of Ireland. Learn about our data sources from BirdWatch Ireland, eBird and Wikimedia Commons.";
+  const description = "About Birds in Ireland — a free, multilingual web app helping kids aged 5–12 discover the birds of Ireland. Learn about our data sources from BirdWatch Ireland, eBird and Wikimedia Commons.";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -556,7 +568,7 @@ ${commonHeader()}
 
         <h2>Explore more</h2>
         <ul>
-          <li><a href="./">Browse all 100 birds</a></li>
+          <li><a href="./">Browse every bird in the guide</a></li>
           <li><a href="spots.html">Where to spot birds in Ireland</a> — 9 famous birding hotspots</li>
         </ul>
 
@@ -711,7 +723,7 @@ function render404Page() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#ff7a59" />
   <title>${escapeHtml(title)}</title>
-  <meta name="description" content="The page you were looking for couldn't be found. Browse the 100 birds of Ireland or explore our birdwatching hotspots." />
+  <meta name="description" content="The page you were looking for couldn't be found. Browse the birds of Ireland or explore our birdwatching hotspots." />
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="${escapeAttr(canonical)}" />
 ${commonHeadAssets({
@@ -729,7 +741,7 @@ ${commonHeader()}
       <h1 class="section-title">Page not found 🐦</h1>
       <p class="lead">The bird flew away! The page you were looking for couldn't be found.</p>
       <ul>
-        <li><a href="./">Back to the gallery (100 birds)</a></li>
+        <li><a href="./">Back to the gallery (every bird in the guide)</a></li>
         <li><a href="spots.html">Where to spot birds in Ireland</a></li>
         <li><a href="about.html">About this app</a></li>
         <li><a href="sitemap.xml">View the sitemap</a></li>
@@ -804,7 +816,12 @@ function injectBirdListIntoIndex(birds) {
 
   const sorted = birds.slice().sort((a, b) => a.names.en.localeCompare(b.names.en));
   const lines = sorted
-    .map((b) => `          <li><a href="birds/${escapeAttr(b.id)}.html"><strong>${escapeHtml(b.names.en)}</strong> <em>(${escapeHtml(b.latin)})</em></a></li>`)
+    .map((b) => {
+      const tag = b.nativeStatus === "introduced"
+        ? ` <span class="bird-tag bird-tag--introduced">Introduced</span>`
+        : "";
+      return `          <li><a href="birds/${escapeAttr(b.id)}.html"><strong>${escapeHtml(b.names.en)}</strong> <em>(${escapeHtml(b.latin)})</em></a>${tag}</li>`;
+    })
     .join("\n");
 
   const replacement = `${start}\n${lines}\n          ${end}`;
