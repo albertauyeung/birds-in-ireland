@@ -2640,6 +2640,60 @@ window.BIRDS = [
       "fr": "Le célèbre paon ! Le mâle a le corps d'un bleu chatoyant et une immense queue en éventail couverte d'« yeux » brillants. Ils ont été amenés en Irlande depuis l'Inde il y a longtemps et se promènent aujourd'hui dans quelques parcs. Écoute leur cri puissant : un « miaou ! » très fort.",
       "es": "¡El famoso pavo real! El macho tiene el cuerpo de un azul brillante y una enorme cola en abanico cubierta de «ojos» luminosos. Los trajeron a Irlanda desde la India hace mucho tiempo y hoy se pasean por algunos parques. Escucha su llamada fuerte: ¡un «miau!» muy ruidoso."
     }
+  },
+  {
+    id: "mandarinduck",
+    wiki: "Mandarin_duck",
+    color: "#ff7a3a",
+    sizeCategory: "medium",
+    sizeCm: 45,
+    where: ["St Stephen's Green (Dublin)", "Iveagh Gardens (Dublin)", "Powerscourt Estate (Wicklow)", "A few wooded park ponds"],
+    names: {
+      "en": "Mandarin Duck",
+      "zh-Hant": "鴛鴦",
+      "zh-Hans": "鸳鸯",
+      "yue": "鴛鴦",
+      "fr": "Canard mandarin",
+      "es": "Pato mandarín"
+    },
+    pronunciation: { pinyin: "yuān yāng", jyutping: "jyun1 joeng1" },
+    latin: "Aix galericulata",
+    nativeStatus: "introduced",
+    description: {
+      "en": "The most colourful duck in Ireland! The male has bright orange 'sail' feathers on his back and a fancy striped face. They came from East Asia long ago and now live wild on a few park ponds in Dublin and Wicklow.",
+      "zh-Hant": "愛爾蘭最色彩繽紛的鴨子！雄鴨背上有兩片亮橘色的「帆」羽，臉上還有漂亮的條紋花樣。牠們很久以前從東亞來到愛爾蘭，現在在都柏林和威克洛幾個公園的池塘自由生活。",
+      "zh-Hans": "爱尔兰最色彩缤纷的鸭子！雄鸭背上有两片亮橘色的「帆」羽，脸上还有漂亮的条纹花样。它们很久以前从东亚来到爱尔兰，现在在都柏林和威克洛几个公园的池塘自由生活。",
+      "yue": "愛爾蘭最色彩繽紛嘅鴨仔！雄鴨背脊有兩片鮮橙色嘅「帆」羽，臉上仲有靚靚嘅條紋花款。佢哋好耐之前由東亞嚟到愛爾蘭，依家喺都柏林同威克洛幾個公園嘅池塘度自由咁生活。",
+      "fr": "Le canard le plus coloré d'Irlande ! Le mâle a deux « voiles » orange vif sur le dos et le visage rayé comme un masque. Il vient d'Extrême-Orient et vit aujourd'hui en liberté sur quelques étangs de parcs à Dublin et à Wicklow.",
+      "es": "¡El pato más colorido de Irlanda! El macho tiene dos «velas» de plumas naranja brillante en la espalda y una cara con rayas elegantes. Llegó desde el Lejano Oriente hace mucho tiempo y hoy vive libre en algunos estanques de parques de Dublín y Wicklow."
+    }
+  },
+  {
+    id: "canadagoose",
+    wiki: "Canada_goose",
+    color: "#3a3f55",
+    sizeCategory: "large",
+    sizeCm: 95,
+    where: ["Phoenix Park (Dublin)", "Park lakes around Dublin", "Wetlands and reservoirs"],
+    names: {
+      "en": "Canada Goose",
+      "zh-Hant": "加拿大雁",
+      "zh-Hans": "加拿大雁",
+      "yue": "加拿大雁",
+      "fr": "Bernache du Canada",
+      "es": "Barnacla canadiense"
+    },
+    pronunciation: { pinyin: "jiā ná dà yàn", jyutping: "gaa1 naa4 daai6 ngaan6" },
+    latin: "Branta canadensis",
+    nativeStatus: "introduced",
+    description: {
+      "en": "A big brown goose with a black head and neck and a bright white 'chinstrap'. They were brought from North America hundreds of years ago and now honk loudly on park lakes all over Ireland.",
+      "zh-Hant": "一隻大隻棕色的雁，黑頭黑頸，下巴有一塊白色的「下巴帶」。牠們幾百年前從北美洲被帶到愛爾蘭，現在在全國的公園池塘大聲叫。",
+      "zh-Hans": "一只大只棕色的雁，黑头黑颈，下巴有一块白色的「下巴带」。它们几百年前从北美洲被带到爱尔兰，现在在全国的公园池塘大声叫。",
+      "yue": "一隻好大隻嘅啡色雁，黑色頭、黑色頸，下巴位有一塊白色嘅「下巴帶」。佢哋幾百年前由北美洲帶到愛爾蘭，依家喺全國嘅公園池塘度大聲叫。",
+      "fr": "Une grosse oie brune au cou et à la tête noirs, avec une tache blanche sous le menton. Elle a été amenée d'Amérique du Nord il y a des siècles et cacarde aujourd'hui bruyamment sur les lacs des parcs irlandais.",
+      "es": "Un ganso grande y marrón, con la cabeza y el cuello negros y una mancha blanca bajo la barbilla. Lo trajeron de Norteamérica hace siglos y hoy grazna ruidosamente en los lagos de los parques de toda Irlanda."
+    }
   }
 ];
 
@@ -2726,7 +2780,7 @@ window.SPOTS = [
       "fr": "L'un des plus grands parcs urbains d'Europe. Des canards sur les étangs, des rouges-gorges dans les arbres, des pies sur les pelouses — et même un troupeau de daims !",
       "es": "Uno de los mayores parques urbanos de Europa. Patos en los estanques, petirrojos en los árboles, urracas en el césped — ¡y hasta una manada de gamos!"
     },
-    birds: ["mallard", "robin", "magpie", "hoodedcrow", "jackdaw", "woodpigeon", "greattit", "bluetit", "sparrowhawk", "blackbird", "songthrush", "swift", "collareddove", "spottedflycatcher"]
+    birds: ["mallard", "canadagoose", "robin", "magpie", "hoodedcrow", "jackdaw", "woodpigeon", "greattit", "bluetit", "sparrowhawk", "blackbird", "songthrush", "swift", "collareddove", "spottedflycatcher"]
   },
   {
     id: "cliffsmoher",
@@ -2783,5 +2837,19 @@ window.SPOTS = [
       "es": "Un gran parque señorial en el sur de Dublín, antigua casa de campo de la familia banquera Le Touche. Pavos reales en libertad llaman desde los árboles cerca del jardín tapiado, ánades reales nadan en los estanques y los bosques están llenos de aves de jardín. Entrada gratuita, muy popular con las familias los fines de semana."
     },
     birds: ["peafowl", "mallard", "robin", "blackbird", "songthrush", "magpie", "hoodedcrow", "jackdaw", "woodpigeon", "greattit", "bluetit", "dunnock"]
+  },
+  {
+    id: "stephensgreen",
+    name: "St Stephen's Green",
+    region: "Dublin (city centre)",
+    description: {
+      "en": "A leafy public park right in the middle of Dublin, a five-minute walk from Grafton Street. The big pond has Mandarin Ducks, mallards, mute swans and gulls, and the lawns are always busy with sparrows and pigeons looking for crumbs.",
+      "zh-Hant": "都柏林市中心的綠樹公園，從 Grafton Street 走路 5 分鐘就到。大池塘上有鴛鴦、綠頭鴨、瘤鼻天鵝和海鷗，草地上總是有麻雀和鴿子在找麵包屑吃。",
+      "zh-Hans": "都柏林市中心的绿树公园，从 Grafton Street 走路 5 分钟就到。大池塘上有鸳鸯、绿头鸭、瘤鼻天鹅和海鸥，草地上总是有麻雀和鸽子在找面包屑吃。",
+      "yue": "都柏林市中心嘅綠樹公園，由 Grafton Street 行路 5 分鐘就到。大池塘上面有鴛鴦、綠頭鴨、瘤鼻天鵝同海鷗，草地上面成日有麻雀同鴿仔搵麵包屑食。",
+      "fr": "Un parc public verdoyant au cœur de Dublin, à cinq minutes à pied de Grafton Street. Sur le grand étang, on trouve des canards mandarins, des canards colverts, des cygnes tuberculés et des mouettes ; les pelouses sont toujours pleines de moineaux et de pigeons à la recherche de miettes.",
+      "es": "Un parque público arbolado en pleno centro de Dublín, a cinco minutos a pie de Grafton Street. En el gran estanque hay patos mandarines, ánades reales, cisnes vulgares y gaviotas, y los céspedes están siempre llenos de gorriones y palomas buscando migas."
+    },
+    birds: ["mandarinduck", "mallard", "muteswan", "blackheadedgull", "sparrow", "woodpigeon", "moorhen"]
   }
 ];
