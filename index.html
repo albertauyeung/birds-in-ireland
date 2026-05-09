@@ -61,10 +61,19 @@
   <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin />
   <link rel="dns-prefetch" href="https://en.wikipedia.org" />
   <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
+  <link rel="dns-prefetch" href="https://cloud.umami.is" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="icon.svg" />
   <link rel="sitemap" type="application/xml" href="sitemap.xml" />
+
+  <!-- App scripts: deferred so they download in parallel with CSS without
+       blocking parsing, then execute in document order after the DOM is
+       ready. config/i18n/birds expose window globals; app.js wires up. -->
+  <script defer src="js/config.js"></script>
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/birds.js"></script>
+  <script defer src="js/app.js"></script>
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -123,7 +132,7 @@
   }
   </script>
 
-  <!-- Analytics -->
+  <!-- Analytics (deferred; runs after the app is ready). -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="0c30afdf-7301-47b0-8a70-24b0a10719ca"></script>
 </head>
 <body>
@@ -357,10 +366,5 @@
       <a href="sitemap.xml">Sitemap</a>
     </p>
   </footer>
-
-  <script src="js/config.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/birds.js"></script>
-  <script src="js/app.js"></script>
 </body>
 </html>
