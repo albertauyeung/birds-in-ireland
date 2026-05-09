@@ -2003,6 +2003,7 @@ window.BIRDS = [
     },
     pronunciation: { pinyin: "huán jǐng zhì", jyutping: "waan4 geng2 zi6" },
     latin: "Phasianus colchicus",
+    nativeStatus: "introduced",
     description: {
       "en": "A big colourful chicken-like bird from Asia, brought to Ireland long ago. Males have shiny green heads and long stripy tails.",
       "zh-Hant": "一隻大型色彩繽紛、像雞的鳥，很久以前從亞洲被帶到愛爾蘭。雄鳥頭部閃綠，尾巴又長又有條紋。",
@@ -2612,6 +2613,33 @@ window.BIRDS = [
       "fr": "Un oiseau plongeur long et bas sur l'eau qui nage comme un sous-marin. En été, il a une jolie tache rouge à la gorge — mais en Irlande, on le voit surtout en hiver en mer, en gris et blanc.",
       "es": "Un ave buceadora larga y baja en el agua que nada como un submarino. En verano tiene una bonita mancha roja en la garganta — ¡pero en Irlanda se ve sobre todo en invierno en el mar, gris y blanco!"
     }
+  },
+  {
+    id: "peafowl",
+    wiki: "Indian_peafowl",
+    color: "#1d6fb8",
+    sizeCategory: "large",
+    sizeCm: 100,
+    where: ["Marlay Park (Dublin)", "Some country estates and walled gardens"],
+    names: {
+      "en": "Indian Peafowl",
+      "zh-Hant": "藍孔雀",
+      "zh-Hans": "蓝孔雀",
+      "yue": "藍孔雀",
+      "fr": "Paon bleu",
+      "es": "Pavo real común"
+    },
+    pronunciation: { pinyin: "lán kǒng què", jyutping: "laam4 hung2 zoek3" },
+    latin: "Pavo cristatus",
+    nativeStatus: "introduced",
+    description: {
+      "en": "The famous peacock! The male's body is shimmering blue and his huge fan-tail is covered in shiny 'eyes'. They were brought to Ireland from India long ago and now strut around a few parks. Listen for their loud 'meow!' call.",
+      "zh-Hant": "就是大名鼎鼎的孔雀！雄鳥身體閃著藍綠色的光，巨大的尾屏像扇子展開，上面布滿一個個亮亮的「眼睛」。牠們很久以前從印度被帶到愛爾蘭，現在在幾個公園裡漫步。仔細聽，會聽到牠們大聲「喵——」的叫聲。",
+      "zh-Hans": "就是大名鼎鼎的孔雀！雄鸟身体闪着蓝绿色的光，巨大的尾屏像扇子展开，上面布满一个个亮亮的「眼睛」。它们很久以前从印度被带到爱尔兰，现在在几个公园里漫步。仔细听，会听到它们大声「喵——」的叫声。",
+      "yue": "就係大名鼎鼎嘅孔雀！雄鳥個身閃住藍綠色嘅光，條尾屏好似扇咁打開，上面有好多閃閃發光嘅「眼仔」。佢哋好耐之前由印度帶嚟愛爾蘭，依家喺幾個公園度行嚟行去。細心聽，會聽到佢哋大聲叫「喵——」。",
+      "fr": "Le célèbre paon ! Le mâle a le corps d'un bleu chatoyant et une immense queue en éventail couverte d'« yeux » brillants. Ils ont été amenés en Irlande depuis l'Inde il y a longtemps et se promènent aujourd'hui dans quelques parcs. Écoute leur cri puissant : un « miaou ! » très fort.",
+      "es": "¡El famoso pavo real! El macho tiene el cuerpo de un azul brillante y una enorme cola en abanico cubierta de «ojos» luminosos. Los trajeron a Irlanda desde la India hace mucho tiempo y hoy se pasean por algunos parques. Escucha su llamada fuerte: ¡un «miau!» muy ruidoso."
+    }
   }
 ];
 
@@ -2741,5 +2769,19 @@ window.SPOTS = [
       "es": "Dos pequeñas islas frente a la costa sureste — una de las mayores colonias de aves marinas de Irlanda. En verano los acantilados se llenan de alcatraces, frailecillos, alcas y araos. Se llega a Great Saltee en barco desde Kilmore Quay."
     },
     birds: ["gannet", "puffin", "razorbill", "guillemot", "kittiwake", "manxshearwater", "cormorant"]
+  },
+  {
+    id: "marlaypark",
+    name: "Marlay Park",
+    region: "Dublin (Rathfarnham)",
+    description: {
+      "en": "A grand parkland estate in south Dublin, once the country home of the Le Touche banking family. Free-roaming peacocks call from the trees near the walled garden, mallards paddle on the ponds, and the woodlands are full of garden birds. Free entry, popular with families at weekends.",
+      "zh-Hant": "都柏林南部的一座大型莊園公園，以前是 Le Touche 銀行家族的鄉間住所。圍牆花園附近的樹上有自由活動的孔雀在叫，池塘上有綠頭鴨划水，林地裡到處是花園小鳥。免費入場，週末很受家庭歡迎。",
+      "zh-Hans": "都柏林南部的一座大型庄园公园，以前是 Le Touche 银行家族的乡间住所。围墙花园附近的树上有自由活动的孔雀在叫，池塘上有绿头鸭划水，林地里到处是花园小鸟。免费入场，周末很受家庭欢迎。",
+      "yue": "喺都柏林南部嘅大型莊園公園，以前係 Le Touche 銀行家族嘅鄉間大屋。圍牆花園附近嘅樹上有放養嘅孔雀喺度叫，池塘度有綠頭鴨游水，樹林入面成日見到花園雀仔。免費入場，週末好受家庭歡迎。",
+      "fr": "Un grand domaine parc au sud de Dublin, ancienne maison de campagne de la famille de banquiers Le Touche. Des paons en liberté lancent leur cri depuis les arbres près du jardin clos, des canards colverts pagaient sur les étangs, et les bois fourmillent d'oiseaux de jardin. Entrée gratuite, très apprécié des familles le week-end.",
+      "es": "Un gran parque señorial en el sur de Dublín, antigua casa de campo de la familia banquera Le Touche. Pavos reales en libertad llaman desde los árboles cerca del jardín tapiado, ánades reales nadan en los estanques y los bosques están llenos de aves de jardín. Entrada gratuita, muy popular con las familias los fines de semana."
+    },
+    birds: ["peafowl", "mallard", "robin", "blackbird", "songthrush", "magpie", "hoodedcrow", "jackdaw", "woodpigeon", "greattit", "bluetit", "dunnock"]
   }
 ];

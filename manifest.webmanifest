@@ -1,7 +1,7 @@
 {
   "name": "Birds in Ireland — A Multilingual Bird Guide for Kids",
   "short_name": "Birds in Ireland",
-  "description": "Discover 100 birds you can spot in Ireland — puffins, robins, kingfishers, eagles and more. Kid-friendly descriptions, photos, pronunciation guides and where-to-spot maps in 6 languages.",
+  "description": "Discover over 100 birds you can spot in Ireland — puffins, robins, kingfishers, eagles and more. Kid-friendly descriptions, photos, pronunciation guides and where-to-spot maps in 6 languages.",
   "start_url": "/birds-in-ireland/",
   "scope": "/birds-in-ireland/",
   "display": "standalone",
