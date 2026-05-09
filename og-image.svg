@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Birds in Ireland: a multilingual bird guide for kids">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cdf0ff"/>
+      <stop offset="55%" stop-color="#e8faff"/>
+      <stop offset="100%" stop-color="#fffaea"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#79c47a"/>
+      <stop offset="100%" stop-color="#3d8b41"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#sky)"/>
+
+  <!-- Hills -->
+  <path d="M0,520 C200,440 400,460 620,500 C800,535 1000,470 1200,500 L1200,630 L0,630 Z" fill="url(#hill)" opacity="0.85"/>
+  <path d="M0,560 C220,520 420,560 660,540 C880,525 1080,560 1200,545 L1200,630 L0,630 Z" fill="#2f6f33" opacity="0.85"/>
+
+  <!-- Sun -->
+  <circle cx="970" cy="170" r="70" fill="#ffd866"/>
+  <circle cx="970" cy="170" r="100" fill="#ffd866" opacity="0.25"/>
+
+  <!-- Stylised flying birds (silhouettes) -->
+  <g fill="#2d3142">
+    <path d="M820 240 q20 -22 40 0 q20 -22 40 0 q-20 4 -40 -4 q-20 8 -40 4 z"/>
+    <path d="M900 320 q14 -16 28 0 q14 -16 28 0 q-14 3 -28 -3 q-14 6 -28 3 z"/>
+    <path d="M770 350 q16 -18 32 0 q16 -18 32 0 q-16 3 -32 -3 q-16 6 -32 3 z"/>
+  </g>
+
+  <!-- Bigger feature "puffin-like" bird shape -->
+  <g transform="translate(170 360)">
+    <ellipse cx="80" cy="80" rx="80" ry="70" fill="#2d3142"/>
+    <ellipse cx="80" cy="100" rx="55" ry="45" fill="#ffffff"/>
+    <circle cx="115" cy="55" r="6" fill="#ffffff"/>
+    <circle cx="115" cy="55" r="3" fill="#2d3142"/>
+    <path d="M150 60 q40 8 38 30 q-2 22 -42 18 q-22 -2 -22 -22 q0 -22 26 -26 z" fill="#ff7a59"/>
+    <path d="M155 75 l25 0 l-3 12 l-25 0 z" fill="#ffd866"/>
+    <path d="M70 145 l-10 24 l24 -6 z" fill="#ff7a59"/>
+    <path d="M95 145 l-2 26 l22 -10 z" fill="#ff7a59"/>
+  </g>
+
+  <!-- Title block -->
+  <text x="370" y="180" font-family="'Comic Sans MS','Quicksand','Trebuchet MS',sans-serif" font-size="96" font-weight="800" fill="#ff7a59">Birds in Ireland</text>
+  <text x="370" y="240" font-family="'Comic Sans MS','Quicksand',sans-serif" font-size="38" font-weight="700" fill="#2d3142">A multilingual bird guide for kids</text>
+  <text x="370" y="300" font-family="'Comic Sans MS','Quicksand',sans-serif" font-size="28" fill="#3a3f55">100 species · photos · pronunciation guides</text>
+  <text x="370" y="340" font-family="'Comic Sans MS','Quicksand',sans-serif" font-size="26" fill="#1d6fb8">English · 華文 · 粵語 · Français · Español</text>
+</svg>
