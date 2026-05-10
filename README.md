@@ -2,9 +2,9 @@
 
 A multilingual web app for kids aged 5–12 to discover the birds of Ireland.
 
-- 100 bird species with kid-friendly descriptions, photos, and where to spot them
+- 103 bird species with kid-friendly descriptions, photos, and where to spot them
 - 6 languages: English, 繁體中文, 简体中文, 廣東話, Français, Español
-- 9 famous birding hotspots around the island
+- 11 famous birding hotspots around the island
 - Pronunciation guides (pinyin, jyutping)
 - Match-the-bird quiz mini-game
 - Hash-based + path-based routing (per-bird URLs are crawlable for SEO)
@@ -42,10 +42,10 @@ birds-in-ireland/
 ├── css/styles.css        # all styles
 ├── js/
 │   ├── i18n.js           # UI strings × 6 languages
-│   ├── birds.js          # 100 birds + spots data (the source of truth)
+│   ├── birds.js          # 103 birds + spots data (the source of truth)
 │   ├── app.js            # routing, rendering, photo loader, feedback form wiring
 │   └── config.js         # paste-in slot for the feedback Worker URL
-├── birds/                # 100 generated static HTML pages, one per bird (for SEO)
+├── birds/                # 103 generated static HTML pages, one per bird (for SEO)
 ├── scripts/
 │   └── build-pages.js    # regenerates birds/*.html and sitemap.xml from birds.js
 ├── worker/               # Cloudflare Worker that turns feedback into GitHub issues
