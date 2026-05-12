@@ -11,7 +11,7 @@
  *   3. /spots.html        — static page listing all birding hotspots,
  *                           with per-spot ItemList schema linking to bird
  *                           detail pages.
- *   4. /about.html        — static About page (sources, mission).
+ *   4. /about.html        — static About page (sources, mission, privacy).
  *   5. /404.html          — friendly 404 with sitemap/homepage links.
  *   6. index.html         — the marker block
  *                           "<!-- BUILD:BIRD_LIST_START --> ...
@@ -207,6 +207,7 @@ function commonFooter() {
       <a href="${SITE_URL}" data-i18n="navBirds">Birds</a> ·
       <a href="${SITE_URL}spots.html" data-i18n="navSpots">Where to spot</a> ·
       <a href="${SITE_URL}about.html" data-i18n="navAbout">About</a> ·
+      <a href="${SITE_URL}about.html#privacy" data-i18n="navPrivacy">Privacy</a> ·
       <a href="${SITE_URL}sitemap.xml">Sitemap</a>
     </p>
   </footer>`;
@@ -563,13 +564,20 @@ ${commonHeader()}
           <li><a href="https://en.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a> — &ldquo;Learn more&rdquo; links</li>
         </ul>
 
-        <h2>Languages we support</h2>
-        <p>Birds in Ireland is available in English, 繁體中文, 简体中文, 廣東話 (with jyutping), Français and Español, with pinyin pronunciation guides for the Chinese names. <a href="./">Open the app</a> to switch language.</p>
+        <h2 id="privacy" data-i18n="privacyHeading">Privacy</h2>
+        <p data-i18n="privacyP1">Birds in Ireland is free and ad-free. We don't ask for your name, email or any account.</p>
+        <p data-i18n="privacyP2">We use Trefly, our own self-hosted analytics, to count visits. Trefly is cookieless: no cookie is set on your device, and no IP address or user-agent string is stored on the server. It records only the page you viewed, the host of the referring website (no full URL), your country, browser, operating system and device family. A daily-rotating hash counts unique daily visitors without identifying you, and the hash resets every 24 hours so you cannot be tracked across days.</p>
+        <p data-i18n="privacyP3">Don't want to be counted? Most ad-blockers and tracker-blocking browser extensions will block trefly.vercel.app/t.js and stop the count.</p>
+        <p data-i18n="privacyP4">Other third parties: bird photos and &ldquo;Learn more&rdquo; links load directly from Wikimedia Commons and Wikipedia, which see your IP only when you visit those pages. The optional feedback form on this page sends your message to a Cloudflare Worker that opens a GitHub issue; spam is filtered by a Cloudflare Turnstile widget that loads only when you start typing.</p>
+        <p data-i18n="privacyP5">For privacy questions, contact: [TODO add email]. This notice is informational and not legal advice.</p>
 
-        <h2>Explore more</h2>
+        <h2 data-i18n="languagesHeading">Languages we support</h2>
+        <p data-i18n="languagesBody">Birds in Ireland is available in English, 繁體中文, 简体中文, 廣東話 (with jyutping), Français and Español, with pinyin pronunciation guides for the Chinese names. <a href="./">Open the app</a> to switch language.</p>
+
+        <h2 data-i18n="exploreHeading">Explore more</h2>
         <ul>
-          <li><a href="./">Browse every bird in the guide</a></li>
-          <li><a href="spots.html">Where to spot birds in Ireland</a> — 9 famous birding hotspots</li>
+          <li><a href="./" data-i18n="exploreBrowse">Browse every bird in the guide</a></li>
+          <li><a href="spots.html"><span data-i18n="exploreSpots">Where to spot birds in Ireland</span> — <span data-i18n="exploreSpotsCount">11 famous birding hotspots</span></a></li>
         </ul>
 
         <p class="small" data-i18n="aboutCredit">Made with love for curious young birdwatchers. 🐦</p>
